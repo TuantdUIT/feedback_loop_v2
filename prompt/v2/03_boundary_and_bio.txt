@@ -8,7 +8,7 @@ Trước khi gán BIO, chuỗi đầu vào phải được tách thành danh sá
 
 * Tách theo khoảng trắng (whitespace) làm ranh giới token chính.
 * Các dấu phân cách `,` `;` `-` (khi đứng độc lập, có khoảng trắng hoặc không thuộc vào một token chữ+số) là token riêng biệt, luôn có thể nhận nhãn O.
-* Dấu `.` đứng sau một tiền tố viết tắt hành chính (`tp.`, `q.`, `p.`, `f.`, `đ.`, `tx.`) được tách thành hai token: phần chữ và dấu `.` (ví dụ `"q."` → `["q", "."]`). Cả hai token này thuộc cùng một thực thể nếu tiền tố đó mở đầu thực thể (ví dụ `B-DISTRICT`, `I-DISTRICT`).
+* Dấu `.` đứng sau một tiền tố viết tắt hành chính (`tp.`, `q.`, `p.`, `f.`, `đ.`, `tx.`) được tách thành hai token: phần chữ và dấu `.` (ví dụ `"q."` → `["q", "."]`). Cả hai token này thuộc cùng một thực thể nếu tiền tố đó mở đầu thực thể (ví dụ `B-L3`, `I-L3`).
 * Một chuỗi chữ+số dính liền không có khoảng trắng ở giữa (ví dụ `"94B"`, `"246E"`, `"P6"`, `"Q5"`) là MỘT token duy nhất, không tách chữ khỏi số.
 * Một chuỗi số có dấu `/` ở giữa không có khoảng trắng (ví dụ `"125/84"`) là MỘT token duy nhất. Nếu có khoảng trắng quanh dấu `/` (ví dụ `"125/ 84"`), tách thành các token riêng theo đúng khoảng trắng xuất hiện trong văn bản gốc (không chuẩn hoá lại khoảng trắng). Nếu dấu `/` nằm ở cuối chuỗi và không có gì theo sau (ví dụ đầu vào chỉ là `"125/"`), dấu `/` vẫn thuộc cùng token với số đứng trước nó — xem thêm §3.5 về ý nghĩa của dấu phân cách dangling ở cuối chuỗi.
 * Không tự thêm, xoá, hoặc gộp khoảng trắng so với văn bản gốc — vị trí offset của mỗi token phải khớp chính xác với văn bản đầu vào.
@@ -76,6 +76,8 @@ Quy trình đúng là: tách token → với mỗi token, xét các loại thự
 
 Với một thực thể loại X: token đầu tiên → B-X; các token tiếp theo thuộc cùng thực thể → I-X; token không thuộc thực thể nào → O.
 
+**Bộ nhãn dùng trong chuỗi `bio` là L1–L7, KHÔNG phải tên loại thực thể.** Tên loại thực thể (COUNTRY, PROVINCE_OR_CITY, DISTRICT, WARD, STREET, HOUSE_NUMBER, POI) chỉ tồn tại ở bước suy luận trung gian tại `02_label_definitions.txt` §2.0 — dùng để xác định token thuộc loại gì. Ngay khi gán nhãn cho token, phải chuyển sang dạng L tương ứng theo bảng ánh xạ ở §2.0. Chuỗi `bio` xuất ra chỉ được chứa `B-L1`…`B-L7`, `I-L1`…`I-L7`, và `O`. Không bao giờ xuất `B-STREET`, `B-DISTRICT` hay bất kỳ dạng tên loại thực thể nào.
+
 Ràng buộc chuyển trạng thái (phải tuân thủ khi gán nhãn cho từng token):
 
 * I-X chỉ hợp lệ khi token ngay trước nó là B-X hoặc I-X (cùng loại X). I-X đứng sau O, hoặc sau B-Y/I-Y khác loại, là KHÔNG hợp lệ — trường hợp này phải gán lại thành B-X.
@@ -84,11 +86,11 @@ Ràng buộc chuyển trạng thái (phải tuân thủ khi gán nhãn cho từn
 
 Ví dụ (token hóa → BIO):
 
-* "Đường Nguyễn Đình Chiểu" → ["Đường","Nguyễn","Đình","Chiểu"] → ["B-STREET","I-STREET","I-STREET","I-STREET"]
-* "Phường Bến Nghé" → ["Phường","Bến","Nghé"] → ["B-WARD","I-WARD","I-WARD"]
-* "Quận 1" → ["Quận","1"] → ["B-DISTRICT","I-DISTRICT"]
-* "Đại học Nguyễn Tất Thành" → ["Đại","học","Nguyễn","Tất","Thành"] → ["B-POI","I-POI","I-POI","I-POI","I-POI"]
-* "123 Đường Lê Lợi, Quận 1" → ["123","Đường","Lê","Lợi",",","Quận","1"] → ["B-HOUSE_NUMBER","B-STREET","I-STREET","I-STREET","O","B-DISTRICT","I-DISTRICT"] (dấu phẩy là token riêng, nhận nhãn O trừ khi bản thân dấu câu là một phần của tên thực thể — §3.4)
+* "Đường Nguyễn Đình Chiểu" → ["Đường","Nguyễn","Đình","Chiểu"] → STREET → ["B-L5","I-L5","I-L5","I-L5"]
+* "Phường Bến Nghé" → ["Phường","Bến","Nghé"] → WARD → ["B-L4","I-L4","I-L4"]
+* "Quận 1" → ["Quận","1"] → DISTRICT → ["B-L3","I-L3"]
+* "Đại học Nguyễn Tất Thành" → ["Đại","học","Nguyễn","Tất","Thành"] → POI → ["B-L7","I-L7","I-L7","I-L7","I-L7"]
+* "123 Đường Lê Lợi, Quận 1" → ["123","Đường","Lê","Lợi",",","Quận","1"] → HOUSE_NUMBER + STREET + DISTRICT → ["B-L6","B-L5","I-L5","I-L5","O","B-L3","I-L3"] (dấu phẩy là token riêng, nhận nhãn O trừ khi bản thân dấu câu là một phần của tên thực thể — §3.4)
 
 BIO/IOB2 được dùng để: xác định ranh giới thực thể (không phải kiểm tra sau khi đã biết ranh giới); đảm bảo tính liên tục của thực thể; tránh tách sai thực thể; tránh gộp các thực thể khác loại; cho phép suy ra offset (start/end) của từng span một cách xác định.
 
