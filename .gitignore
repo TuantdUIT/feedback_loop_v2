@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Bí mật
+.env
+
+# Dữ liệu sinh ra khi chạy feedback loop — không commit
+feedback/store/cases/*
+feedback/store/silver/*
+feedback/store/human_queue/*
+!feedback/store/**/.gitkeep
+
+# Prompt đã build — sinh lại được từ module nguồn
+prompt/v2/compiled/
