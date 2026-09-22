@@ -1,0 +1,107 @@
+# 3. QUY TẮC XÁC ĐỊNH RANH GIỚI THỰC THỂ & BIO/IOB2
+
+Một thực thể phải bao gồm toàn bộ chuỗi văn bản tạo thành một đơn vị ngữ nghĩa hoàn chỉnh. BIO/IOB2 (§3.6) là cơ chế dùng để xác định ranh giới đó — không tách rời hai khái niệm.
+
+## 3.0. Token hóa
+
+Trước khi gán BIO, chuỗi đầu vào phải được tách thành danh sách token theo quy tắc sau:
+
+* Tách theo khoảng trắng (whitespace) làm ranh giới token chính.
+* Các dấu phân cách `,` `;` `-` (khi đứng độc lập, có khoảng trắng hoặc không thuộc vào một token chữ+số) là token riêng biệt, luôn có thể nhận nhãn O.
+* Dấu `.` đứng sau một tiền tố viết tắt hành chính (`tp.`, `q.`, `p.`, `f.`, `đ.`, `tx.`) được tách thành hai token: phần chữ và dấu `.` (ví dụ `"q."` → `["q", "."]`). Cả hai token này thuộc cùng một thực thể nếu tiền tố đó mở đầu thực thể (ví dụ `B-DISTRICT`, `I-DISTRICT`).
+* Một chuỗi chữ+số dính liền không có khoảng trắng ở giữa (ví dụ `"94B"`, `"246E"`, `"P6"`, `"Q5"`) là MỘT token duy nhất, không tách chữ khỏi số.
+* Một chuỗi số có dấu `/` ở giữa không có khoảng trắng (ví dụ `"125/84"`) là MỘT token duy nhất. Nếu có khoảng trắng quanh dấu `/` (ví dụ `"125/ 84"`), tách thành các token riêng theo đúng khoảng trắng xuất hiện trong văn bản gốc (không chuẩn hoá lại khoảng trắng). Nếu dấu `/` nằm ở cuối chuỗi và không có gì theo sau (ví dụ đầu vào chỉ là `"125/"`), dấu `/` vẫn thuộc cùng token với số đứng trước nó — xem thêm §3.5 về ý nghĩa của dấu phân cách dangling ở cuối chuỗi.
+* Không tự thêm, xoá, hoặc gộp khoảng trắng so với văn bản gốc — vị trí offset của mỗi token phải khớp chính xác với văn bản đầu vào.
+
+Danh sách token này là cơ sở duy nhất để gán nhãn BIO ở §3.6, và để tính offset `start`/`end` của từng span ở `06_io_format.txt`.
+
+## 3.1. Giữ tiền tố thuộc thực thể
+
+Nếu tiền tố trực tiếp xác định loại của thực thể, tiền tố là một phần của thực thể.
+
+Ví dụ: "Đường Nguyễn Đình Chiểu" → toàn bộ là STREET. "Phường Bến Nghé" → toàn bộ là WARD. "Quận 1" → toàn bộ là DISTRICT. "Thành phố Hồ Chí Minh" → toàn bộ là PROVINCE_OR_CITY. "Đại học Nguyễn Tất Thành" → toàn bộ là POI.
+
+---
+
+## 3.2. Không tách thực thể con khi toàn bộ cụm tạo thành một thực thể hoàn chỉnh
+
+Ví dụ: "Đại học Nguyễn Tất Thành" — không được tách "Nguyễn Tất Thành" thành STREET nếu toàn bộ cụm đã tạo thành một POI hoàn chỉnh.
+
+---
+
+## 3.3. Ưu tiên thực thể dài nhất nhưng phải nhất quán về ngữ nghĩa
+
+Khi nhiều đoạn ứng viên chồng lấp nhau, ưu tiên đoạn dài nhất mà toàn bộ đoạn đó tạo thành MỘT thực thể hoàn chỉnh và nhất quán về ngữ nghĩa. Không được gộp nhiều thực thể khác loại chỉ để tạo thành một đoạn dài hơn.
+
+Ví dụ: "Đại học Nguyễn Tất Thành" — nếu toàn bộ cụm là tên một trường đại học thì chọn "Đại học Nguyễn Tất Thành" → POI, không chọn "Nguyễn Tất Thành" → STREET.
+
+Ví dụ: "Highland - Cách Mạng Tháng 8" — không được coi toàn bộ là một POI chỉ vì đây là đoạn dài nhất. Phải phân tách: "Highland" → POI, "Cách Mạng Tháng 8" → STREET, vì đây là hai thực thể khác loại.
+
+---
+
+## 3.4. Không gộp qua dấu phân cách nếu hai phía là hai thực thể khác nhau
+
+Các ký hiệu như dấu phẩy, dấu chấm phẩy, dấu gạch ngang, dấu gạch đứng có thể đóng vai trò ranh giới giữa các thực thể. Không bao gồm chúng trong thực thể trừ khi ký hiệu đó thực sự là một phần của tên.
+
+Ví dụ: "Highland - Cách Mạng Tháng 8" — "-" không thuộc POI và cũng không thuộc STREET.
+
+Ngoại lệ: số nhà dạng khoảng nối bằng dấu `-` (ví dụ "62 - 64") — xem `02_label_definitions.txt` mục L6.
+
+---
+
+## 3.5. Đầu vào có thể bị cắt dở (partial input)
+
+Đầu vào có thể là một chuỗi người dùng đang gõ dở (ví dụ trong autocomplete), chưa chắc đã là địa chỉ hoàn chỉnh. Thực thể cuối cùng trong chuỗi (giáp mép phải, không có ký tự nào theo sau) có thể bị cắt dở.
+
+**Nguyên tắc cốt lõi: chỉ coi là cắt dở khi bản thân văn bản có bằng chứng cho thấy điều đó — không suy đoán chỉ vì thực thể đó nằm ở cuối chuỗi.** Đây KHÔNG phải ngoại lệ của Mức ưu tiên 6 (`04_ambiguity_and_fallback.txt` §4.6) — đây là một dạng bằng chứng văn bản hợp lệ khác, tương tự Mức ưu tiên 1/2.
+
+Coi là cắt dở (đánh dấu `"truncated": true` cho span đó ở `06_io_format.txt`) khi token/cụm cuối cùng rơi vào một trong hai trường hợp:
+
+* **Tiền tố hành chính hoặc loại thực thể đứng trơ trọi, không có tên theo sau** (ví dụ "Đường", "Phường", "Quận" đứng một mình ở cuối chuỗi) — tiền tố này vẫn được gán nhãn theo đúng loại của nó (ví dụ "Đường" → B-L5) dù chưa có tên đi kèm, vì tiền tố tự nó đã là bằng chứng cấu trúc rõ ràng (Mức ưu tiên 1).
+* **Đoạn cuối là một mảnh vỡ không tạo thành một từ/tên hoàn chỉnh**, nhưng khớp làm tiền tố của một địa danh đã biết trong ngữ cảnh hợp lý (ví dụ "Quận Li" — "Li" không phải một từ hoàn chỉnh, nhưng là tiền tố khớp với "Liên Chiểu", một quận có thật) — áp dụng cùng nguyên tắc tri thức nền đã nêu ở Mức ưu tiên 2, chỉ khác là ở đây tri thức nền dùng để nhận diện MỘT TIỀN TỐ của tên, không phải toàn bộ tên.
+
+**KHÔNG coi là cắt dở** khi đoạn cuối tự nó đã là một từ/số hợp lệ, độc lập, không có dấu hiệu bị cắt — dù trên thực tế người dùng CÓ THỂ sẽ gõ tiếp (ví dụ "40", "Quận 1", "Bến Nghé" khi đứng sau tiền tố "Phường"). Mô hình không có cách nào biết chắc liệu chuỗi đã dừng lại hay còn tiếp tục chỉ từ văn bản — việc này chỉ hệ thống gọi mô hình mới xác định được, không phải việc của bước gán nhãn này.
+
+Quy tắc này CHỈ áp dụng cho thực thể cuối cùng của chuỗi. Các thực thể ở giữa hoặc đầu chuỗi không bao giờ được đánh `truncated`.
+
+Xem Ví dụ 9 và Ví dụ 10 ở `08_examples_core.txt`, và bộ ví dụ mở rộng ở `09_examples_partial_input.txt` (module tuỳ chọn — chỉ nạp khi tính năng autocomplete được bật).
+
+---
+
+## 3.6. BIO/IOB2
+
+BIO/IOB2 KHÔNG phải là bước kiểm tra sau cùng — đây là cơ chế chính để xác định ranh giới thực thể. Ranh giới thực thể là HỆ QUẢ của việc gán nhãn BIO cho từng token theo thứ tự trái→phải, không phải điều kiện đầu vào cho việc gán BIO.
+
+Quy trình đúng là: tách token → với mỗi token, xét các loại thực thể khả dĩ theo tiền tố/gazetteer/ngữ cảnh → gán B-X/I-X/O cho token đó theo ràng buộc chuyển trạng thái bên dưới → sau khi toàn bộ chuỗi token đã có nhãn, mới gộp các B-X/I-X liên tiếp thành span.
+
+Với một thực thể loại X: token đầu tiên → B-X; các token tiếp theo thuộc cùng thực thể → I-X; token không thuộc thực thể nào → O.
+
+Ràng buộc chuyển trạng thái (phải tuân thủ khi gán nhãn cho từng token):
+
+* I-X chỉ hợp lệ khi token ngay trước nó là B-X hoặc I-X (cùng loại X). I-X đứng sau O, hoặc sau B-Y/I-Y khác loại, là KHÔNG hợp lệ — trường hợp này phải gán lại thành B-X.
+* Một token chỉ nhận đúng một nhãn (B-X, I-X, hoặc O), không có ngoại lệ.
+* O là nhãn hợp lệ và bắt buộc phải xuất hiện tường minh cho token không thuộc thực thể nào — không được bỏ sót token khỏi chuỗi "bio".
+
+Ví dụ (token hóa → BIO):
+
+* "Đường Nguyễn Đình Chiểu" → ["Đường","Nguyễn","Đình","Chiểu"] → ["B-STREET","I-STREET","I-STREET","I-STREET"]
+* "Phường Bến Nghé" → ["Phường","Bến","Nghé"] → ["B-WARD","I-WARD","I-WARD"]
+* "Quận 1" → ["Quận","1"] → ["B-DISTRICT","I-DISTRICT"]
+* "Đại học Nguyễn Tất Thành" → ["Đại","học","Nguyễn","Tất","Thành"] → ["B-POI","I-POI","I-POI","I-POI","I-POI"]
+* "123 Đường Lê Lợi, Quận 1" → ["123","Đường","Lê","Lợi",",","Quận","1"] → ["B-HOUSE_NUMBER","B-STREET","I-STREET","I-STREET","O","B-DISTRICT","I-DISTRICT"] (dấu phẩy là token riêng, nhận nhãn O trừ khi bản thân dấu câu là một phần của tên thực thể — §3.4)
+
+BIO/IOB2 được dùng để: xác định ranh giới thực thể (không phải kiểm tra sau khi đã biết ranh giới); đảm bảo tính liên tục của thực thể; tránh tách sai thực thể; tránh gộp các thực thể khác loại; cho phép suy ra offset (start/end) của từng span một cách xác định.
+
+Chuỗi "bio" (song song 1-1 với "tokens") PHẢI được trả về trong kết quả cuối cùng theo đúng cấu trúc ở `06_io_format.txt` — đây không phải là bước nội bộ bị loại bỏ trước khi xuất kết quả.
+
+---
+
+## 3.7. Bảo toàn văn bản gốc
+
+Không bao giờ tạo ra thực thể không xuất hiện trong đầu vào. Mọi chuỗi được trích xuất phải tồn tại nguyên văn trong đầu vào.
+
+Giữ nguyên: chính tả, dấu tiếng Việt, chữ hoa/chữ thường, từ viết tắt, chữ số, ký hiệu nằm bên trong tên thực thể. Không chuẩn hóa thực thể.
+
+Ví dụ: nếu đầu vào là "TP. Hồ Chí Minh" thì không được tự đổi thành "Thành phố Hồ Chí Minh".
+
+Không bổ sung thành phần bị thiếu. Ví dụ: nếu đầu vào chỉ có "Bến Nghé", không được tự thêm "Quận 1" hoặc "Hồ Chí Minh".

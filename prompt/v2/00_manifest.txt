@@ -1,0 +1,41 @@
+# MANIFEST — v2 (modular prompt composition)
+
+v2 thay thế `../system_prompt.txt` (bản v1, giữ nguyên tại chỗ để đối chiếu/rollback, KHÔNG chỉnh sửa thêm). Nội dung của v1 đã được gộp từ 15 mục xuống 9 module, loại bỏ các đoạn trùng lặp (bảng ánh xạ loại thực thể từng lặp ở 3 nơi, checklist ràng buộc/tự-kiểm-tra từng lặp 2 lần, 12/18 rule ở "QUY TẮC CỐT LÕI" cũ trùng với rule đã có ở nơi khác).
+
+## Thứ tự nạp (bắt buộc, nối theo đúng thứ tự này để tạo thành prompt hoàn chỉnh)
+
+| # | File | Nội dung | Bắt buộc? |
+|---|---|---|---|
+| 1 | `01_role_and_task.txt` | Vai trò, nguyên tắc chung, con trỏ sang quy trình chi tiết | Luôn nạp |
+| 2 | `02_label_definitions.txt` | Lược đồ thực thể ngữ nghĩa (bảng ánh xạ) + định nghĩa L1–L7 | Luôn nạp |
+| 3 | `03_boundary_and_bio.txt` | Quy tắc xác định ranh giới (token hoá, tiền tố, dài nhất, dấu phân cách, cắt dở) + BIO/IOB2 + bảo toàn văn bản gốc | Luôn nạp |
+| 4 | `04_ambiguity_and_fallback.txt` | Xử lý mơ hồ (Mức ưu tiên 1–6) + chính sách khi không thể phân loại | Luôn nạp |
+| 5 | `05_decision_process.txt` | Quy trình ra quyết định chi tiết (Bước 1–11) | Luôn nạp |
+| 6 | `06_io_format.txt` | Định dạng đầu vào + đầu ra (schema `tokens`/`bio`/`spans`) | Luôn nạp |
+| 7 | `07_output_checklist.txt` | Ràng buộc đầu ra + tự kiểm tra (checklist hợp nhất) | Luôn nạp |
+| 8 | `08_examples_core.txt` | Ví dụ 1–8 (hành vi cơ bản, không liên quan cắt dở) | Luôn nạp |
+| 9 | `09_examples_partial_input.txt` | Ví dụ cắt dở/autocomplete (Ví dụ 9–10 + Cặp 1–7, L1–L7) | CHỈ nạp khi tính năng autocomplete/partial-input được bật |
+
+Module 9 là module DUY NHẤT có điều kiện — nếu pipeline không xử lý input cắt dở (ví dụ chỉ chạy trên địa chỉ đã hoàn chỉnh, không phải autocomplete), bỏ qua module 9 và mục 3.5 trong module 3 (Đầu vào có thể bị cắt dở) không có tác dụng thực tế nhưng để lại không gây hại — không cần xoá.
+
+## Quy ước tham chiếu chéo giữa các module
+
+Mỗi module dùng số mục nội bộ riêng (ví dụ module 3 có §3.0–§3.7). Khi một module cần trỏ sang module khác, ghi rõ CẢ tên file lẫn số mục, ví dụ: "xem `03_boundary_and_bio.txt` §3.5" — không dùng số mục trần trụi như "mục 5.5" (kiểu tham chiếu này chỉ đúng trong file v1 cũ, không còn đúng ở v2 vì đã đổi số).
+
+## Build (tuỳ chọn)
+
+`build.py` trong thư mục này nối các module theo đúng thứ tự ở trên thành một file duy nhất, dùng khi hệ thống gọi API cần một chuỗi system prompt hoàn chỉnh thay vì tự nối nhiều file. Chạy:
+
+```
+python build.py                      # nối module 1-8 (không có partial-input)
+python build.py --with-partial-input # nối module 1-9 (có partial-input)
+```
+
+Output ghi vào `compiled/`. Khi sửa nội dung, SỬA Ở MODULE NGUỒN rồi chạy lại `build.py` — không sửa trực tiếp file trong `compiled/`, vì nó sẽ bị ghi đè ở lần build sau.
+
+## Vì sao tách module thay vì giữ một file
+
+* Sửa một mối quan tâm (ví dụ chỉ sửa quy tắc số nhà) không cần đọc/động vào toàn bộ 1300 dòng.
+* Module 9 (partial-input) là tính năng tuỳ chọn — tách riêng để bật/tắt mà không phải chỉnh sửa phần lõi.
+* Dễ review diff theo từng module khi có thay đổi, thay vì một diff khổng lồ trên một file.
+* Nhiều người có thể sửa song song các module khác nhau mà không đụng nhau.

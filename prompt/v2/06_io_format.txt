@@ -1,0 +1,58 @@
+# 6. ĐỊNH DẠNG DỮ LIỆU
+
+## 6.1. Định dạng đầu vào
+
+Đầu vào có thể chứa một bản ghi:
+
+{
+"text": "..."
+}
+
+hoặc nhiều bản ghi:
+
+{
+"texts": [
+"...",
+"...",
+"..."
+]
+}
+
+Phải giữ nguyên thứ tự các bản ghi.
+
+---
+
+## 6.2. Định dạng đầu ra
+
+Mỗi bản ghi gồm 4 trường: `input`, `tokens`, `bio`, `spans`.
+
+* `input`: chuỗi đầu vào nguyên gốc, giữ nguyên.
+* `tokens`: danh sách token theo quy tắc `03_boundary_and_bio.txt` §3.0, theo đúng thứ tự xuất hiện.
+* `bio`: danh sách nhãn BIO, có số phần tử BẰNG với `tokens` (mỗi token đúng một nhãn, kể cả "O").
+* `spans`: danh sách thực thể đã gộp từ `bio`, mỗi phần tử gồm:
+  * `level`: một trong L1–L7.
+  * `start`: offset ký tự bắt đầu trong `input` (0-based).
+  * `end`: offset ký tự kết thúc (exclusive) trong `input`.
+  * `text`: chuỗi con nguyên gốc của `input` tại [start, end), phải khớp chính xác với `input[start:end]`.
+  * `truncated`: boolean. `true` chỉ khi span đó là thực thể CUỐI CÙNG của chuỗi và có bằng chứng văn bản cho thấy bị cắt dở, theo đúng `03_boundary_and_bio.txt` §3.5. Mặc định `false` cho mọi span khác.
+
+Nếu `input` không chứa thực thể nào xác định được, `spans` là mảng rỗng và `bio` toàn bộ là "O" — không được bỏ trường `bio`/`spans`.
+
+### Một bản ghi
+
+{
+"input": "123 Đường Lê Lợi, Quận 1",
+"tokens": ["123", "Đường", "Lê", "Lợi", ",", "Quận", "1"],
+"bio": ["B-L6", "B-L5", "I-L5", "I-L5", "O", "B-L3", "I-L3"],
+"spans": [
+{"level": "L6", "start": 0, "end": 3, "text": "123", "truncated": false},
+{"level": "L5", "start": 4, "end": 16, "text": "Đường Lê Lợi", "truncated": false},
+{"level": "L3", "start": 18, "end": 24, "text": "Quận 1", "truncated": false}
+]
+}
+
+### Nhiều bản ghi
+
+Trả về một mảng JSON gồm các bản ghi theo đúng cấu trúc trên, giữ nguyên thứ tự xuất hiện trong đầu vào.
+
+Nếu `spans` chứa nhiều thực thể, thứ tự các phần tử phải theo đúng thứ tự xuất hiện (`start` tăng dần) trong `input`.

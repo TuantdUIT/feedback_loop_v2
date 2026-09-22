@@ -1,0 +1,277 @@
+# 9. VÍ DỤ CHO ĐẦU VÀO CÓ THỂ BỊ CẮT DỞ (PARTIAL INPUT / AUTOCOMPLETE)
+
+MODULE TUỲ CHỌN — chỉ nạp khi tính năng autocomplete/partial-input được bật cho pipeline gán nhãn (xem `00_manifest.txt`). Module này cụ thể hoá `03_boundary_and_bio.txt` §3.5 bằng các ví dụ.
+
+Nguyên tắc nhắc lại: chỉ đánh `"truncated": true` cho thực thể CUỐI CÙNG của chuỗi, và chỉ khi có bằng chứng văn bản (tiền tố trơ trọi, hoặc mảnh vỡ không phải từ/số hoàn chỉnh). Một thực thể ngắn nhưng tự nó đã hợp lệ, hoàn chỉnh thì KHÔNG được đánh `truncated`, dù trên thực tế người dùng có thể gõ tiếp — mô hình không có căn cứ để khẳng định điều đó.
+
+---
+
+## Ví dụ 9 — Đầu vào bị cắt dở giữa tên riêng (có bằng chứng)
+
+Đầu vào:
+
+{
+"text": "444 Nguyễn Trãi Quận Li"
+}
+
+Ghi chú: "Li" không phải một từ hoàn chỉnh nhưng khớp làm tiền tố của "Liên Chiểu" (quận có thật) — đủ bằng chứng văn bản để đánh dấu cắt dở. "444" và "Nguyễn Trãi" đứng trước đó đã có ký tự theo sau xác nhận ranh giới, không phải span cuối cùng, nên không đánh `truncated`.
+
+Đầu ra:
+
+{
+"input": "444 Nguyễn Trãi Quận Li",
+"tokens": ["444", "Nguyễn", "Trãi", "Quận", "Li"],
+"bio": ["B-L6", "B-L5", "I-L5", "B-L3", "I-L3"],
+"spans": [
+{"level": "L6", "start": 0, "end": 3, "text": "444", "truncated": false},
+{"level": "L5", "start": 4, "end": 15, "text": "Nguyễn Trãi", "truncated": false},
+{"level": "L3", "start": 16, "end": 23, "text": "Quận Li", "truncated": true}
+]
+}
+
+---
+
+## Ví dụ 10 — Tiền tố trơ trọi (cắt dở) so với thực thể ngắn nhưng đã đầy đủ
+
+Đầu vào:
+
+{
+"texts": [
+"858 Đường",
+"858 Đường Nguyễn Huệ"
+]
+}
+
+Ghi chú: Ở bản ghi 1, "Đường" đứng trơ trọi cuối chuỗi, không có tên đường theo sau — tiền tố tự nó là bằng chứng cấu trúc rõ ràng (Mức ưu tiên 1) nên vẫn được gán B-L5, nhưng đánh dấu `truncated: true`. Ở bản ghi 2, "Đường Nguyễn Huệ" đã là một thực thể STREET hoàn chỉnh — dù chuỗi vẫn ngắn, KHÔNG có bằng chứng cắt dở nào, nên `truncated: false`.
+
+Đầu ra:
+
+[
+{
+"input": "858 Đường",
+"tokens": ["858", "Đường"],
+"bio": ["B-L6", "B-L5"],
+"spans": [
+{"level": "L6", "start": 0, "end": 3, "text": "858", "truncated": false},
+{"level": "L5", "start": 4, "end": 9, "text": "Đường", "truncated": true}
+]
+},
+{
+"input": "858 Đường Nguyễn Huệ",
+"tokens": ["858", "Đường", "Nguyễn", "Huệ"],
+"bio": ["B-L6", "B-L5", "I-L5", "I-L5"],
+"spans": [
+{"level": "L6", "start": 0, "end": 3, "text": "858", "truncated": false},
+{"level": "L5", "start": 4, "end": 20, "text": "Đường Nguyễn Huệ", "truncated": false}
+]
+}
+]
+
+---
+
+## Cặp 1 — L1 (QUỐC GIA)
+
+(a) Cắt dở — "Na" là mảnh vỡ của "Nam", không phải một từ hoàn chỉnh trong ngữ cảnh này:
+
+{
+"input": "50 Nguyễn Huệ, Việt Na",
+"tokens": ["50", "Nguyễn", "Huệ", ",", "Việt", "Na"],
+"bio": ["B-L6", "B-L5", "I-L5", "O", "B-L1", "I-L1"],
+"spans": [
+{"level": "L6", "start": 0, "end": 2, "text": "50", "truncated": false},
+{"level": "L5", "start": 3, "end": 13, "text": "Nguyễn Huệ", "truncated": false},
+{"level": "L1", "start": 15, "end": 22, "text": "Việt Na", "truncated": true}
+]
+}
+
+(b) Đầy đủ:
+
+{
+"input": "50 Nguyễn Huệ, Việt Nam",
+"tokens": ["50", "Nguyễn", "Huệ", ",", "Việt", "Nam"],
+"bio": ["B-L6", "B-L5", "I-L5", "O", "B-L1", "I-L1"],
+"spans": [
+{"level": "L6", "start": 0, "end": 2, "text": "50", "truncated": false},
+{"level": "L5", "start": 3, "end": 13, "text": "Nguyễn Huệ", "truncated": false},
+{"level": "L1", "start": 15, "end": 23, "text": "Việt Nam", "truncated": false}
+]
+}
+
+---
+
+## Cặp 2 — L2 (TỈNH/THÀNH PHỐ) — phân biệt viết tắt hợp lệ với mảnh vỡ
+
+(a) Cắt dở — "Hải P" là mảnh vỡ, KHÔNG phải một viết tắt được công nhận:
+
+{
+"input": "75C Thảo Nguyên, Hải P",
+"tokens": ["75C", "Thảo", "Nguyên", ",", "Hải", "P"],
+"bio": ["B-L6", "B-L5", "I-L5", "O", "B-L2", "I-L2"],
+"spans": [
+{"level": "L6", "start": 0, "end": 3, "text": "75C", "truncated": false},
+{"level": "L5", "start": 4, "end": 15, "text": "Thảo Nguyên", "truncated": false},
+{"level": "L2", "start": 17, "end": 22, "text": "Hải P", "truncated": true}
+]
+}
+
+(b) Đầy đủ — "HN" NGẮN NHƯNG LÀ MỘT VIẾT TẮT HỢP LỆ, không phải mảnh vỡ, nên KHÔNG đánh truncated dù chỉ 2 ký tự:
+
+{
+"input": "75C Thảo Nguyên, HN",
+"tokens": ["75C", "Thảo", "Nguyên", ",", "HN"],
+"bio": ["B-L6", "B-L5", "I-L5", "O", "B-L2"],
+"spans": [
+{"level": "L6", "start": 0, "end": 3, "text": "75C", "truncated": false},
+{"level": "L5", "start": 4, "end": 15, "text": "Thảo Nguyên", "truncated": false},
+{"level": "L2", "start": 17, "end": 19, "text": "HN", "truncated": false}
+]
+}
+
+Ghi chú quan trọng: độ dài KHÔNG phải tiêu chí để đánh truncated. "HN" (2 ký tự) không truncated vì là viết tắt có thật; "Hải P" (5 ký tự) truncated vì "P" không hoàn thiện bất kỳ viết tắt hay từ nào có nghĩa ở vị trí đó.
+
+---
+
+## Cặp 3 — L3 (QUẬN/HUYỆN)
+
+(a) Cắt dở:
+
+{
+"input": "Đường Hoàng Hoa Thám, Q. Bình Th",
+"tokens": ["Đường", "Hoàng", "Hoa", "Thám", ",", "Q", ".", "Bình", "Th"],
+"bio": ["B-L5", "I-L5", "I-L5", "I-L5", "O", "B-L3", "I-L3", "I-L3", "I-L3"],
+"spans": [
+{"level": "L5", "start": 0, "end": 20, "text": "Đường Hoàng Hoa Thám", "truncated": false},
+{"level": "L3", "start": 22, "end": 32, "text": "Q. Bình Th", "truncated": true}
+]
+}
+
+(b) Đầy đủ:
+
+{
+"input": "Đường Hoàng Hoa Thám, Q. Bình Thạnh",
+"tokens": ["Đường", "Hoàng", "Hoa", "Thám", ",", "Q", ".", "Bình", "Thạnh"],
+"bio": ["B-L5", "I-L5", "I-L5", "I-L5", "O", "B-L3", "I-L3", "I-L3", "I-L3"],
+"spans": [
+{"level": "L5", "start": 0, "end": 20, "text": "Đường Hoàng Hoa Thám", "truncated": false},
+{"level": "L3", "start": 22, "end": 35, "text": "Q. Bình Thạnh", "truncated": false}
+]
+}
+
+---
+
+## Cặp 4 — L4 (PHƯỜNG/XÃ)
+
+(a) Cắt dở:
+
+{
+"input": "953 Phố Hoa Lâm, Xuâ",
+"tokens": ["953", "Phố", "Hoa", "Lâm", ",", "Xuâ"],
+"bio": ["B-L6", "B-L5", "I-L5", "I-L5", "O", "B-L4"],
+"spans": [
+{"level": "L6", "start": 0, "end": 3, "text": "953", "truncated": false},
+{"level": "L5", "start": 4, "end": 15, "text": "Phố Hoa Lâm", "truncated": false},
+{"level": "L4", "start": 17, "end": 20, "text": "Xuâ", "truncated": true}
+]
+}
+
+(b) Đầy đủ:
+
+{
+"input": "953 Phố Hoa Lâm, Xuân La",
+"tokens": ["953", "Phố", "Hoa", "Lâm", ",", "Xuân", "La"],
+"bio": ["B-L6", "B-L5", "I-L5", "I-L5", "O", "B-L4", "I-L4"],
+"spans": [
+{"level": "L6", "start": 0, "end": 3, "text": "953", "truncated": false},
+{"level": "L5", "start": 4, "end": 15, "text": "Phố Hoa Lâm", "truncated": false},
+{"level": "L4", "start": 17, "end": 24, "text": "Xuân La", "truncated": false}
+]
+}
+
+---
+
+## Cặp 5 — L5 (ĐƯỜNG) — tiền tố trơ trọi + một chữ cái lẻ
+
+(a) Cắt dở:
+
+{
+"input": "Đường S",
+"tokens": ["Đường", "S"],
+"bio": ["B-L5", "I-L5"],
+"spans": [
+{"level": "L5", "start": 0, "end": 7, "text": "Đường S", "truncated": true}
+]
+}
+
+(b) Đầy đủ:
+
+{
+"input": "Đường Sương Nguyệt Anh",
+"tokens": ["Đường", "Sương", "Nguyệt", "Anh"],
+"bio": ["B-L5", "I-L5", "I-L5", "I-L5"],
+"spans": [
+{"level": "L5", "start": 0, "end": 22, "text": "Đường Sương Nguyệt Anh", "truncated": false}
+]
+}
+
+---
+
+## Cặp 6 — L6 (SỐ NHÀ) — dấu phân cách dangling là bằng chứng, độ dài không phải bằng chứng
+
+(a) Cắt dở — dấu "/" ở cuối không có gì theo sau là bằng chứng cấu trúc rõ ràng (đang chờ số nhà phụ):
+
+{
+"input": "125/",
+"tokens": ["125/"],
+"bio": ["B-L6"],
+"spans": [
+{"level": "L6", "start": 0, "end": 4, "text": "125/", "truncated": true}
+]
+}
+
+(b) Đầy đủ — "40" ngắn, đứng sau tên đường xác nhận vai trò số nhà, KHÔNG có bằng chứng cắt dở nào → không đánh truncated dù trong thực tế người dùng có thể gõ tiếp:
+
+{
+"input": "Hai Bà Trưng, 40",
+"tokens": ["Hai", "Bà", "Trưng", ",", "40"],
+"bio": ["B-L5", "I-L5", "I-L5", "O", "B-L6"],
+"spans": [
+{"level": "L5", "start": 0, "end": 12, "text": "Hai Bà Trưng", "truncated": false},
+{"level": "L6", "start": 14, "end": 16, "text": "40", "truncated": false}
+]
+}
+
+Ghi chú quan trọng: đây là điểm khác biệt có chủ đích so với dữ liệu augmentation gốc (`output_model.txt`), nơi một số nhà "trông đã hoàn chỉnh" (ví dụ "239") vẫn được đánh `truncated: true` vì pipeline đó BIẾT trước chuỗi gốc dài hơn (nó tự cắt ra). Mô hình lúc suy luận không có tri thức đó — chỉ được đánh truncated khi chính văn bản đưa ra bằng chứng.
+
+---
+
+## Cặp 7 — L7 (POI)
+
+(a) Cắt dở:
+
+{
+"input": "Đại học Nguyễn Tất Th",
+"tokens": ["Đại", "học", "Nguyễn", "Tất", "Th"],
+"bio": ["B-L7", "I-L7", "I-L7", "I-L7", "I-L7"],
+"spans": [
+{"level": "L7", "start": 0, "end": 21, "text": "Đại học Nguyễn Tất Th", "truncated": true}
+]
+}
+
+(b) Đầy đủ:
+
+{
+"input": "Đại học Nguyễn Tất Thành",
+"tokens": ["Đại", "học", "Nguyễn", "Tất", "Thành"],
+"bio": ["B-L7", "I-L7", "I-L7", "I-L7", "I-L7"],
+"spans": [
+{"level": "L7", "start": 0, "end": 24, "text": "Đại học Nguyễn Tất Thành", "truncated": false}
+]
+}
+
+---
+
+# GHI CHÚ TRIỂN KHAI
+
+* Bộ ví dụ này chỉ mang tính minh hoạ nguyên tắc, KHÔNG phải danh sách đầy đủ mọi mảnh vỡ có thể gặp.
+* Nên thay dần các ví dụ tổng hợp ở đây bằng các trường hợp cắt dở THẬT được ghi lại từ log truy vấn autocomplete thực tế — ví dụ nên phản ánh input thật lúc suy luận, không phải input được làm sạch/lý tưởng hoá.
+* Nếu hệ thống gọi mô hình đã biết chắc một request là "người dùng đang gõ dở", cân nhắc truyền thẳng tín hiệu đó qua định dạng đầu vào (`06_io_format.txt`) thay vì bắt mô hình tự suy luận hoàn toàn từ hình dạng chuỗi.

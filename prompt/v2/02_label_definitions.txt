@@ -1,0 +1,124 @@
+# 2. LƯỢC ĐỒ THỰC THỂ NGỮ NGHĨA & ĐỊNH NGHĨA NHÃN
+
+## 2.0. Lược đồ thực thể ngữ nghĩa
+
+Trước khi gán L1–L7, phải xác định loại thực thể ngữ nghĩa. Không được xác định trực tiếp L1–L7 trước khi xác định loại thực thể ngữ nghĩa.
+
+Các loại thực thể chính gồm: COUNTRY, PROVINCE_OR_CITY, DISTRICT, WARD, STREET, HOUSE_NUMBER, POI.
+
+Ánh xạ bắt buộc (đây là bảng ánh xạ DUY NHẤT trong toàn bộ prompt — mọi module khác tham chiếu ngược lại đây thay vì lặp lại bảng):
+
+| Loại thực thể | Nhãn |
+|---|---|
+| COUNTRY | L1 |
+| PROVINCE_OR_CITY | L2 |
+| DISTRICT | L3 |
+| WARD | L4 |
+| STREET | L5 |
+| HOUSE_NUMBER | L6 |
+| POI | L7 |
+
+Quy trình bắt buộc: Văn bản gốc → token hóa → loại thực thể khả dĩ cho từng token → BIO/IOB2 (xác định ranh giới, không phải kiểm tra sau khi đã có ranh giới — xem `03_boundary_and_bio.txt` §3.6) → ranh giới thực thể (gộp từ BIO) → L1–L7 (theo bảng trên).
+
+---
+
+## L1 — QUỐC GIA
+
+Bao gồm: tên quốc gia, tên nước xuất hiện trực tiếp trong đầu vào.
+
+Ví dụ: Việt Nam, Singapore, Nhật Bản.
+
+Không bao gồm: tỉnh, thành phố, quận, phường, tên đường, địa điểm cụ thể.
+
+---
+
+## L2 — TỈNH / THÀNH PHỐ CẤP TỈNH
+
+Bao gồm: tỉnh, thành phố trực thuộc trung ương, các đơn vị hành chính tương đương cấp tỉnh.
+
+Ví dụ: Hồ Chí Minh, Thành phố Hồ Chí Minh, Hà Nội, Thành phố Hà Nội, Tỉnh Bình Dương.
+
+Nếu tiền tố hành chính xuất hiện trực tiếp và tạo thành một cụm hoàn chỉnh, phải giữ toàn bộ cụm. Ví dụ: "Thành phố Hồ Chí Minh" phải được lấy nguyên cụm, không chỉ lấy "Hồ Chí Minh".
+
+### Ranh giới "Thành phố": khi nào là L2, khi nào là L3
+
+Chữ "Thành phố" đứng trước một tên riêng KHÔNG tự động là L2. Chỉ xếp vào L2 khi tên riêng đi kèm thuộc danh sách đóng 5 thành phố trực thuộc trung ương sau:
+
+* Hà Nội
+* Hồ Chí Minh
+* Hải Phòng
+* Đà Nẵng
+* Cần Thơ
+
+Đây là các đơn vị cấp tỉnh có Quận/Huyện trực thuộc trực tiếp bên dưới (Quận/Huyện đó → L3).
+
+Mọi "Thành phố X" khác — tức thành phố trực thuộc MỘT TỈNH, không nằm trong danh sách trên (ví dụ: Thành phố Thủ Đức, Thành phố Biên Hòa, Thành phố Dĩ An, Thành phố Nha Trang, Thành phố Vinh, Thành phố Huế trước khi lên trực thuộc trung ương) — phải xếp vào **L3**, tương đương quận/huyện, không phải L2. Xem Ví dụ 6 ở `08_examples_core.txt`.
+
+Nếu không đủ căn cứ xác định "Thành phố X" có thuộc danh sách 5 thành phố trực thuộc trung ương hay không (không có ngữ cảnh nào trong cùng bản ghi hỗ trợ), áp dụng Mức ưu tiên 6 (`04_ambiguity_and_fallback.txt` §4.6): không đoán, để trống thay vì ép vào L2 hoặc L3.
+
+---
+
+## L3 — QUẬN / HUYỆN / ĐƠN VỊ HÀNH CHÍNH CẤP TƯƠNG ĐƯƠNG
+
+Bao gồm: quận, huyện, thị xã, thành phố thuộc tỉnh (xem quy tắc phân biệt L2/L3 ở trên) hoặc các đơn vị hành chính cùng cấp khi ngữ cảnh xác định rõ.
+
+Ví dụ: Quận 1, Bình Thạnh, Gò Vấp, Huyện Ứng Hòa, Tân Phú, Thành phố Thủ Đức, Thành phố Biên Hòa.
+
+Không bao gồm: phường, xã, tên đường, tỉnh hoặc thành phố cấp tỉnh (5 thành phố trực thuộc trung ương — xem mục L2).
+
+---
+
+## L4 — PHƯỜNG / XÃ / ĐƠN VỊ HÀNH CHÍNH CẤP CƠ SỞ
+
+Bao gồm: phường, xã, thị trấn, các đơn vị hành chính tương đương khi ngữ cảnh xác định rõ.
+
+Ví dụ: Phường Bến Nghé, Bến Nghé, Phường 16, Đa Kao, Đồng Nhân.
+
+Nếu tiền tố như "Phường", "Xã", "Thị trấn" xuất hiện và trực tiếp tạo thành tên đơn vị hành chính, tiền tố đó là một phần của thực thể.
+
+---
+
+## L5 — ĐƯỜNG / TUYẾN GIAO THÔNG
+
+Bao gồm: tên đường, tên phố, đại lộ, quốc lộ, đường có tên riêng, các tuyến giao thông tương đương.
+
+Ví dụ: Nguyễn Huệ, Nam Kỳ Khởi Nghĩa, Đường Nguyễn Đình Chiểu, Cách Mạng Tháng 8, Điện Biên Phủ.
+
+Nếu tiền tố như "Đường", "Phố", "Đại lộ", "Quốc lộ" xuất hiện và trực tiếp bổ nghĩa cho tên tuyến đường, tiền tố đó là một phần của thực thể. Ví dụ: "Đường Nguyễn Đình Chiểu" phải được xem là một thực thể STREET hoàn chỉnh — không tách "Đường" khỏi "Nguyễn Đình Chiểu".
+
+---
+
+## L6 — SỐ NHÀ / SỐ ĐỊA CHỈ
+
+Bao gồm: số nhà, số địa chỉ, chuỗi chữ và số đóng vai trò số nhà.
+
+Ví dụ: 74, 40, 94B, 123, 12A.
+
+Chỉ gán vào L6 khi chuỗi có vai trò số nhà hoặc số địa chỉ trong ngữ cảnh hiện tại. Không tự động coi mọi chữ số là số nhà. Ví dụ: "Quận 1" phải là một thực thể L3 hoàn chỉnh, không tách "1" thành L6. Tương tự, "Phường 12" phải là một thực thể L4 hoàn chỉnh, không tách "12" thành L6.
+
+### Số nhà dạng phức hợp
+
+* Số nhà có dấu `/` (ví dụ "125/84", "39/29") là MỘT thực thể L6 duy nhất, bất kể có khoảng trắng quanh dấu `/` hay không (ví dụ "125/ 84" vẫn là một span L6 duy nhất bao gồm cả khoảng trắng đó).
+* Số nhà có nhiều lớp `/` liên tiếp (ví dụ "6/12/5") vẫn là MỘT thực thể L6 duy nhất.
+* Tiền tố như "số", "lô", "hẻm", "ngõ" khi đứng ngay trước một số/mã có vai trò số nhà, và trực tiếp tạo thành cụm số nhà, được giữ lại như một phần của thực thể L6 (ví dụ "Lô A21", "hẻm 6/12/5", "Số 5").
+* **Nhiều số đứng liên tiếp ngay đầu chuỗi, ngay trước tên đường/phố, không phải là mơ hồ** — đây là quy ước địa chỉ có thật ở khu vực có ngõ/ngách (đặc biệt Hà Nội phố cổ): "số nhà, ngách, ngõ, phố" (ví dụ "4 38 39 phố Đại Đồng" = số nhà 4, ngách 38, ngõ 39, phố Đại Đồng). Toàn bộ chuỗi số liên tiếp đó PHẢI được gộp thành MỘT thực thể L6 duy nhất (ví dụ L6 = "4 38 39"), KHÔNG được để trống. Schema L1–L7 không có nhãn riêng cho từng lớp ngách/ngõ/số nhà — việc không phân biệt được số nào là ngách, số nào là ngõ là chấp nhận được và là giới hạn đã biết của schema.
+* **Số nhà dạng khoảng (range) nối bằng dấu `-`** (ví dụ "62 - 64", "315 - 317", "1186 - 1188") là MỘT thực thể L6 duy nhất, bao gồm cả dấu `-` và khoảng trắng quanh nó — đây là ngoại lệ tường minh của `03_boundary_and_bio.txt` §3.4 (dấu gạch ngang thường là ranh giới giữa hai thực thể khác loại), vì ở đây cả hai số đều là số nhà của cùng một công trình/dãy nhà. Không tách "62 - 64" thành hai số nhà riêng, và không loại bỏ dấu `-` khỏi span.
+* Nếu toàn bộ đầu vào chỉ là một chuỗi số duy nhất, không kèm bất kỳ thành phần nào khác (ví dụ đầu vào chỉ là "6"), đây là trường hợp không đủ ngữ cảnh để khẳng định vai trò số nhà (`04_ambiguity_and_fallback.txt` §4.7) — để "spans" rỗng, không tự gán L6.
+
+---
+
+## L7 — ĐỊA ĐIỂM / TỔ CHỨC / CÔNG TRÌNH / POI
+
+L7 dùng cho POI, tức địa điểm hoặc đối tượng có tên riêng.
+
+Bao gồm: trường học, trường đại học, bệnh viện, nhà hàng, quán cà phê, khách sạn, trung tâm thương mại, cửa hàng, tòa nhà, chung cư, công ty khi được dùng như một địa điểm, cơ sở, công trình, địa danh hoặc địa điểm cụ thể không thuộc L1–L6.
+
+Ví dụ: Đại học Nguyễn Tất Thành, Highland, Katinat Saigon, Bệnh viện Chợ Rẫy.
+
+Nếu một tên đường hoặc tên người nằm bên trong tên đầy đủ của POI, không được tách phần tên đó thành một thực thể riêng nếu toàn bộ cụm tạo thành một POI hoàn chỉnh.
+
+Ví dụ: "Đại học Nguyễn Tất Thành"
+
+ĐÚNG: L7 = "Đại học Nguyễn Tất Thành"
+
+SAI: L5 = "Nguyễn Tất Thành"

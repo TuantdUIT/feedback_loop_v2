@@ -1,0 +1,72 @@
+# 4. XỬ LÝ TRƯỜNG HỢP MƠ HỒ
+
+Khi một đoạn có thể thuộc nhiều loại thực thể, áp dụng lần lượt các nguyên tắc sau.
+
+## 4.1. Mức ưu tiên 1 — Chỉ báo cấu trúc rõ ràng
+
+Ví dụ: "Đường Nguyễn Tất Thành" — "Đường" là chỉ báo rõ ràng cho STREET → STREET = "Đường Nguyễn Tất Thành".
+
+"Đại học Nguyễn Tất Thành" — "Đại học" là chỉ báo rõ ràng cho POI → POI = "Đại học Nguyễn Tất Thành".
+
+"Phường Nguyễn Thái Bình" — "Phường" là chỉ báo rõ ràng cho WARD → WARD = "Phường Nguyễn Thái Bình".
+
+---
+
+## 4.2. Mức ưu tiên 2 — Tính nhất quán ngữ nghĩa của toàn bộ đoạn
+
+Xác định xem toàn bộ đoạn có tạo thành một thực thể hoàn chỉnh thuộc một loại cụ thể hay không. Ưu tiên thực thể hoàn chỉnh thay vì một thực thể nhỏ nằm bên trong nó.
+
+Được phép dùng tri thức nền đã biết về địa danh hành chính Việt Nam có thật (tên tỉnh/thành phố, quận/huyện, phường/xã) để nhận diện một đoạn ngay cả khi đoạn đó không có tiền tố hành chính đi kèm. Đây KHÔNG phải là "đoán khi thiếu bằng chứng" (§4.6) — nhận diện một tên riêng đã biết chắc chắn là địa danh có thật khác với việc suy đoán tùy tiện cho một đoạn không có căn cứ nào. Chỉ khi đoạn đó không khớp với bất kỳ địa danh nào đã biết, VÀ không có chỉ báo cấu trúc hay ngữ cảnh nào khác hỗ trợ, mới áp dụng §4.6.
+
+---
+
+## 4.3. Mức ưu tiên 3 — Ngữ cảnh trong chính đầu vào hiện tại
+
+Chỉ sử dụng các thành phần xuất hiện trong cùng bản ghi để hỗ trợ xác định vai trò của một đoạn.
+
+Ví dụ: "Bến Nghé, Quận 1" — "Quận 1" xác định rõ DISTRICT; "Bến Nghé" phù hợp với vai trò WARD trong cùng cấu trúc.
+
+---
+
+## 4.4. Mức ưu tiên 4 — Đoạn hợp lệ dài nhất về ngữ nghĩa
+
+Chỉ áp dụng sau khi đã xác nhận đoạn đó tạo thành một thực thể duy nhất. Không dùng độ dài để ghi đè lên tính đúng về ngữ nghĩa.
+
+---
+
+## 4.5. Mức ưu tiên 5 — Tránh chồng lấp
+
+Nếu một thực thể hoàn chỉnh đã bao phủ một đoạn con, không gán đoạn con sang một nhãn khác trừ khi đặc tả cho phép.
+
+---
+
+## 4.6. Mức ưu tiên 6 — Không đoán khi bằng chứng không đủ
+
+Nếu không thể phân loại một đoạn với độ chắc chắn phù hợp: không tự suy đoán, không tạo nhãn, không bắt buộc phải gán mọi phần của chuỗi đầu vào vào một L-level.
+
+Không sử dụng quy tắc ưu tiên L1 > L2 > L3 > L4 > L5 > L6 > L7 để giải quyết mơ hồ. Số thứ tự L chỉ là cấu trúc đầu ra, không thể hiện mức ưu tiên ngữ nghĩa.
+
+---
+
+## 4.7. Chính sách khi không thể phân loại toàn bộ bản ghi
+
+Đây là Mức ưu tiên 6 áp dụng ở cấp toàn bản ghi thay vì cấp một đoạn/span.
+
+Nếu đầu vào rỗng, sai định dạng, không chứa thực thể xác định được, hoặc quá mơ hồ để phân loại chắc chắn, thì:
+
+1. Không tự tạo thông tin.
+2. Không suy đoán chỉ để điền đủ nhãn.
+3. Giữ nguyên đầu vào.
+4. Để "spans" là mảng rỗng.
+5. Tiếp tục xử lý các bản ghi còn lại — không dừng toàn bộ quá trình chỉ vì một bản ghi không thể phân loại.
+
+Ví dụ:
+
+{
+"input": "ABC XYZ",
+"tokens": ["ABC", "XYZ"],
+"bio": ["O", "O"],
+"spans": []
+}
+
+"tokens" vẫn phải được tách đầy đủ và "bio" vẫn phải có cùng độ dài với "tokens" (toàn bộ là "O") — chỉ "spans" là rỗng.

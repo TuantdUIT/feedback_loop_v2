@@ -1,0 +1,229 @@
+# 8. VÍ DỤ CƠ BẢN
+
+Các ví dụ cắt dở/autocomplete (Ví dụ 9, 10 trở đi) nằm riêng ở `09_examples_partial_input.txt` (module tuỳ chọn).
+
+## Ví dụ 1
+
+Đầu vào:
+
+{
+"text": "123 Đường Lê Lợi, Phường Bến Nghé, Quận 1, Thành phố Hồ Chí Minh"
+}
+
+Phân loại nội bộ: "123" → HOUSE_NUMBER; "Đường Lê Lợi" → STREET; "Phường Bến Nghé" → WARD; "Quận 1" → DISTRICT; "Thành phố Hồ Chí Minh" → PROVINCE_OR_CITY.
+
+Đầu ra:
+
+{
+"input": "123 Đường Lê Lợi, Phường Bến Nghé, Quận 1, Thành phố Hồ Chí Minh",
+"tokens": ["123", "Đường", "Lê", "Lợi", ",", "Phường", "Bến", "Nghé", ",", "Quận", "1", ",", "Thành", "phố", "Hồ", "Chí", "Minh"],
+"bio": ["B-L6", "B-L5", "I-L5", "I-L5", "O", "B-L4", "I-L4", "I-L4", "O", "B-L3", "I-L3", "O", "B-L2", "I-L2", "I-L2", "I-L2", "I-L2"],
+"spans": [
+{"level": "L6", "start": 0, "end": 3, "text": "123", "truncated": false},
+{"level": "L5", "start": 4, "end": 16, "text": "Đường Lê Lợi", "truncated": false},
+{"level": "L4", "start": 18, "end": 33, "text": "Phường Bến Nghé", "truncated": false},
+{"level": "L3", "start": 35, "end": 41, "text": "Quận 1", "truncated": false},
+{"level": "L2", "start": 43, "end": 64, "text": "Thành phố Hồ Chí Minh", "truncated": false}
+]
+}
+
+---
+
+## Ví dụ 2
+
+Đầu vào:
+
+{
+"text": "Ngô Văn Năm, Phường Bến Nghé"
+}
+
+Đầu ra:
+
+{
+"input": "Ngô Văn Năm, Phường Bến Nghé",
+"tokens": ["Ngô", "Văn", "Năm", ",", "Phường", "Bến", "Nghé"],
+"bio": ["B-L5", "I-L5", "I-L5", "O", "B-L4", "I-L4", "I-L4"],
+"spans": [
+{"level": "L5", "start": 0, "end": 11, "text": "Ngô Văn Năm", "truncated": false},
+{"level": "L4", "start": 13, "end": 28, "text": "Phường Bến Nghé", "truncated": false}
+]
+}
+
+---
+
+## Ví dụ 3
+
+Đầu vào:
+
+{
+"text": "Đại học Nguyễn Tất Thành"
+}
+
+Đầu ra:
+
+{
+"input": "Đại học Nguyễn Tất Thành",
+"tokens": ["Đại", "học", "Nguyễn", "Tất", "Thành"],
+"bio": ["B-L7", "I-L7", "I-L7", "I-L7", "I-L7"],
+"spans": [
+{"level": "L7", "start": 0, "end": 24, "text": "Đại học Nguyễn Tất Thành", "truncated": false}
+]
+}
+
+Không được trả một span L5 riêng cho "Nguyễn Tất Thành" (tức "bio" không được có "B-L5" tại token "Nguyễn"), vì toàn bộ chuỗi tạo thành một POI hoàn chỉnh — mỗi token chỉ nhận đúng một nhãn.
+
+---
+
+## Ví dụ 4
+
+Đầu vào:
+
+{
+"text": "Highland - Cách Mạng Tháng 8"
+}
+
+Đầu ra:
+
+{
+"input": "Highland - Cách Mạng Tháng 8",
+"tokens": ["Highland", "-", "Cách", "Mạng", "Tháng", "8"],
+"bio": ["B-L7", "O", "B-L5", "I-L5", "I-L5", "I-L5"],
+"spans": [
+{"level": "L7", "start": 0, "end": 8, "text": "Highland", "truncated": false},
+{"level": "L5", "start": 11, "end": 28, "text": "Cách Mạng Tháng 8", "truncated": false}
+]
+}
+
+Token "-" nhận nhãn "O" — không được gán "I-L7" hay "I-L5" cho nó. Không được gộp "Highland - Cách Mạng Tháng 8" thành một thực thể duy nhất.
+
+---
+
+## Ví dụ 5
+
+Đầu vào:
+
+{
+"texts": [
+"Quận 1, Phường Bến Nghé",
+"Bình Thạnh, Điện Biên Phủ",
+"Hai Bà Trưng, 40"
+]
+}
+
+Đầu ra:
+
+[
+{
+"input": "Quận 1, Phường Bến Nghé",
+"tokens": ["Quận", "1", ",", "Phường", "Bến", "Nghé"],
+"bio": ["B-L3", "I-L3", "O", "B-L4", "I-L4", "I-L4"],
+"spans": [
+{"level": "L3", "start": 0, "end": 6, "text": "Quận 1", "truncated": false},
+{"level": "L4", "start": 8, "end": 23, "text": "Phường Bến Nghé", "truncated": false}
+]
+},
+{
+"input": "Bình Thạnh, Điện Biên Phủ",
+"tokens": ["Bình", "Thạnh", ",", "Điện", "Biên", "Phủ"],
+"bio": ["B-L3", "I-L3", "O", "B-L5", "I-L5", "I-L5"],
+"spans": [
+{"level": "L3", "start": 0, "end": 10, "text": "Bình Thạnh", "truncated": false},
+{"level": "L5", "start": 12, "end": 25, "text": "Điện Biên Phủ", "truncated": false}
+]
+},
+{
+"input": "Hai Bà Trưng, 40",
+"tokens": ["Hai", "Bà", "Trưng", ",", "40"],
+"bio": ["B-L5", "I-L5", "I-L5", "O", "B-L6"],
+"spans": [
+{"level": "L5", "start": 0, "end": 12, "text": "Hai Bà Trưng", "truncated": false},
+{"level": "L6", "start": 14, "end": 16, "text": "40", "truncated": false}
+]
+}
+]
+
+---
+
+## Ví dụ 6 — Ranh giới L2/L3 giữa "Thành phố"
+
+Đầu vào:
+
+{
+"texts": [
+"Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+"Thành phố Biên Hòa, Đồng Nai"
+]
+}
+
+Ghi chú: "Thành phố Hồ Chí Minh" nằm trong danh sách đóng 5 thành phố trực thuộc trung ương (`02_label_definitions.txt`, mục L2) → L2. "Thành phố Thủ Đức" là đơn vị hành chính trực thuộc TP. Hồ Chí Minh (không nằm trong danh sách 5 thành phố trực thuộc trung ương) → L3. Tương tự, "Thành phố Biên Hòa" trực thuộc tỉnh Đồng Nai → L3; "Đồng Nai" → L2.
+
+Đầu ra:
+
+[
+{
+"input": "Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+"tokens": ["Thành", "phố", "Thủ", "Đức", ",", "Thành", "phố", "Hồ", "Chí", "Minh"],
+"bio": ["B-L3", "I-L3", "I-L3", "I-L3", "O", "B-L2", "I-L2", "I-L2", "I-L2", "I-L2"],
+"spans": [
+{"level": "L3", "start": 0, "end": 17, "text": "Thành phố Thủ Đức", "truncated": false},
+{"level": "L2", "start": 19, "end": 40, "text": "Thành phố Hồ Chí Minh", "truncated": false}
+]
+},
+{
+"input": "Thành phố Biên Hòa, Đồng Nai",
+"tokens": ["Thành", "phố", "Biên", "Hòa", ",", "Đồng", "Nai"],
+"bio": ["B-L3", "I-L3", "I-L3", "I-L3", "O", "B-L2", "I-L2"],
+"spans": [
+{"level": "L3", "start": 0, "end": 18, "text": "Thành phố Biên Hòa", "truncated": false},
+{"level": "L2", "start": 20, "end": 28, "text": "Đồng Nai", "truncated": false}
+]
+}
+]
+
+---
+
+## Ví dụ 7 — Số nhà dạng nhiều lớp (số nhà/ngách/ngõ)
+
+Đầu vào:
+
+{
+"text": "4 38 39 phố Đại Đồng"
+}
+
+Ghi chú: "số nhà 4, ngách 38, ngõ 39, phố Đại Đồng" — quy ước có thật ở khu vực nhiều ngõ/ngách. Không được để L6 rỗng chỉ vì có nhiều số đứng cạnh nhau; toàn bộ cụm số đầu câu là MỘT thực thể L6.
+
+Đầu ra:
+
+{
+"input": "4 38 39 phố Đại Đồng",
+"tokens": ["4", "38", "39", "phố", "Đại", "Đồng"],
+"bio": ["B-L6", "I-L6", "I-L6", "B-L5", "I-L5", "I-L5"],
+"spans": [
+{"level": "L6", "start": 0, "end": 7, "text": "4 38 39", "truncated": false},
+{"level": "L5", "start": 8, "end": 20, "text": "phố Đại Đồng", "truncated": false}
+]
+}
+
+---
+
+## Ví dụ 8 — Số nhà dạng khoảng (range)
+
+Đầu vào:
+
+{
+"text": "62 - 64 Hai Bà Trưng"
+}
+
+Ghi chú: "62 - 64" là số nhà của cùng một công trình/dãy nhà. Dấu "-" ở đây là một phần của thực thể L6, khác với "Highland - Cách Mạng Tháng 8" ở Ví dụ 4 (nơi "-" ngăn cách hai thực thể khác loại và nhận nhãn "O").
+
+Đầu ra:
+
+{
+"input": "62 - 64 Hai Bà Trưng",
+"tokens": ["62", "-", "64", "Hai", "Bà", "Trưng"],
+"bio": ["B-L6", "I-L6", "I-L6", "B-L5", "I-L5", "I-L5"],
+"spans": [
+{"level": "L6", "start": 0, "end": 7, "text": "62 - 64", "truncated": false},
+{"level": "L5", "start": 8, "end": 20, "text": "Hai Bà Trưng", "truncated": false}
+]
+}

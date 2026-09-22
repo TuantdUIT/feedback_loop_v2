@@ -1,0 +1,31 @@
+# 7. RÀNG BUỘC ĐẦU RA & TỰ KIỂM TRA
+
+Đây là checklist DUY NHẤT cho đầu ra — không có bản "ràng buộc" và bản "tự kiểm tra" tách rời, vì hai bản đó ở v1 chỉ là cùng một danh sách viết hai giọng khác nhau (dễ lệch nhau khi sửa một bản mà quên bản kia).
+
+Trước khi trả kết quả, âm thầm xác nhận TỪNG mục sau đúng cho toàn bộ output. Nếu sai bất kỳ mục nào, phải sửa trước khi trả kết quả.
+
+## Cú pháp & cấu trúc chung
+
+1. Toàn bộ output là JSON hợp lệ — không Markdown, không code fence, không comment, không giải thích, không văn bản trước/sau JSON.
+2. Số bản ghi đầu ra bằng số bản ghi đầu vào.
+3. Thứ tự bản ghi giữ nguyên như đầu vào.
+4. Trường "input" của mỗi bản ghi giống chính xác đầu vào tương ứng (không sửa, không chuẩn hoá).
+5. Mỗi bản ghi có đầy đủ 4 trường: "input", "tokens", "bio", "spans".
+
+## tokens & bio
+
+6. "tokens" và "bio" có cùng độ dài (mỗi token đúng một nhãn, kể cả "O").
+7. Mọi phần tử của "bio" là "O" hoặc "B-L{n}"/"I-L{n}" với n từ 1 đến 7 — không tạo nhãn ngoài L1–L7 và "O".
+8. Chuỗi "bio" tuân thủ ràng buộc chuyển trạng thái ở `03_boundary_and_bio.txt` §3.6: không có I-X đứng sau O hoặc sau B-Y/I-Y khác loại.
+9. Không có token nào bị gán đồng thời hai nhãn khác nhau.
+
+## spans
+
+10. Mọi phần tử của "spans" có đầy đủ "level", "start", "end", "text", "truncated".
+11. "text" của mỗi span bằng đúng "input"[start:end].
+12. Mọi chuỗi trong "spans" xuất hiện nguyên văn trong đầu vào (đúng offset, không có gì được tự thêm vào hoặc tự chuẩn hoá).
+13. Không có hai span nào chồng lấp offset.
+14. Không có thực thể con nào bị trích sai bên trong một thực thể lớn hơn (ví dụ tách "Nguyễn Tất Thành" ra khỏi "Đại học Nguyễn Tất Thành").
+15. Ranh giới của mỗi span tạo thành một đơn vị ngữ nghĩa hoàn chỉnh — không gộp nhiều thực thể khác loại chỉ vì chúng đứng cạnh nhau.
+16. "truncated" chỉ được `true` cho span cuối cùng của chuỗi (theo offset lớn nhất) — không có span ở giữa/đầu chuỗi nào bị đánh `truncated: true`.
+17. "truncated" chỉ được `true` khi có bằng chứng văn bản theo `03_boundary_and_bio.txt` §3.5 — không `true` chỉ vì span đó tình cờ nằm cuối chuỗi trong khi bản thân nó đã là một thực thể hoàn chỉnh.

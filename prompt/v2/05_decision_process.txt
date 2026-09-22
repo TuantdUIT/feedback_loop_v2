@@ -1,0 +1,91 @@
+# 5. QUY TRÌNH RA QUYẾT ĐỊNH
+
+Đối với từng bản ghi, thực hiện nội bộ đúng trình tự sau. Mỗi bản ghi phải được xử lý độc lập — không dùng kết quả của bản ghi trước để phân tích bản ghi sau.
+
+## Bước 1
+
+Đọc toàn bộ chuỗi đầu vào. Không đưa ra quyết định chỉ dựa trên một từ riêng lẻ trước khi đọc toàn bộ chuỗi.
+
+---
+
+## Bước 2
+
+Tách chuỗi đầu vào thành danh sách token theo quy tắc ở `03_boundary_and_bio.txt` §3.0.
+
+---
+
+## Bước 3
+
+Với từng token (xét theo ngữ cảnh toàn câu, không xét độc lập), xác định loại ngữ nghĩa khả dĩ: COUNTRY, PROVINCE_OR_CITY, DISTRICT, WARD, STREET, HOUSE_NUMBER, POI.
+
+Được phép dùng tri thức nền đã biết về địa danh hành chính Việt Nam (tên tỉnh/thành phố, quận/huyện, phường/xã có thật) để xác định loại của một token/cụm token, kể cả khi không có tiền tố hành chính đi kèm — miễn là việc này dựa trên nhận diện tên riêng đã biết, không phải suy đoán tuỳ tiện không có căn cứ. Đây là cơ sở hợp lệ cho Mức ưu tiên 2 (`04_ambiguity_and_fallback.txt` §4.2).
+
+---
+
+## Bước 4
+
+Gán nhãn BIO cho từng token theo thứ tự trái→phải, tuân thủ ràng buộc chuyển trạng thái ở `03_boundary_and_bio.txt` §3.6 (I-X chỉ hợp lệ sau B-X/I-X cùng loại).
+
+Khi một token có thể mở đầu nhiều loại thực thể khác nhau (mơ hồ), áp dụng thứ tự ưu tiên ở `04_ambiguity_and_fallback.txt` để chọn nhãn B-X duy nhất cho token đó, trước khi xét token tiếp theo.
+
+Áp dụng quy tắc về:
+
+* tiền tố (§3.1)
+* đoạn dài nhất hợp lệ về ngữ nghĩa (§3.3)
+* dấu phân cách (§3.4)
+* thực thể con (§3.2)
+* khả năng cắt dở của thực thể cuối cùng (§3.5) — chỉ xét cho token cuối cùng của chuỗi
+
+Không dùng độ dài đoạn hay số thứ tự L1–L7 để giải quyết mơ hồ (`04_ambiguity_and_fallback.txt` §4.6).
+
+---
+
+## Bước 5
+
+Từ chuỗi BIO đã gán cho toàn bộ token, gộp các đoạn B-X theo sau bởi I-X liên tiếp thành một span duy nhất cho mỗi thực thể.
+
+Không tạo span chồng lấp: mỗi token chỉ thuộc đúng một span hoặc không thuộc span nào (O).
+
+---
+
+## Bước 6
+
+Kiểm tra tính nhất quán của chuỗi BIO vừa gộp:
+
+* Mỗi thực thể bắt đầu bằng B-X.
+* I-X chỉ tiếp tục một thực thể X liền trước.
+* Không xuất hiện I-X độc lập mà không thuộc một thực thể X phù hợp.
+* Không có một token đồng thời thuộc hai thực thể khác nhau.
+* Không gộp hai thực thể khác loại thành cùng một span.
+
+Nếu phát hiện vi phạm, quay lại Bước 4 và gán lại nhãn cho (các) token liên quan — không được "sửa" trực tiếp trên span đã gộp mà không sửa lại BIO gốc.
+
+---
+
+## Bước 7
+
+Đối với các trường hợp mơ hồ chưa được giải quyết dứt điểm ở Bước 4, áp dụng lại `04_ambiguity_and_fallback.txt` để xác nhận lựa chọn cuối cùng.
+
+---
+
+## Bước 8
+
+Ánh xạ loại thực thể sang nhãn theo bảng ở `02_label_definitions.txt` §2.0.
+
+---
+
+## Bước 9
+
+Với mỗi span, lấy offset `start`/`end` (theo vị trí ký tự trong chuỗi đầu vào gốc) và chuỗi văn bản nguyên gốc tương ứng. Không thay đổi nội dung văn bản.
+
+---
+
+## Bước 10
+
+Xây dựng JSON đầu ra theo đúng cấu trúc ở `06_io_format.txt`: gồm `tokens`, `bio`, và `spans` (mỗi span có `level`, `start`, `end`, `text`, `truncated`).
+
+---
+
+## Bước 11
+
+Kiểm tra toàn bộ JSON theo `07_output_checklist.txt` trước khi trả kết quả. Không xuất các bước suy luận nội bộ.
