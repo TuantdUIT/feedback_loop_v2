@@ -1,0 +1,242 @@
+[
+  {
+    "input": "số 8 long biên 2 long biên",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": ["long biên"],
+      "L4": [],
+      "L5": [],
+      "L6": ["số 8"],
+      "L7": []
+    }
+  },
+  {
+    "input": "xã tân ước, thanh oai, hà nội",
+    "result": {
+      "L1": [],
+      "L2": ["hà nội"],
+      "L3": ["thanh oai"],
+      "L4": ["xã tân ước"],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    }
+  },
+  {
+    "input": "blue sapphire bình phú, quận 6 sài gòn",
+    "result": {
+      "L1": [],
+      "L2": ["sài gòn"],
+      "L3": ["quận 6"],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": ["blue sapphire bình phú"]
+    }
+  },
+  {
+    "input": "khu đô thị mới văn quán hà đông, hà nội",
+    "result": {
+      "L1": [],
+      "L2": ["hà nội"],
+      "L3": ["hà đông"],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": ["khu đô thị mới văn quán"]
+    }
+  },
+  {
+    "input": "dự án the morning star plaza, bình thạnh, hồ chí minh",
+    "result": {
+      "L1": [],
+      "L2": ["hồ chí minh"],
+      "L3": ["bình thạnh"],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": ["dự án the morning star plaza"]
+    }
+  },
+  {
+    "input": "xuân la xuân la tây hồ hà nội",
+    "result": {
+      "L1": [],
+      "L2": ["hà nội"],
+      "L3": ["tây hồ"],
+      "L4": ["xuân la"],
+      "L5": ["xuân la"],
+      "L6": [],
+      "L7": []
+    }
+  },
+  {
+    "input": "an hải 3 sơn trà",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": ["sơn trà"],
+      "L4": [],
+      "L5": ["an hải 3"],
+      "L6": [],
+      "L7": []
+    }
+  },
+  {
+    "input": "Đường Quốc Lộ 1A - Từ Sơn - Bắc Ninh",
+    "result": {
+      "L1": [],
+      "L2": ["Bắc Ninh"],
+      "L3": ["Từ Sơn"],
+      "L4": [],
+      "L5": ["Đường Quốc Lộ 1A"],
+      "L6": [],
+      "L7": []
+    }
+  },
+  {
+    "input": "đông lĩnh thanh hóa",
+    "result": {
+      "L1": [],
+      "L2": ["thanh hóa"],
+      "L3": [],
+      "L4": ["đông lĩnh"],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    }
+  },
+  {
+    "input": "đường tân phú quận sơn trà, đà nẵng",
+    "result": {
+      "L1": [],
+      "L2": ["đà nẵng"],
+      "L3": ["quận sơn trà"],
+      "L4": [],
+      "L5": ["đường tân phú"],
+      "L6": [],
+      "L7": []
+    }
+  },
+  {
+    "input": "Đường Trương Định, Tương Mai, Hoàng Mai, hn",
+    "result": {
+      "L1": [],
+      "L2": ["hn"],
+      "L3": ["Hoàng Mai"],
+      "L4": ["Tương Mai"],
+      "L5": ["Đường Trương Định"],
+      "L6": [],
+      "L7": []
+    }
+  },
+  {
+    "input": "133 phổ quang p. 9 quận phú nhuận",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": ["quận phú nhuận"],
+      "L4": ["p. 9"],
+      "L5": ["phổ quang"],
+      "L6": ["133"],
+      "L7": []
+    }
+  },
+  {
+    "input": "duyên thái - quốc lộ 1a - thường tín",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": ["thường tín"],
+      "L4": ["duyên thái"],
+      "L5": ["quốc lộ 1a"],
+      "L6": [],
+      "L7": []
+    }
+  },
+  {
+    "input": "Phú Mỹ Hưng - Phường Tân Phú - Quận 7 - Hồ Chí Minh",
+    "result": {
+      "L1": [],
+      "L2": ["Hồ Chí Minh"],
+      "L3": ["Quận 7"],
+      "L4": ["Phường Tân Phú"],
+      "L5": [],
+      "L6": [],
+      "L7": ["Phú Mỹ Hưng"]
+    }
+  },
+  {
+    "input": "dự án chung cu bo công an dương trần não an khánh quận 2",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": ["quận 2"],
+      "L4": ["an khánh"],
+      "L5": ["dương trần não"],
+      "L6": [],
+      "L7": ["dự án chung cu bo công an"]
+    }
+  },
+  {
+    "input": "nguyễn thuy - liên chiểu đà nẵng",
+    "result": {
+      "L1": [],
+      "L2": ["đà nẵng"],
+      "L3": ["liên chiểu"],
+      "L4": [],
+      "L5": ["nguyễn thuy"],
+      "L6": [],
+      "L7": []
+    }
+  },
+  {
+    "input": "trung yên plaza",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": ["trung yên plaza"]
+    }
+  },
+  {
+    "input": "Đường Hoàng Hoa Thám P6 Q. Bình Thạnh",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": ["Q. Bình Thạnh"],
+      "L4": ["P6"],
+      "L5": ["Đường Hoàng Hoa Thám"],
+      "L6": [],
+      "L7": []
+    }
+  },
+  {
+    "input": "phường trưng trắc phúc yên",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": ["phúc yên"],
+      "L4": ["phường trưng trắc"],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    }
+  },
+  {
+    "input": "125/ 84 bùi đình túy, bình thạnh",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": ["bình thạnh"],
+      "L4": [],
+      "L5": ["bùi đình túy"],
+      "L6": ["125/ 84"],
+      "L7": []
+    }
+  }
+]

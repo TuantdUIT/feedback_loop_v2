@@ -1,0 +1,91 @@
+import json
+import re
+import argparse
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+INPUT = ROOT / "clean_data" / "VAER_train_fix.txt"
+DEFAULT_OUTPUT = ROOT / "result" / "VAER_train_fix_parsed.json"
+
+# Matching is case-insensitive; captured values always come from the original line.
+PROVINCES = [
+    "hồ chí minh", "sài gòn", "hà nội", "hải phòng", "đà nẵng", "cần thơ",
+    "bình dương", "đồng nai", "bà rịa vũng tàu", "vũng tàu", "long an",
+    "bắc ninh", "bắc giang", "hải dương", "hưng yên", "thái bình", "nam định",
+    "ninh bình", "thanh hóa", "nghệ an", "hà tĩnh", "quảng bình", "quảng trị",
+    "thừa thiên huế", "huế", "quảng nam", "quảng ngãi", "bình định", "phú yên",
+    "khánh hòa", "nha trang", "đắk lắk", "gia lai", "lâm đồng", "kiên giang",
+    "tiền giang", "bến tre", "trà vinh", "vĩnh long", "đồng tháp", "an giang",
+    "tây ninh", "bình phước", "bình thuận", "tuyên quang", "lào cai", "sơn la",
+    "điện biên", "lạng sơn", "cao bằng", "yên bái", "hòa bình", "phú thọ",
+    "quảng ninh", "hà nam", "hà tây", "đắk nông", "bạc liêu", "cà mau",
+]
+DISTRICTS = [
+    "ba đình", "hoàn kiếm", "tây hồ", "long biên", "cầu giấy", "đống đa", "hai bà trưng",
+    "hoàng mai", "thanh xuân", "từ liêm", "nam từ liêm", "bắc từ liêm", "hà đông", "thanh trì",
+    "gia lâm", "đông anh", "sóc sơn", "hoài đức", "đan phượng", "thường tín", "mê linh",
+    "bình thạnh", "gò vấp", "tân bình", "tân phú", "phú nhuận", "bình tân", "quận 1", "quận 2",
+    "quận 3", "quận 4", "quận 5", "quận 6", "quận 7", "quận 8", "quận 9", "quận 10", "quận 11",
+    "quận 12", "thủ đức", "hóc môn", "bình chánh", "củ chi", "nhà bè", "cẩm lệ", "hải châu",
+    "sơn trà", "ngũ hành sơn", "thanh khê", "liên chiểu", "lê chân", "ngô quyền", "kiến an",
+    "hồng bàng", "ninh kiều", "cái răng", "liên chiểu", "cam lâm", "từ sơn", "đức hòa",
+    "trảng bom", "long thành", "dĩ an", "bàu bàng", "tân uyên", "phú quốc", "phúc yên",
+]
+
+ADMIN_STOP = r"(?=\s*(?:,|;|\s+-\s+|\s+(?:quận|huyện|thị xã|phường|xã|thị trấn|p\.?|q\.?|tp\.?|tỉnh|thành phố)\b))"
+
+def find_matches(text, pattern, label):
+    return [(m.start(), m.end(), label, m.group(0)) for m in re.finditer(pattern, text, re.I)]
+
+def parse_line(text):
+    candidates = []
+    # Explicit semantic prefixes have the strongest evidence.
+    candidates += find_matches(text, r"\b(?:dự án)\s+[^,;\-]+?(?=\s+(?:đường|phố|quốc lộ|phường|quận|huyện)\b|[,;]|$)", "L7")
+    candidates += find_matches(text, r"\b(?:đại học|trường(?: đại học)?|bệnh viện|chung cư|khu đô thị|khu dân cư|kdc|tòa nhà|khách sạn|resort|plaza|tower|riverside|residences)\b[^,;\-]+?(?=\s+(?:đường|phố|quốc lộ|phường|quận|huyện)\b|[,;]|$)", "L7")
+    candidates += find_matches(text, r"\b(?:phường|xã|thị trấn)\s+[^,;\-]+?(?=\s+(?:đường|phố|quốc lộ|quận|huyện|phường|xã|p\.?|q\.?|tp\.?|tỉnh|thành phố)\b|[,;]|$)", "L4")
+    candidates += find_matches(text, r"\b(?:p\.)\s*\d+", "L4")
+    candidates += find_matches(text, r"\bquận\s+\d+\b", "L3")
+    candidates += find_matches(text, r"\b(?:huyện|thị xã|thành phố)\s+[^,;\-]+?(?=\s+(?:hồ chí minh|sài gòn|hà nội|đà nẵng|hải phòng|cần thơ|tỉnh|thành phố|quận|huyện|phường|xã)\b|[,;]|$)", "L3")
+    candidates += find_matches(text, r"\b(?:q\.)\s*[^,;\-]+", "L3")
+    candidates += find_matches(text, r"\b(?:đường|phố|đại lộ|quốc lộ|tỉnh lộ|ngõ|hẻm)\s+[^,;\-]+", "L5")
+    candidates += find_matches(text, r"\b(?:ql|tl)\s*\d+[a-z0-9]*\b", "L5")
+
+    for name in sorted(PROVINCES, key=len, reverse=True):
+        candidates += find_matches(text, rf"\b(?:tỉnh\s+|thành phố\s+)?{re.escape(name)}\b", "L2")
+    for name in sorted(DISTRICTS, key=len, reverse=True):
+        candidates += find_matches(text, rf"\b{re.escape(name)}\b", "L3")
+
+    # A leading number is a house number only when it is not an administrative suffix.
+    candidates += find_matches(text, r"^\s*(?:số\s+)?\d+[a-zA-Z]?(?:/\s*\d+[a-zA-Z]?)?(?=\s+[a-zà-ỹ])", "L6")
+    if re.fullmatch(r"\s*\d+[a-zA-Z]?\s*", text):
+        candidates += find_matches(text, r"\b\d+[a-zA-Z]?\b", "L6")
+
+    # Prefer semantic prefixes and longer valid spans; never emit overlaps.
+    priority = {"L7": 7, "L4": 6, "L3": 5, "L5": 4, "L2": 3, "L6": 2, "L1": 1}
+    candidates.sort(key=lambda item: (-priority[item[2]], -(item[1] - item[0]), item[0]))
+    selected = []
+    for start, end, label, value in candidates:
+        if any(start < old_end and end > old_start for old_start, old_end, _, _ in selected):
+            continue
+        selected.append((start, end, label, value))
+    selected.sort(key=lambda item: item[0])
+
+    result = {f"L{i}": [] for i in range(1, 8)}
+    for _, _, label, value in selected:
+        value = value.strip(" ,;-\t")
+        if value and value not in result[label]:
+            result[label].append(value)
+    return {"input": text, "result": result}
+
+def main(output_path: Path = DEFAULT_OUTPUT):
+    lines = INPUT.read_text(encoding="utf-8").splitlines()
+    records = [parse_line(line) for line in lines]
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"Wrote {len(records)} records to {output_path}")
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    args = parser.parse_args()
+    main(args.output)
