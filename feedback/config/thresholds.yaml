@@ -1,0 +1,9 @@
+# Toàn bộ ngưỡng gate của cascade. KHÔNG hardcode ngưỡng trong code.
+# Mọi giá trị ở đây phải do eval/calibrate.py sinh ra trên gold set,
+# không được đoán. File này có version và được commit theo từng lần calibrate.
+#
+# layer0: ngưỡng phân loại vi phạm hard/soft
+# layer1: ngưỡng self-consistency, severity tối thiểu để escalate
+# layer2: margin tối thiểu, confidence tối thiểu, xử lý khi position flip
+# layer3: ngưỡng confidence để chốt / gắn cờ audit / đẩy cho người
+# sampling: tỉ lệ random audit (2-5%)

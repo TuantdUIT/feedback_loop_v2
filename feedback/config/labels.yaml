@@ -1,0 +1,15 @@
+# Bộ nhãn của ML pipeline. Hệ L, không dùng tên loại thực thể.
+# Xem prompt/v2/02_label_definitions.txt §2.0 để biết ý nghĩa từng level.
+label_set: [L1, L2, L3, L4, L5, L6, L7]
+
+# Trọng số mức nghiêm trọng khi một span bị parse sai level.
+# Dùng trong diff_metrics để tính severity — sai L2 nặng hơn sai L7 nhiều.
+# GIÁ TRỊ KHỞI ĐIỂM, phải chỉnh lại sau khi calibrate trên gold set.
+severity_weight:
+  L1: 0.3   # quốc gia, hiếm xuất hiện, sai ít ảnh hưởng
+  L2: 1.0   # tỉnh/thành — sai là hỏng toàn bộ định vị
+  L3: 1.0   # quận/huyện — tương tự
+  L4: 0.7   # phường/xã
+  L5: 0.8   # đường
+  L6: 0.9   # số nhà
+  L7: 0.5   # POI

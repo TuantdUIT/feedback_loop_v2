@@ -1,0 +1,16 @@
+# Lõi
+pyyaml
+python-dotenv
+
+# Gọi LLM
+openai              # dùng cho cả Lớp 3 và các endpoint tương thích OpenAI
+httpx
+
+# Tính toán metric
+numpy
+
+# Test
+pytest
+
+# Tuỳ chọn — chỉ cần khi self-host SLM cho Lớp 1 với constrained decoding:
+# vllm

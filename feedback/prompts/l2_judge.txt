@@ -1,0 +1,8 @@
+# Lớp 2 — Comparator chấm điểm hai phương án parse A/B
+#
+# File này CHỈ chứa phần nhiệm vụ riêng của lớp này.
+# Phần lý thuyết BIO/IOB2 và định nghĩa nhãn L1-L7 được nạp từ
+# prompt/v2/compiled/system_prompt_v2_with_partial_input.txt lúc runtime.
+# KHÔNG sao chép lại nội dung đó vào đây.
+#
+# Chưa viết. Xem BUILD.md §7.
