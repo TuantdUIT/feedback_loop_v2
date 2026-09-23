@@ -1,0 +1,1463 @@
+[
+  {
+    "text": "444 Nguyễn Trãi Quận Li",
+    "tokens": [
+      "444",
+      "Nguyễn",
+      "Trãi",
+      "Quận",
+      "Li"
+    ],
+    "bio": [
+      "B-L6",
+      "B-L5",
+      "I-L5",
+      "B-L3",
+      "I-L3"
+    ],
+    "trunc": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 3,
+        "text": "444",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 4,
+        "end": 15,
+        "text": "Nguyễn Trãi",
+        "truncated": false
+      },
+      {
+        "level": "L3",
+        "start": 16,
+        "end": 23,
+        "text": "Quận Li",
+        "truncated": true
+      }
+    ],
+    "len_nfc": 23,
+    "is_full": false,
+    "source_id": 747,
+    "cut": 24,
+    "augment": [
+      "drop_sep:1/1"
+    ],
+    "group": "SHORT_BOOST",
+    "n_anchor": 2,
+    "is_long": false
+  },
+  {
+    "text": "246E An Hải 20, Quận Sơn Trà, Thành phố Đà Nẵng",
+    "tokens": [
+      "246E",
+      "An",
+      "Hải",
+      "20",
+      ",",
+      "Quận",
+      "Sơn",
+      "Trà",
+      ",",
+      "Thành",
+      "phố",
+      "Đà",
+      "Nẵng"
+    ],
+    "bio": [
+      "B-L6",
+      "B-L5",
+      "I-L5",
+      "I-L5",
+      "O",
+      "B-L3",
+      "I-L3",
+      "I-L3",
+      "O",
+      "B-L2",
+      "I-L2",
+      "I-L2",
+      "I-L2"
+    ],
+    "trunc": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 4,
+        "text": "246E",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 5,
+        "end": 14,
+        "text": "An Hải 20",
+        "truncated": false
+      },
+      {
+        "level": "L3",
+        "start": 16,
+        "end": 28,
+        "text": "Quận Sơn Trà",
+        "truncated": false
+      },
+      {
+        "level": "L2",
+        "start": 30,
+        "end": 47,
+        "text": "Thành phố Đà Nẵng",
+        "truncated": false
+      }
+    ],
+    "len_nfc": 47,
+    "source_id": 9086,
+    "is_long": true,
+    "augment": [],
+    "group": "STRUCTURED",
+    "n_anchor": 4
+  },
+  {
+    "text": "75C Thảo Nguyên, HN",
+    "tokens": [
+      "75C",
+      "Thảo",
+      "Nguyên",
+      ",",
+      "HN"
+    ],
+    "bio": [
+      "B-L6",
+      "B-L5",
+      "I-L5",
+      "O",
+      "B-L2"
+    ],
+    "trunc": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 3,
+        "text": "75C",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 4,
+        "end": 15,
+        "text": "Thảo Nguyên",
+        "truncated": false
+      },
+      {
+        "level": "L2",
+        "start": 17,
+        "end": 19,
+        "text": "HN",
+        "truncated": false
+      }
+    ],
+    "len_nfc": 19,
+    "source_id": 4154,
+    "is_long": true,
+    "augment": [],
+    "group": "STRUCTURED",
+    "n_anchor": 3
+  },
+  {
+    "text": "59e đường phùng hưng, phạm ngũ lão, nhà bè, hồ chí minh, việt nam",
+    "tokens": [
+      "59e",
+      "đường",
+      "phùng",
+      "hưng",
+      ",",
+      "phạm",
+      "ngũ",
+      "lão",
+      ",",
+      "nhà",
+      "bè",
+      ",",
+      "hồ",
+      "chí",
+      "minh",
+      ",",
+      "việt",
+      "nam"
+    ],
+    "bio": [
+      "B-L6",
+      "B-L5",
+      "I-L5",
+      "I-L5",
+      "O",
+      "B-L4",
+      "I-L4",
+      "I-L4",
+      "O",
+      "B-L3",
+      "I-L3",
+      "O",
+      "B-L2",
+      "I-L2",
+      "I-L2",
+      "O",
+      "B-L1",
+      "I-L1"
+    ],
+    "trunc": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 3,
+        "text": "59e",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 4,
+        "end": 20,
+        "text": "đường phùng hưng",
+        "truncated": false
+      },
+      {
+        "level": "L4",
+        "start": 22,
+        "end": 34,
+        "text": "phạm ngũ lão",
+        "truncated": false
+      },
+      {
+        "level": "L3",
+        "start": 36,
+        "end": 42,
+        "text": "nhà bè",
+        "truncated": false
+      },
+      {
+        "level": "L2",
+        "start": 44,
+        "end": 55,
+        "text": "hồ chí minh",
+        "truncated": false
+      },
+      {
+        "level": "L1",
+        "start": 57,
+        "end": 65,
+        "text": "việt nam",
+        "truncated": false
+      }
+    ],
+    "len_nfc": 65,
+    "source_id": 17964,
+    "is_long": true,
+    "augment": [
+      "casing:lower"
+    ],
+    "group": "STRUCTURED",
+    "n_anchor": 6
+  },
+  {
+    "text": "858 Đường",
+    "tokens": [
+      "858",
+      "Đường"
+    ],
+    "bio": [
+      "B-L6",
+      "B-L5"
+    ],
+    "trunc": [
+      0,
+      1
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 3,
+        "text": "858",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 4,
+        "end": 9,
+        "text": "Đường",
+        "truncated": true
+      }
+    ],
+    "len_nfc": 9,
+    "is_full": false,
+    "source_id": 5003,
+    "cut": 9,
+    "augment": [
+      "drop_sep:noop"
+    ],
+    "group": "SHORT_BOOST",
+    "n_anchor": 1,
+    "is_long": false
+  },
+  {
+    "text": "953 Phố Hoa Lâm, Xuâ",
+    "tokens": [
+      "953",
+      "Phố",
+      "Hoa",
+      "Lâm",
+      ",",
+      "Xuâ"
+    ],
+    "bio": [
+      "B-L6",
+      "B-L5",
+      "I-L5",
+      "I-L5",
+      "O",
+      "B-L4"
+    ],
+    "trunc": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 3,
+        "text": "953",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 4,
+        "end": 15,
+        "text": "Phố Hoa Lâm",
+        "truncated": false
+      },
+      {
+        "level": "L4",
+        "start": 17,
+        "end": 20,
+        "text": "Xuâ",
+        "truncated": true
+      }
+    ],
+    "len_nfc": 20,
+    "is_full": false,
+    "source_id": 8645,
+    "cut": 20,
+    "augment": [],
+    "group": "SHORT_BOOST",
+    "n_anchor": 2,
+    "is_long": false
+  },
+  {
+    "text": "39/29 trầnnguyênhãn, Phường An Bình, Đồng Tháp",
+    "tokens": [
+      "39/29",
+      "trầnnguyênhãn",
+      ",",
+      "Phường",
+      "An",
+      "Bình",
+      ",",
+      "Đồng",
+      "Tháp"
+    ],
+    "bio": [
+      "B-L6",
+      "B-L5",
+      "O",
+      "B-L4",
+      "I-L4",
+      "I-L4",
+      "O",
+      "B-L2",
+      "I-L2"
+    ],
+    "trunc": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 5,
+        "text": "39/29",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 6,
+        "end": 19,
+        "text": "trầnnguyênhãn",
+        "truncated": false
+      },
+      {
+        "level": "L4",
+        "start": 21,
+        "end": 35,
+        "text": "Phường An Bình",
+        "truncated": false
+      },
+      {
+        "level": "L2",
+        "start": 37,
+        "end": 46,
+        "text": "Đồng Tháp",
+        "truncated": false
+      }
+    ],
+    "len_nfc": 46,
+    "source_id": 7070,
+    "is_long": true,
+    "augment": [
+      "abbrev:L5->trầnnguyênhãn"
+    ],
+    "group": "STRUCTURED",
+    "n_anchor": 4
+  },
+  {
+    "text": "457 ĐƯỜNG",
+    "tokens": [
+      "457",
+      "ĐƯỜNG"
+    ],
+    "bio": [
+      "B-L6",
+      "B-L5"
+    ],
+    "trunc": [
+      0,
+      1
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 3,
+        "text": "457",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 4,
+        "end": 9,
+        "text": "ĐƯỜNG",
+        "truncated": true
+      }
+    ],
+    "len_nfc": 9,
+    "is_full": false,
+    "source_id": 3997,
+    "cut": 9,
+    "augment": [
+      "casing:upper"
+    ],
+    "group": "SHORT_BOOST",
+    "n_anchor": 1,
+    "is_long": false
+  },
+  {
+    "text": "191/56 Đ. Trương mi",
+    "tokens": [
+      "191/56",
+      "Đ",
+      ".",
+      "Trương",
+      "mi"
+    ],
+    "bio": [
+      "B-L6",
+      "B-L5",
+      "I-L5",
+      "I-L5",
+      "I-L5"
+    ],
+    "trunc": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 6,
+        "text": "191/56",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 7,
+        "end": 19,
+        "text": "Đ. Trương mi",
+        "truncated": true
+      }
+    ],
+    "len_nfc": 19,
+    "is_full": false,
+    "source_id": 1997,
+    "cut": 19,
+    "augment": [
+      "casing:mixed"
+    ],
+    "group": "SHORT_BOOST",
+    "n_anchor": 1,
+    "is_long": false
+  },
+  {
+    "text": "115A Lối ra",
+    "tokens": [
+      "115A",
+      "Lối",
+      "ra"
+    ],
+    "bio": [
+      "B-L6",
+      "B-L5",
+      "I-L5"
+    ],
+    "trunc": [
+      0,
+      0,
+      1
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 4,
+        "text": "115A",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 5,
+        "end": 11,
+        "text": "Lối ra",
+        "truncated": true
+      }
+    ],
+    "len_nfc": 11,
+    "is_full": false,
+    "source_id": 2220,
+    "cut": 11,
+    "augment": [
+      "drop_sep:noop"
+    ],
+    "group": "SHORT_BOOST",
+    "n_anchor": 1,
+    "is_long": false
+  },
+  {
+    "text": "239",
+    "tokens": [
+      "239"
+    ],
+    "bio": [
+      "B-L6"
+    ],
+    "trunc": [
+      1
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 3,
+        "text": "239",
+        "truncated": true
+      }
+    ],
+    "len_nfc": 3,
+    "is_full": false,
+    "source_id": 10935,
+    "cut": 3,
+    "augment": [
+      "casing:mixed",
+      "drop_sep:noop"
+    ],
+    "group": "SHORT_BOOST",
+    "n_anchor": 0,
+    "is_long": false
+  },
+  {
+    "text": "Lô A21 Nguyễn Đồng Chi",
+    "tokens": [
+      "Lô",
+      "A21",
+      "Nguyễn",
+      "Đồng",
+      "Chi"
+    ],
+    "bio": [
+      "B-L6",
+      "I-L6",
+      "B-L5",
+      "I-L5",
+      "I-L5"
+    ],
+    "trunc": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 6,
+        "text": "Lô A21",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 7,
+        "end": 22,
+        "text": "Nguyễn Đồng Chi",
+        "truncated": false
+      }
+    ],
+    "len_nfc": 22,
+    "is_full": false,
+    "source_id": 10074,
+    "cut": 23,
+    "augment": [
+      "drop_sep:1/1"
+    ],
+    "group": "STRUCTURED",
+    "n_anchor": 2,
+    "is_long": false
+  },
+  {
+    "text": "36/82 cầu tân tạo, phường hàng bài quận 6, tp.hcm",
+    "tokens": [
+      "36/82",
+      "cầu",
+      "tân",
+      "tạo",
+      ",",
+      "phường",
+      "hàng",
+      "bài",
+      "quận",
+      "6",
+      ",",
+      "tp",
+      ".",
+      "hcm"
+    ],
+    "bio": [
+      "B-L6",
+      "B-L5",
+      "I-L5",
+      "I-L5",
+      "O",
+      "B-L4",
+      "I-L4",
+      "I-L4",
+      "B-L3",
+      "I-L3",
+      "O",
+      "B-L2",
+      "I-L2",
+      "I-L2"
+    ],
+    "trunc": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 5,
+        "text": "36/82",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 6,
+        "end": 17,
+        "text": "cầu tân tạo",
+        "truncated": false
+      },
+      {
+        "level": "L4",
+        "start": 19,
+        "end": 34,
+        "text": "phường hàng bài",
+        "truncated": false
+      },
+      {
+        "level": "L3",
+        "start": 35,
+        "end": 41,
+        "text": "quận 6",
+        "truncated": false
+      },
+      {
+        "level": "L2",
+        "start": 43,
+        "end": 49,
+        "text": "tp.hcm",
+        "truncated": false
+      }
+    ],
+    "len_nfc": 49,
+    "source_id": 9222,
+    "is_long": true,
+    "augment": [
+      "casing:lower",
+      "drop_sep:1/3"
+    ],
+    "group": "STRUCTURED",
+    "n_anchor": 5
+  },
+  {
+    "text": "267/30 Số",
+    "tokens": [
+      "267/30",
+      "Số"
+    ],
+    "bio": [
+      "B-L6",
+      "B-L5"
+    ],
+    "trunc": [
+      0,
+      1
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 6,
+        "text": "267/30",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 7,
+        "end": 9,
+        "text": "Số",
+        "truncated": true
+      }
+    ],
+    "len_nfc": 9,
+    "is_full": false,
+    "source_id": 13758,
+    "cut": 9,
+    "augment": [
+      "drop_sep:noop"
+    ],
+    "group": "SHORT_BOOST",
+    "n_anchor": 1,
+    "is_long": false
+  },
+  {
+    "text": "Đường S",
+    "tokens": [
+      "Đường",
+      "S"
+    ],
+    "bio": [
+      "B-L5",
+      "I-L5"
+    ],
+    "trunc": [
+      0,
+      1
+    ],
+    "spans": [
+      {
+        "level": "L5",
+        "start": 0,
+        "end": 7,
+        "text": "Đường S",
+        "truncated": true
+      }
+    ],
+    "len_nfc": 7,
+    "is_full": false,
+    "source_id": 9179,
+    "cut": 7,
+    "augment": [],
+    "group": "SHORT_BOOST",
+    "n_anchor": 0,
+    "is_long": false
+  },
+  {
+    "text": "Phường T",
+    "tokens": [
+      "Phường",
+      "T"
+    ],
+    "bio": [
+      "B-L4",
+      "I-L4"
+    ],
+    "trunc": [
+      0,
+      1
+    ],
+    "spans": [
+      {
+        "level": "L4",
+        "start": 0,
+        "end": 8,
+        "text": "Phường T",
+        "truncated": true
+      }
+    ],
+    "len_nfc": 8,
+    "is_full": false,
+    "source_id": 8132,
+    "cut": 8,
+    "augment": [
+      "drop_sep:noop"
+    ],
+    "group": "SHORT_BOOST",
+    "n_anchor": 0,
+    "is_long": false
+  },
+  {
+    "text": "114c đường thi sách, x.",
+    "tokens": [
+      "114c",
+      "đường",
+      "thi",
+      "sách",
+      ",",
+      "x",
+      "."
+    ],
+    "bio": [
+      "B-L6",
+      "B-L5",
+      "I-L5",
+      "I-L5",
+      "O",
+      "B-L4",
+      "I-L4"
+    ],
+    "trunc": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 4,
+        "text": "114c",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 5,
+        "end": 19,
+        "text": "đường thi sách",
+        "truncated": false
+      },
+      {
+        "level": "L4",
+        "start": 21,
+        "end": 23,
+        "text": "x.",
+        "truncated": true
+      }
+    ],
+    "len_nfc": 23,
+    "is_full": false,
+    "source_id": 1641,
+    "cut": 23,
+    "augment": [
+      "casing:lower"
+    ],
+    "group": "SHORT_BOOST",
+    "n_anchor": 2,
+    "is_long": false
+  },
+  {
+    "text": "971 Đường Giang Văn M",
+    "tokens": [
+      "971",
+      "Đường",
+      "Giang",
+      "Văn",
+      "M"
+    ],
+    "bio": [
+      "B-L6",
+      "B-L5",
+      "I-L5",
+      "I-L5",
+      "I-L5"
+    ],
+    "trunc": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 3,
+        "text": "971",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 4,
+        "end": 21,
+        "text": "Đường Giang Văn M",
+        "truncated": true
+      }
+    ],
+    "len_nfc": 21,
+    "is_full": false,
+    "source_id": 577,
+    "cut": 21,
+    "augment": [
+      "drop_sep:noop"
+    ],
+    "group": "SHORT_BOOST",
+    "n_anchor": 1,
+    "is_long": false
+  },
+  {
+    "text": "lô b12 đường ngô qu",
+    "tokens": [
+      "lô",
+      "b12",
+      "đường",
+      "ngô",
+      "qu"
+    ],
+    "bio": [
+      "B-L6",
+      "I-L6",
+      "B-L5",
+      "I-L5",
+      "I-L5"
+    ],
+    "trunc": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 6,
+        "text": "lô b12",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 7,
+        "end": 19,
+        "text": "đường ngô qu",
+        "truncated": true
+      }
+    ],
+    "len_nfc": 19,
+    "is_full": false,
+    "source_id": 3458,
+    "cut": 19,
+    "augment": [
+      "casing:lower"
+    ],
+    "group": "SHORT_BOOST",
+    "n_anchor": 1,
+    "is_long": false
+  },
+  {
+    "text": "hẻm 6/12/5 Phố Đội Nhân, Huyện Thanh Trì, TP. Hà Nội",
+    "tokens": [
+      "hẻm",
+      "6/12/5",
+      "Phố",
+      "Đội",
+      "Nhân",
+      ",",
+      "Huyện",
+      "Thanh",
+      "Trì",
+      ",",
+      "TP",
+      ".",
+      "Hà",
+      "Nội"
+    ],
+    "bio": [
+      "B-L6",
+      "I-L6",
+      "B-L5",
+      "I-L5",
+      "I-L5",
+      "O",
+      "B-L3",
+      "I-L3",
+      "I-L3",
+      "O",
+      "B-L2",
+      "I-L2",
+      "I-L2",
+      "I-L2"
+    ],
+    "trunc": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 10,
+        "text": "hẻm 6/12/5",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 11,
+        "end": 23,
+        "text": "Phố Đội Nhân",
+        "truncated": false
+      },
+      {
+        "level": "L3",
+        "start": 25,
+        "end": 40,
+        "text": "Huyện Thanh Trì",
+        "truncated": false
+      },
+      {
+        "level": "L2",
+        "start": 42,
+        "end": 52,
+        "text": "TP. Hà Nội",
+        "truncated": false
+      }
+    ],
+    "len_nfc": 52,
+    "source_id": 17834,
+    "is_long": true,
+    "augment": [],
+    "group": "STRUCTURED",
+    "n_anchor": 4
+  },
+  {
+    "text": "293/7 Trần Ngu",
+    "tokens": [
+      "293/7",
+      "Trần",
+      "Ngu"
+    ],
+    "bio": [
+      "B-L6",
+      "B-L5",
+      "I-L5"
+    ],
+    "trunc": [
+      0,
+      0,
+      1
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 5,
+        "text": "293/7",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 6,
+        "end": 14,
+        "text": "Trần Ngu",
+        "truncated": true
+      }
+    ],
+    "len_nfc": 14,
+    "is_full": false,
+    "source_id": 10167,
+    "cut": 14,
+    "augment": [
+      "abbrev:noop",
+      "casing:mixed"
+    ],
+    "group": "SHORT_BOOST",
+    "n_anchor": 1,
+    "is_long": false
+  },
+  {
+    "text": "210/87 Số 5, Phường Nghĩa Đô, Tây Hồ, TP. Hà Nội, vn",
+    "tokens": [
+      "210/87",
+      "Số",
+      "5",
+      ",",
+      "Phường",
+      "Nghĩa",
+      "Đô",
+      ",",
+      "Tây",
+      "Hồ",
+      ",",
+      "TP",
+      ".",
+      "Hà",
+      "Nội",
+      ",",
+      "vn"
+    ],
+    "bio": [
+      "B-L6",
+      "B-L5",
+      "I-L5",
+      "O",
+      "B-L4",
+      "I-L4",
+      "I-L4",
+      "O",
+      "B-L3",
+      "I-L3",
+      "O",
+      "B-L2",
+      "I-L2",
+      "I-L2",
+      "I-L2",
+      "O",
+      "B-L1"
+    ],
+    "trunc": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 6,
+        "text": "210/87",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 7,
+        "end": 11,
+        "text": "Số 5",
+        "truncated": false
+      },
+      {
+        "level": "L4",
+        "start": 13,
+        "end": 28,
+        "text": "Phường Nghĩa Đô",
+        "truncated": false
+      },
+      {
+        "level": "L3",
+        "start": 30,
+        "end": 36,
+        "text": "Tây Hồ",
+        "truncated": false
+      },
+      {
+        "level": "L2",
+        "start": 38,
+        "end": 48,
+        "text": "TP. Hà Nội",
+        "truncated": false
+      },
+      {
+        "level": "L1",
+        "start": 50,
+        "end": 52,
+        "text": "vn",
+        "truncated": false
+      }
+    ],
+    "len_nfc": 52,
+    "source_id": 4131,
+    "is_long": true,
+    "augment": [
+      "abbrev:L1->vn"
+    ],
+    "group": "STRUCTURED",
+    "n_anchor": 6
+  },
+  {
+    "text": "ngo 535 Duong Lac Long Quann Phuong Cua Nam TP. Ha Noi, Viet Nam",
+    "tokens": [
+      "ngo",
+      "535",
+      "Duong",
+      "Lac",
+      "Long",
+      "Quann",
+      "Phuong",
+      "Cua",
+      "Nam",
+      "TP",
+      ".",
+      "Ha",
+      "Noi",
+      ",",
+      "Viet",
+      "Nam"
+    ],
+    "bio": [
+      "B-L6",
+      "I-L6",
+      "B-L5",
+      "I-L5",
+      "I-L5",
+      "I-L5",
+      "B-L4",
+      "I-L4",
+      "I-L4",
+      "B-L2",
+      "I-L2",
+      "I-L2",
+      "I-L2",
+      "O",
+      "B-L1",
+      "I-L1"
+    ],
+    "trunc": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 7,
+        "text": "ngo 535",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 8,
+        "end": 28,
+        "text": "Duong Lac Long Quann",
+        "truncated": false
+      },
+      {
+        "level": "L4",
+        "start": 29,
+        "end": 43,
+        "text": "Phuong Cua Nam",
+        "truncated": false
+      },
+      {
+        "level": "L2",
+        "start": 44,
+        "end": 54,
+        "text": "TP. Ha Noi",
+        "truncated": false
+      },
+      {
+        "level": "L1",
+        "start": 56,
+        "end": 64,
+        "text": "Viet Nam",
+        "truncated": false
+      }
+    ],
+    "len_nfc": 64,
+    "source_id": 14624,
+    "is_long": true,
+    "augment": [
+      "strip_diacritics:full",
+      "typo:double",
+      "drop_sep:2/3"
+    ],
+    "group": "STRUCTURED",
+    "n_anchor": 5
+  },
+  {
+    "text": "197E Đường Đặng Thùy",
+    "tokens": [
+      "197E",
+      "Đường",
+      "Đặng",
+      "Thùy"
+    ],
+    "bio": [
+      "B-L6",
+      "B-L5",
+      "I-L5",
+      "I-L5"
+    ],
+    "trunc": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "spans": [
+      {
+        "level": "L6",
+        "start": 0,
+        "end": 4,
+        "text": "197E",
+        "truncated": false
+      },
+      {
+        "level": "L5",
+        "start": 5,
+        "end": 20,
+        "text": "Đường Đặng Thùy",
+        "truncated": true
+      }
+    ],
+    "len_nfc": 20,
+    "is_full": false,
+    "source_id": 6620,
+    "cut": 20,
+    "augment": [
+      "drop_sep:noop"
+    ],
+    "group": "SHORT_BOOST",
+    "n_anchor": 1,
+    "is_long": false
+  }
+]
