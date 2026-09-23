@@ -1,0 +1,1076 @@
+[
+  {
+    "text": "Thành phố Hồ Chí Minh",
+    "result": {
+      "L1": [],
+      "L2": [
+        "Thành phố Hồ Chí Minh"
+      ],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9971166133880616,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 0
+    }
+  },
+  {
+    "text": "Phường Tân Định Quận 1",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [
+        "Quận 1"
+      ],
+      "L4": [
+        "Phường Tân Định"
+      ],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9985444188117981,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 1
+    }
+  },
+  {
+    "text": "Bến NghéQuận 1",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Bến NghéQuận"
+      ]
+    },
+    "confidence": 0.9833996891975403,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 2
+    }
+  },
+  {
+    "text": "Hồ Chí Minh",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Hồ Chí Minh"
+      ]
+    },
+    "confidence": 0.9612401326497396,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 3
+    }
+  },
+  {
+    "text": "74, Phường 12Nơ Trang Long",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [
+        "Phường 12"
+      ],
+      "L5": [],
+      "L6": [
+        "74"
+      ],
+      "L7": []
+    },
+    "confidence": 0.889177163441976,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 4
+    }
+  },
+  {
+    "text": "Nam Kỳ Khởi Nghĩa",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.5619291166464487,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 5
+    }
+  },
+  {
+    "text": "Nguyễn Thị Minh Khai",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.6596490144729614,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 6
+    }
+  },
+  {
+    "text": "Quận Hai Bà Trưng Đồng Nhân",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [
+        "Quận Hai Bà Trưng"
+      ],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.8179775923490524,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 7
+    }
+  },
+  {
+    "text": "Thành phố Hồ Chí Minh, Quận 1",
+    "result": {
+      "L1": [],
+      "L2": [
+        "Thành phố Hồ Chí Minh"
+      ],
+      "L3": [
+        "Quận 1"
+      ],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9997103384562901,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 8
+    }
+  },
+  {
+    "text": "Thành phố Hồ Chí MinhQuận 1",
+    "result": {
+      "L1": [],
+      "L2": [
+        "Thành phố Hồ Chí MinhQuận"
+      ],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9328697820504507,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 9
+    }
+  },
+  {
+    "text": "Nam Kỳ Khởi NghĩaBến NghéQuận 1",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [
+        "1"
+      ],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Nam",
+        "Khởi NghĩaBến NghéQuận"
+      ]
+    },
+    "confidence": 0.935291838645935,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 10
+    }
+  },
+  {
+    "text": "Hồ Chí Minh, Quận 1",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [
+        "Quận 1"
+      ],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Hồ Chí Minh"
+      ]
+    },
+    "confidence": 0.9662609219551086,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 11
+    }
+  },
+  {
+    "text": "234 Quận 1 Phạm Ngũ Lão",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [
+        "Quận 1"
+      ],
+      "L4": [],
+      "L5": [
+        "Phạm Ngũ Lão"
+      ],
+      "L6": [
+        "234"
+      ],
+      "L7": []
+    },
+    "confidence": 0.9971487720807394,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 12
+    }
+  },
+  {
+    "text": "Thành phố Hà Nội",
+    "result": {
+      "L1": [],
+      "L2": [
+        "Thành phố Hà Nội"
+      ],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9917144626379013,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 13
+    }
+  },
+  {
+    "text": "Nguyễn Tất Thành",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Thành"
+      ]
+    },
+    "confidence": 0.6771079152822495,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 14
+    }
+  },
+  {
+    "text": "Hồ Chí Minh Tân Phú",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Hồ Chí Minh Tân Phú"
+      ]
+    },
+    "confidence": 0.8358832597732544,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 15
+    }
+  },
+  {
+    "text": "Bình ThạnhPhan Văn Trị94B",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [
+        "Bình ThạnhPhan"
+      ],
+      "L4": [],
+      "L5": [
+        "Văn Trị"
+      ],
+      "L6": [
+        "94B"
+      ],
+      "L7": []
+    },
+    "confidence": 0.9955262422561646,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 16
+    }
+  },
+  {
+    "text": "Quận 10, Đường Ba Tháng Hai",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [
+        "Quận 10"
+      ],
+      "L4": [],
+      "L5": [
+        "Đường Ba Tháng Hai"
+      ],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9991743167241415,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 17
+    }
+  },
+  {
+    "text": "Nguyễn DuHồ Chí Minh Quận 1",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [
+        "Quận 1"
+      ],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.7988166858752569,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 18
+    }
+  },
+  {
+    "text": "Quận 1Bến Nghé",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [
+        "Quận 1",
+        "Bến Nghé"
+      ],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9832422584295273,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 19
+    }
+  },
+  {
+    "text": "Đường Nguyễn Đình Chiểu",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [
+        "Đường Nguyễn Đình Chiểu"
+      ],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9995725005865097,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 20
+    }
+  },
+  {
+    "text": "Quận 1",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.8588646948337555,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 21
+    }
+  },
+  {
+    "text": "Nguyễn Huệ Hồ Chí Minh Quận 1",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [
+        "Quận 1"
+      ],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Nguyễn Huệ Hồ Chí"
+      ]
+    },
+    "confidence": 0.8458478876522609,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 22
+    }
+  },
+  {
+    "text": "Tôn Thất ĐàmHồ Chí Minh",
+    "result": {
+      "L1": [],
+      "L2": [
+        "Chí Minh"
+      ],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Tôn Thất ĐàmHồ"
+      ]
+    },
+    "confidence": 0.9993920445442199,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 23
+    }
+  },
+  {
+    "text": "Bình Thạnh Điện Biên Phủ",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.7872143626213074,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 24
+    }
+  },
+  {
+    "text": "Quận 1Phường Nguyễn Cư Trinh",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [
+        "Quận 1"
+      ],
+      "L4": [
+        "Phường Nguyễn Cư Trinh"
+      ],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9950876931349436,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 25
+    }
+  },
+  {
+    "text": "Ngô Văn NămBến Nghé",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Nghé"
+      ]
+    },
+    "confidence": 0.8265360295772552,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 26
+    }
+  },
+  {
+    "text": "Bà Huyện Thanh QuanHồ Chí Minh",
+    "result": {
+      "L1": [],
+      "L2": [
+        "QuanHồ Chí Minh"
+      ],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9241509437561035,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 27
+    }
+  },
+  {
+    "text": "Bà Triệu",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 28
+    }
+  },
+  {
+    "text": "Bến Nghé Quận 1Hồ Chí Minh",
+    "result": {
+      "L1": [],
+      "L2": [
+        "Hồ Chí Minh"
+      ],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Bến Nghé"
+      ]
+    },
+    "confidence": 0.9750285829816546,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 29
+    }
+  },
+  {
+    "text": "Nguyễn Văn Cừ",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [
+        "Nguyễn Văn"
+      ],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9222398400306702,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 30
+    }
+  },
+  {
+    "text": "Nguyễn Bỉnh Khiêm",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [
+        "Nguyễn Bỉnh Khiêm"
+      ],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9908963640530905,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 31
+    }
+  },
+  {
+    "text": "Katinat Saigon - Phó Đức Chính",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Katinat Saigon - Phó Đức Chính"
+      ]
+    },
+    "confidence": 0.8944733937581381,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 32
+    }
+  },
+  {
+    "text": "Phó Đức Chính",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Phó Đức Chính"
+      ]
+    },
+    "confidence": 0.9987365007400513,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 33
+    }
+  },
+  {
+    "text": "Hồ Chí Minh Gò Vấp, Phường 16",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [
+        "Phường 16"
+      ],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Hồ Chí Minh Gò Vấp"
+      ]
+    },
+    "confidence": 0.9980161019733974,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 34
+    }
+  },
+  {
+    "text": "Quận 1Thành phố Hồ Chí Minh",
+    "result": {
+      "L1": [],
+      "L2": [
+        "Thành phố Hồ Chí Minh"
+      ],
+      "L3": [
+        "Quận 1"
+      ],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9968452709061759,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 35
+    }
+  },
+  {
+    "text": "Thành phố Hà NộiNguyễn Du",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.928304386138916,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 36
+    }
+  },
+  {
+    "text": "Hồ Chí MinhPhường Bến Nghé",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [
+        "Bến Nghé"
+      ],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Hồ"
+      ]
+    },
+    "confidence": 0.9453025579452514,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 37
+    }
+  },
+  {
+    "text": "Thành phố Hồ Chí Minh Phường 25",
+    "result": {
+      "L1": [],
+      "L2": [
+        "Thành phố Hồ Chí Minh"
+      ],
+      "L3": [],
+      "L4": [
+        "Phường 25"
+      ],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9961051855768476,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 38
+    }
+  },
+  {
+    "text": "Phạm Ngũ Lão, Quận 1",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [
+        "Quận 1"
+      ],
+      "L4": [],
+      "L5": [
+        "Phạm Ngũ Lão"
+      ],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9973799228668213,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 39
+    }
+  },
+  {
+    "text": "Hai Bà Trưng40",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.588857630888621,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 40
+    }
+  },
+  {
+    "text": "Đa Kao, Hồ Chí Minh",
+    "result": {
+      "L1": [],
+      "L2": [
+        "Hồ Chí Minh"
+      ],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9526212334632873,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 41
+    }
+  },
+  {
+    "text": "Phường 16 Thành phố Hồ Chí Minh",
+    "result": {
+      "L1": [],
+      "L2": [
+        "Thành phố Hồ Chí Minh"
+      ],
+      "L3": [],
+      "L4": [
+        "Phường 16"
+      ],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9997114794594901,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 42
+    }
+  },
+  {
+    "text": "Hồ Chí Minh Bến Nghé",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Hồ Chí Minh Bến Nghé"
+      ]
+    },
+    "confidence": 0.8764147520065307,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 43
+    }
+  },
+  {
+    "text": "Nguyễn Thái BìnhQuận 1Đức Chính",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [
+        "1 Đức Chính"
+      ],
+      "L4": [],
+      "L5": [
+        "Nguyễn Thái BìnhQuận"
+      ],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9415660003821055,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 44
+    }
+  },
+  {
+    "text": "Ngô Văn Năm, Phường Bến Nghé",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [
+        "Phường Bến Nghé"
+      ],
+      "L5": [
+        "Ngô Văn Năm"
+      ],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9984241227308909,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 45
+    }
+  },
+  {
+    "text": "Quận 1, Nam Kỳ Khởi Nghĩa",
+    "result": {
+      "L1": [
+        "Nam Kỳ"
+      ],
+      "L2": [],
+      "L3": [
+        "Quận 1"
+      ],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.8366020023822784,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 46
+    }
+  },
+  {
+    "text": "Hồ Chí MinhQuận 1",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Hồ Chí MinhQuận"
+      ]
+    },
+    "confidence": 0.9872710555791855,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 47
+    }
+  },
+  {
+    "text": "Quận 1 Nguyễn Thái Bình",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Quận 1"
+      ]
+    },
+    "confidence": 0.8444636344909668,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 48
+    }
+  },
+  {
+    "text": "Bến NghéHuỳnh Thúc Kháng",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Bến NghéHuỳnh Thúc Kháng"
+      ]
+    },
+    "confidence": 0.9949936270713806,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 49
+    }
+  },
+  {
+    "text": "Hồ Chí Minh Quận 1",
+    "result": {
+      "L1": [],
+      "L2": [],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": [
+        "Hồ Chí Minh"
+      ]
+    },
+    "confidence": 0.9753062009811402,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 50
+    }
+  },
+  {
+    "text": "Thành phố Hà NộiHuyện Ứng Hòa",
+    "result": {
+      "L1": [],
+      "L2": [
+        "Thành phố Hà NộiHuyện"
+      ],
+      "L3": [],
+      "L4": [],
+      "L5": [],
+      "L6": [],
+      "L7": []
+    },
+    "confidence": 0.9558142820994059,
+    "source": {
+      "capture": "template.txt",
+      "endpoint": "/ner/predict-batch",
+      "batch_index": 51
+    }
+  }
+]

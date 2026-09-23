@@ -1,0 +1,872 @@
+{
+  "texts": [
+    "Thành phố Hồ Chí Minh",
+    "Phường Tân Định Quận 1",
+    "Bến NghéQuận 1",
+    "Hồ Chí Minh",
+    "74, Phường 12Nơ Trang Long",
+    "Nam Kỳ Khởi Nghĩa",
+    "Nguyễn Thị Minh Khai",
+    "Quận Hai Bà Trưng Đồng Nhân",
+    "Thành phố Hồ Chí Minh, Quận 1",
+    "Thành phố Hồ Chí MinhQuận 1",
+    "Nam Kỳ Khởi NghĩaBến NghéQuận 1",
+    "Hồ Chí Minh, Quận 1",
+    "234 Quận 1 Phạm Ngũ Lão",
+    "Thành phố Hà Nội",
+    "Nguyễn Tất Thành",
+    "Hồ Chí Minh Tân Phú",
+    "Bình ThạnhPhan Văn Trị94B",
+    "Quận 10, Đường Ba Tháng Hai",
+    "Nguyễn DuHồ Chí Minh Quận 1",
+    "Quận 1Bến Nghé",
+    "Đường Nguyễn Đình Chiểu",
+    "Quận 1",
+    "Nguyê<0303>n Huê<0323> Hồ Chí Minh Quận 1",
+    "Tôn Thất ĐàmHồ Chí Minh",
+    "Bình Thạnh Điện Biên Phủ",
+    "Quận 1Phường Nguyễn Cư Trinh",
+    "Ngô Văn NămBến Nghé",
+    "Bà Huyện Thanh QuanHồ Chí Minh",
+    "Bà Triệu",
+    "Bến Nghé Quận 1Hồ Chí Minh",
+    "Nguyễn Văn Cừ",
+    "Nguyễn Bỉnh Khiêm",
+    "Katinat Saigon - Phó Đức Chính",
+    "Phó Đức Chính",
+    "Hồ Chí Minh Gò Vấp, Phường 16",
+    "Quận 1Thành phố Hồ Chí Minh",
+    "Thành phố Hà NộiNguyễn Du",
+    "Hồ Chí MinhPhường Bến Nghé",
+    "Thành phố Hồ Chí Minh Phường 25",
+    "Phạm Ngũ Lão, Quận 1",
+    "Hai Bà Trưng40",
+    "Đa Kao, Hồ Chí Minh",
+    "Phường 16 Thành phố Hồ Chí Minh",
+    "Hồ Chí Minh Bến Nghé",
+    "Nguyễn Thái BìnhQuận 1Đức Chính",
+    "Ngô Văn Năm, Phường Bến Nghé",
+    "Quận 1, Nam Kỳ Khởi Nghĩa",
+    "Hồ Chí MinhQuận 1",
+    "Quận 1 Nguyễn Thái Bình",
+    "Bến NghéHuỳnh Thúc Kháng",
+    "Hồ Chí Minh Quận 1",
+    "Thành phố Hà NộiHuyện Ứng Hòa"
+  ],
+  "results": [
+    {
+      "result": {
+        "input": "Thành phố Hồ Chí Minh",
+        "L1": [],
+        "L2": [
+          "Thành phố Hồ Chí Minh"
+        ],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9971166133880616
+    },
+    {
+      "result": {
+        "input": "Phường Tân Định Quận 1",
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "Quận 1"
+        ],
+        "L4": [
+          "Phường Tân Định"
+        ],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9985444188117981
+    },
+    {
+      "result": {
+        "input": "Bến NghéQuận 1",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Bến NghéQuận"
+        ]
+      },
+      "confidence": 0.9833996891975403
+    },
+    {
+      "result": {
+        "input": "Hồ Chí Minh",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Hồ Chí Minh"
+        ]
+      },
+      "confidence": 0.9612401326497396
+    },
+    {
+      "result": {
+        "input": "74, Phường 12Nơ Trang Long",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [
+          "Phường 12"
+        ],
+        "L5": [],
+        "L6": [
+          "74"
+        ],
+        "L7": []
+      },
+      "confidence": 0.889177163441976
+    },
+    {
+      "result": {
+        "input": "Nam Kỳ Khởi Nghĩa",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.5619291166464487
+    },
+    {
+      "result": {
+        "input": "Nguyễn Thị Minh Khai",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.6596490144729614
+    },
+    {
+      "result": {
+        "input": "Quận Hai Bà Trưng Đồng Nhân",
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "Quận Hai Bà Trưng"
+        ],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.8179775923490524
+    },
+    {
+      "result": {
+        "input": "Thành phố Hồ Chí Minh, Quận 1",
+        "L1": [],
+        "L2": [
+          "Thành phố Hồ Chí Minh"
+        ],
+        "L3": [
+          "Quận 1"
+        ],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9997103384562901
+    },
+    {
+      "result": {
+        "input": "Thành phố Hồ Chí MinhQuận 1",
+        "L1": [],
+        "L2": [
+          "Thành phố Hồ Chí MinhQuận"
+        ],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9328697820504507
+    },
+    {
+      "result": {
+        "input": "Nam Kỳ Khởi NghĩaBến NghéQuận 1",
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "1"
+        ],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Nam",
+          "Khởi NghĩaBến NghéQuận"
+        ]
+      },
+      "confidence": 0.935291838645935
+    },
+    {
+      "result": {
+        "input": "Hồ Chí Minh, Quận 1",
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "Quận 1"
+        ],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Hồ Chí Minh"
+        ]
+      },
+      "confidence": 0.9662609219551086
+    },
+    {
+      "result": {
+        "input": "234 Quận 1 Phạm Ngũ Lão",
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "Quận 1"
+        ],
+        "L4": [],
+        "L5": [
+          "Phạm Ngũ Lão"
+        ],
+        "L6": [
+          "234"
+        ],
+        "L7": []
+      },
+      "confidence": 0.9971487720807394
+    },
+    {
+      "result": {
+        "input": "Thành phố Hà Nội",
+        "L1": [],
+        "L2": [
+          "Thành phố Hà Nội"
+        ],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9917144626379013
+    },
+    {
+      "result": {
+        "input": "Nguyễn Tất Thành",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Thành"
+        ]
+      },
+      "confidence": 0.6771079152822495
+    },
+    {
+      "result": {
+        "input": "Hồ Chí Minh Tân Phú",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Hồ Chí Minh Tân Phú"
+        ]
+      },
+      "confidence": 0.8358832597732544
+    },
+    {
+      "result": {
+        "input": "Bình ThạnhPhan Văn Trị94B",
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "Bình ThạnhPhan"
+        ],
+        "L4": [],
+        "L5": [
+          "Văn Trị"
+        ],
+        "L6": [
+          "94B"
+        ],
+        "L7": []
+      },
+      "confidence": 0.9955262422561646
+    },
+    {
+      "result": {
+        "input": "Quận 10, Đường Ba Tháng Hai",
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "Quận 10"
+        ],
+        "L4": [],
+        "L5": [
+          "Đường Ba Tháng Hai"
+        ],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9991743167241415
+    },
+    {
+      "result": {
+        "input": "Nguyễn DuHồ Chí Minh Quận 1",
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "Quận 1"
+        ],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.7988166858752569
+    },
+    {
+      "result": {
+        "input": "Quận 1Bến Nghé",
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "Quận 1",
+          "Bến Nghé"
+        ],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9832422584295273
+    },
+    {
+      "result": {
+        "input": "Đường Nguyễn Đình Chiểu",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [
+          "Đường Nguyễn Đình Chiểu"
+        ],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9995725005865097
+    },
+    {
+      "result": {
+        "input": "Quận 1",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.8588646948337555
+    },
+    {
+      "result": {
+        "input": "Nguyê<0303>n Huê<0323> Hồ Chí Minh Quận 1",
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "Quận 1"
+        ],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Nguyễn Huệ Hồ Chí"
+        ]
+      },
+      "confidence": 0.8458478876522609
+    },
+    {
+      "result": {
+        "input": "Tôn Thất ĐàmHồ Chí Minh",
+        "L1": [],
+        "L2": [
+          "Chí Minh"
+        ],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Tôn Thất ĐàmHồ"
+        ]
+      },
+      "confidence": 0.9993920445442199
+    },
+    {
+      "result": {
+        "input": "Bình Thạnh Điện Biên Phủ",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.7872143626213074
+    },
+    {
+      "result": {
+        "input": "Quận 1Phường Nguyễn Cư Trinh",
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "Quận 1"
+        ],
+        "L4": [
+          "Phường Nguyễn Cư Trinh"
+        ],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9950876931349436
+    },
+    {
+      "result": {
+        "input": "Ngô Văn NămBến Nghé",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Nghé"
+        ]
+      },
+      "confidence": 0.8265360295772552
+    },
+    {
+      "result": {
+        "input": "Bà Huyện Thanh QuanHồ Chí Minh",
+        "L1": [],
+        "L2": [
+          "QuanHồ Chí Minh"
+        ],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9241509437561035
+    },
+    {
+      "result": {
+        "input": "Bà Triệu",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0
+    },
+    {
+      "result": {
+        "input": "Bến Nghé Quận 1Hồ Chí Minh",
+        "L1": [],
+        "L2": [
+          "Hồ Chí Minh"
+        ],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Bến Nghé"
+        ]
+      },
+      "confidence": 0.9750285829816546
+    },
+    {
+      "result": {
+        "input": "Nguyễn Văn Cừ",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [
+          "Nguyễn Văn"
+        ],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9222398400306702
+    },
+    {
+      "result": {
+        "input": "Nguyễn Bỉnh Khiêm",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [
+          "Nguyễn Bỉnh Khiêm"
+        ],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9908963640530905
+    },
+    {
+      "result": {
+        "input": "Katinat Saigon - Phó Đức Chính",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Katinat Saigon - Phó Đức Chính"
+        ]
+      },
+      "confidence": 0.8944733937581381
+    },
+    {
+      "result": {
+        "input": "Phó Đức Chính",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Phó Đức Chính"
+        ]
+      },
+      "confidence": 0.9987365007400513
+    },
+    {
+      "result": {
+        "input": "Hồ Chí Minh Gò Vấp, Phường 16",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [
+          "Phường 16"
+        ],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Hồ Chí Minh Gò Vấp"
+        ]
+      },
+      "confidence": 0.9980161019733974
+    },
+    {
+      "result": {
+        "input": "Quận 1Thành phố Hồ Chí Minh",
+        "L1": [],
+        "L2": [
+          "Thành phố Hồ Chí Minh"
+        ],
+        "L3": [
+          "Quận 1"
+        ],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9968452709061759
+    },
+    {
+      "result": {
+        "input": "Thành phố Hà NộiNguyễn Du",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.928304386138916
+    },
+    {
+      "result": {
+        "input": "Hồ Chí MinhPhường Bến Nghé",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [
+          "Bến Nghé"
+        ],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Hồ"
+        ]
+      },
+      "confidence": 0.9453025579452514
+    },
+    {
+      "result": {
+        "input": "Thành phố Hồ Chí Minh Phường 25",
+        "L1": [],
+        "L2": [
+          "Thành phố Hồ Chí Minh"
+        ],
+        "L3": [],
+        "L4": [
+          "Phường 25"
+        ],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9961051855768476
+    },
+    {
+      "result": {
+        "input": "Phạm Ngũ Lão, Quận 1",
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "Quận 1"
+        ],
+        "L4": [],
+        "L5": [
+          "Phạm Ngũ Lão"
+        ],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9973799228668213
+    },
+    {
+      "result": {
+        "input": "Hai Bà Trưng40",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.588857630888621
+    },
+    {
+      "result": {
+        "input": "Đa Kao, Hồ Chí Minh",
+        "L1": [],
+        "L2": [
+          "Hồ Chí Minh"
+        ],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9526212334632873
+    },
+    {
+      "result": {
+        "input": "Phường 16 Thành phố Hồ Chí Minh",
+        "L1": [],
+        "L2": [
+          "Thành phố Hồ Chí Minh"
+        ],
+        "L3": [],
+        "L4": [
+          "Phường 16"
+        ],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9997114794594901
+    },
+    {
+      "result": {
+        "input": "Hồ Chí Minh Bến Nghé",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Hồ Chí Minh Bến Nghé"
+        ]
+      },
+      "confidence": 0.8764147520065307
+    },
+    {
+      "result": {
+        "input": "Nguyễn Thái BìnhQuận 1Đức Chính",
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "1 Đức Chính"
+        ],
+        "L4": [],
+        "L5": [
+          "Nguyễn Thái BìnhQuận"
+        ],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9415660003821055
+    },
+    {
+      "result": {
+        "input": "Ngô Văn Năm, Phường Bến Nghé",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [
+          "Phường Bến Nghé"
+        ],
+        "L5": [
+          "Ngô Văn Năm"
+        ],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9984241227308909
+    },
+    {
+      "result": {
+        "input": "Quận 1, Nam Kỳ Khởi Nghĩa",
+        "L1": [
+          "Nam Kỳ"
+        ],
+        "L2": [],
+        "L3": [
+          "Quận 1"
+        ],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.8366020023822784
+    },
+    {
+      "result": {
+        "input": "Hồ Chí MinhQuận 1",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Hồ Chí MinhQuận"
+        ]
+      },
+      "confidence": 0.9872710555791855
+    },
+    {
+      "result": {
+        "input": "Quận 1 Nguyễn Thái Bình",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Quận 1"
+        ]
+      },
+      "confidence": 0.8444636344909668
+    },
+    {
+      "result": {
+        "input": "Bến NghéHuỳnh Thúc Kháng",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Bến NghéHuỳnh Thúc Kháng"
+        ]
+      },
+      "confidence": 0.9949936270713806
+    },
+    {
+      "result": {
+        "input": "Hồ Chí Minh Quận 1",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Hồ Chí Minh"
+        ]
+      },
+      "confidence": 0.9753062009811402
+    },
+    {
+      "result": {
+        "input": "Thành phố Hà NộiHuyện Ứng Hòa",
+        "L1": [],
+        "L2": [
+          "Thành phố Hà NộiHuyện"
+        ],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      },
+      "confidence": 0.9558142820994059
+    }
+  ]
+}
