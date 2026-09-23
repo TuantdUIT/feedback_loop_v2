@@ -188,4 +188,4 @@ thì phản tác dụng với mục tiêu tiết kiệm RAM.
 
 *Nguồn dữ liệu thô: `models/testdata/test_v2/{full_50,partial_50}.md`, `models/testdata/test_v2/qwen.jsonl`,
 `models/testdata/phobert_vs_main_24.json`, `models/REPORT.md`. Script tái tạo: `scripts/layer1_adapter.py`,
-`scripts/report_test_v2.py`, `scripts/run_qwen_on_file.py`, `scripts/run_local_on_file.py`.*
+`scripts/report_test_v2.py`, `scripts/external_api/qwen/run_qwen_on_file.py`, `scripts/run_local_on_file.py`.*

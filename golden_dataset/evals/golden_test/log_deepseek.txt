@@ -1,0 +1,25 @@
+tong 20 dong | da co 0 | con 20
+model=deepseek-flash | max_tokens=12000 | toi da 3 lan thu | gia=khong dat, chi dem token
+    1/20  #0     3795 tok $0.00000   15.9s OK
+    2/20  #1     1854 tok $0.00000    6.9s OK
+    3/20  #2     2517 tok $0.00000    8.8s OK
+    4/20  #3     2019 tok $0.00000    6.9s OK
+    5/20  #4     4082 tok $0.00000   16.4s OK
+    6/20  #5     3950 tok $0.00000   16.1s OK
+    7/20  #6     1482 tok $0.00000    4.7s OK
+    8/20  #7     1118 tok $0.00000    3.7s OK
+    9/20  #8     1135 tok $0.00000    3.8s OK
+   10/20  #9     1281 tok $0.00000    4.2s OK
+   11/20  #10     854 tok $0.00000    3.6s OK
+   12/20  #11     839 tok $0.00000    3.7s OK
+   13/20  #12    1242 tok $0.00000    6.2s OK
+   14/20  #13     888 tok $0.00000    3.3s OK
+   15/20  #14    1638 tok $0.00000    7.8s OK
+   16/20  #15    1931 tok $0.00000    7.9s OK
+   17/20  #16     807 tok $0.00000    3.9s OK
+   18/20  #17    4940 tok $0.00000   22.0s OK
+   19/20  #18    6273 tok $0.00000   26.4s OK
+   20/20  #19    1856 tok $0.00000    7.5s OK
+
+=== 20 ban ghi | parse OK 20 | phai retry 0 | tong $0.00000 | tb $0.00000/dia chi ===
+    token vao: cache hit 259968, miss 116224 | ra 44501 (suy luan 39673)

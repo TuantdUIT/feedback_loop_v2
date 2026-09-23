@@ -125,8 +125,9 @@ def evaluate(rows: list[dict]) -> dict:
             per_level[lv][1] += c
         for (lv, _), c in g.items():
             per_level[lv][2] += c
+    # node lấy theo dữ liệu: PhoBERT có tokenize/inference/adapter/total, LLM qua API chỉ có total
     lat = {node: latency_stats([r["latency_ms"][node] for r in rows])
-           for node in ("tokenize", "inference", "adapter", "total")}
+           for node in rows[0]["latency_ms"]}
     return {
         "n": len(rows),
         "accuracy": exact / len(rows),

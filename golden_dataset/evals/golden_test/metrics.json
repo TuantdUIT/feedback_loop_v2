@@ -1,0 +1,472 @@
+{
+  "dataset": {
+    "file": "golden_test.json",
+    "seed": 42,
+    "n": 20,
+    "subsets": {
+      "full": 10,
+      "uncomplete": 10
+    }
+  },
+  "models": {
+    "qwen": {
+      "model": "qwen/qwen3.6-35b-a3b",
+      "parse_ok": 20,
+      "retried": 3,
+      "results": {
+        "all": {
+          "n": 20,
+          "accuracy": 0.9,
+          "exact_match": 18,
+          "micro": {
+            "precision": 0.9594594594594594,
+            "recall": 0.9594594594594594,
+            "f1": 0.9594594594594594,
+            "tp": 71,
+            "n_pred": 74,
+            "n_gold": 74
+          },
+          "per_level": {
+            "L1": {
+              "precision": 0.5,
+              "recall": 1.0,
+              "f1": 0.6666666666666666,
+              "tp": 1,
+              "n_pred": 2,
+              "n_gold": 1
+            },
+            "L2": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 10,
+              "n_pred": 10,
+              "n_gold": 10
+            },
+            "L3": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 7,
+              "n_pred": 7,
+              "n_gold": 7
+            },
+            "L4": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 16,
+              "n_pred": 16,
+              "n_gold": 16
+            },
+            "L5": {
+              "precision": 1.0,
+              "recall": 0.9375,
+              "f1": 0.967741935483871,
+              "tp": 15,
+              "n_pred": 15,
+              "n_gold": 16
+            },
+            "L6": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 16,
+              "n_pred": 16,
+              "n_gold": 16
+            },
+            "L7": {
+              "precision": 0.75,
+              "recall": 0.75,
+              "f1": 0.75,
+              "tp": 6,
+              "n_pred": 8,
+              "n_gold": 8
+            }
+          },
+          "latency_ms": {
+            "total": {
+              "mean": 111387.0,
+              "p50": 51700.0,
+              "p95": 564400.0,
+              "max": 654530.0
+            }
+          }
+        },
+        "full": {
+          "n": 10,
+          "accuracy": 0.8,
+          "exact_match": 8,
+          "micro": {
+            "precision": 0.9375,
+            "recall": 0.9375,
+            "f1": 0.9375,
+            "tp": 45,
+            "n_pred": 48,
+            "n_gold": 48
+          },
+          "per_level": {
+            "L1": {
+              "precision": 0.5,
+              "recall": 1.0,
+              "f1": 0.6666666666666666,
+              "tp": 1,
+              "n_pred": 2,
+              "n_gold": 1
+            },
+            "L2": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 10,
+              "n_pred": 10,
+              "n_gold": 10
+            },
+            "L3": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 7,
+              "n_pred": 7,
+              "n_gold": 7
+            },
+            "L4": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 10,
+              "n_pred": 10,
+              "n_gold": 10
+            },
+            "L5": {
+              "precision": 1.0,
+              "recall": 0.8888888888888888,
+              "f1": 0.9411764705882353,
+              "tp": 8,
+              "n_pred": 8,
+              "n_gold": 9
+            },
+            "L6": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 6,
+              "n_pred": 6,
+              "n_gold": 6
+            },
+            "L7": {
+              "precision": 0.6,
+              "recall": 0.6,
+              "f1": 0.6,
+              "tp": 3,
+              "n_pred": 5,
+              "n_gold": 5
+            }
+          },
+          "latency_ms": {
+            "total": {
+              "mean": 168306.0,
+              "p50": 69550.0,
+              "p95": 654530.0,
+              "max": 654530.0
+            }
+          }
+        },
+        "uncomplete": {
+          "n": 10,
+          "accuracy": 1.0,
+          "exact_match": 10,
+          "micro": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 26,
+            "n_pred": 26,
+            "n_gold": 26
+          },
+          "per_level": {
+            "L4": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 6,
+              "n_pred": 6,
+              "n_gold": 6
+            },
+            "L5": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 7,
+              "n_pred": 7,
+              "n_gold": 7
+            },
+            "L6": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 10,
+              "n_pred": 10,
+              "n_gold": 10
+            },
+            "L7": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 3,
+              "n_pred": 3,
+              "n_gold": 3
+            }
+          },
+          "latency_ms": {
+            "total": {
+              "mean": 54468.0,
+              "p50": 47060.0,
+              "p95": 185020.0,
+              "max": 185020.0
+            }
+          }
+        }
+      },
+      "cost": {
+        "total_usd": 0.15613104875,
+        "source": "OpenRouter usage.cost",
+        "prompt_tokens": 299494,
+        "completion_tokens": 105060,
+        "reasoning_tokens": 87025,
+        "per_sample_usd": 0.0078065524375
+      }
+    },
+    "deepseek": {
+      "model": "deepseek-flash",
+      "parse_ok": 20,
+      "retried": 0,
+      "results": {
+        "all": {
+          "n": 20,
+          "accuracy": 0.95,
+          "exact_match": 19,
+          "micro": {
+            "precision": 1.0,
+            "recall": 0.9864864864864865,
+            "f1": 0.9931972789115647,
+            "tp": 73,
+            "n_pred": 73,
+            "n_gold": 74
+          },
+          "per_level": {
+            "L1": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 1,
+              "n_pred": 1,
+              "n_gold": 1
+            },
+            "L2": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 10,
+              "n_pred": 10,
+              "n_gold": 10
+            },
+            "L3": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 7,
+              "n_pred": 7,
+              "n_gold": 7
+            },
+            "L4": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 16,
+              "n_pred": 16,
+              "n_gold": 16
+            },
+            "L5": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 16,
+              "n_pred": 16,
+              "n_gold": 16
+            },
+            "L6": {
+              "precision": 1.0,
+              "recall": 0.9375,
+              "f1": 0.967741935483871,
+              "tp": 15,
+              "n_pred": 15,
+              "n_gold": 16
+            },
+            "L7": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 8,
+              "n_pred": 8,
+              "n_gold": 8
+            }
+          },
+          "latency_ms": {
+            "total": {
+              "mean": 8975.5,
+              "p50": 6900.0,
+              "p95": 22000.0,
+              "max": 26380.0
+            }
+          }
+        },
+        "full": {
+          "n": 10,
+          "accuracy": 1.0,
+          "exact_match": 10,
+          "micro": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 48,
+            "n_pred": 48,
+            "n_gold": 48
+          },
+          "per_level": {
+            "L1": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 1,
+              "n_pred": 1,
+              "n_gold": 1
+            },
+            "L2": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 10,
+              "n_pred": 10,
+              "n_gold": 10
+            },
+            "L3": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 7,
+              "n_pred": 7,
+              "n_gold": 7
+            },
+            "L4": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 10,
+              "n_pred": 10,
+              "n_gold": 10
+            },
+            "L5": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 9,
+              "n_pred": 9,
+              "n_gold": 9
+            },
+            "L6": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 6,
+              "n_pred": 6,
+              "n_gold": 6
+            },
+            "L7": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 5,
+              "n_pred": 5,
+              "n_gold": 5
+            }
+          },
+          "latency_ms": {
+            "total": {
+              "mean": 8731.0,
+              "p50": 6900.0,
+              "p95": 16400.0,
+              "max": 16400.0
+            }
+          }
+        },
+        "uncomplete": {
+          "n": 10,
+          "accuracy": 0.9,
+          "exact_match": 9,
+          "micro": {
+            "precision": 1.0,
+            "recall": 0.9615384615384616,
+            "f1": 0.9803921568627451,
+            "tp": 25,
+            "n_pred": 25,
+            "n_gold": 26
+          },
+          "per_level": {
+            "L4": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 6,
+              "n_pred": 6,
+              "n_gold": 6
+            },
+            "L5": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 7,
+              "n_pred": 7,
+              "n_gold": 7
+            },
+            "L6": {
+              "precision": 1.0,
+              "recall": 0.9,
+              "f1": 0.9473684210526316,
+              "tp": 9,
+              "n_pred": 9,
+              "n_gold": 10
+            },
+            "L7": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 3,
+              "n_pred": 3,
+              "n_gold": 3
+            }
+          },
+          "latency_ms": {
+            "total": {
+              "mean": 9220.0,
+              "p50": 7510.0,
+              "p95": 26380.0,
+              "max": 26380.0
+            }
+          }
+        }
+      },
+      "cost": {
+        "total_usd": 0.044914104,
+        "source": "tính từ token × giá deepseek-flash (thấp điểm {'miss': 0.15, 'hit': 0.003, 'out': 0.6}, cao điểm ×2)",
+        "billed_calls": 20,
+        "peak_calls": 0,
+        "prompt_cache_hit_tokens": 259968,
+        "prompt_cache_miss_tokens": 116224,
+        "completion_tokens": 44501,
+        "reasoning_tokens": 39673,
+        "per_sample_usd": 0.0022457052000000003
+      }
+    }
+  }
+}

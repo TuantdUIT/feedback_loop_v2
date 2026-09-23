@@ -1,0 +1,517 @@
+{
+  "seed": 42,
+  "texts": [
+    "39/29 trầnnguyênhãn, Phường An Bình, Đồng Tháp",
+    "ngõ 535 Đường Lạc Long Quân, Phường Cửa Nam, TP. Hà Nội, Việt Nam",
+    "dự án bella vista city, đường quốc lộ 22, xã an phú trung, củ chi, hồ chí minh",
+    "dự án him lam chợ lớn hậu giang phường 11 quận 6 hồ chí minh",
+    "dự án làng sen việt nam xã đức hoà đông, đường tỉnh lộ 10 đức hòa long an",
+    "16 ngõ 72 phường khương trung, hà nội",
+    "08 đường sông thao phường 12, tân bình, hồ chí minh",
+    "1436 Trịnh Quang Nghị Phường 7 Quận 8 Thành Phố Hồ Chí Minh",
+    "Thành An Tower Đường Lê Văn Lương Nhân Chính Thanh Xuân Hà Nội",
+    "chợ hàn, 119 trần phú, phường hải châu 1, quận hải châu, đà nẵng",
+    "39/29 trầnnguyênhãn, Phườn",
+    "457 ĐƯỜNG LÊ LỢI, PHƯỜNG BẾN NGH",
+    "191/5",
+    "197E Đường Đặng Thùy Trâm, Phường 1",
+    "258 Đường Lê Quang Định phư",
+    "257 nguyễn trãi phường nguyễn c",
+    "290 An Dương Vương, Phường",
+    "trường đại học kinh tế quốc dân 2",
+    "chợ hàn, 119",
+    "88 Nguyễn Hữu Huân, Quán cà phê Góc Nhỏ"
+  ],
+  "results": [
+    {
+      "result": {
+        "input": "39/29 trầnnguyênhãn, Phường An Bình, Đồng Tháp",
+        "L1": [],
+        "L2": [
+          "Đồng Tháp"
+        ],
+        "L3": [],
+        "L4": [
+          "Phường An Bình"
+        ],
+        "L5": [
+          "trầnnguyênhãn"
+        ],
+        "L6": [
+          "39/29"
+        ],
+        "L7": []
+      }
+    },
+    {
+      "result": {
+        "input": "ngõ 535 Đường Lạc Long Quân, Phường Cửa Nam, TP. Hà Nội, Việt Nam",
+        "L1": [
+          "Việt Nam"
+        ],
+        "L2": [
+          "TP. Hà Nội"
+        ],
+        "L3": [],
+        "L4": [
+          "Phường Cửa Nam"
+        ],
+        "L5": [
+          "Đường Lạc Long Quân"
+        ],
+        "L6": [
+          "ngõ 535"
+        ],
+        "L7": []
+      }
+    },
+    {
+      "result": {
+        "input": "dự án bella vista city, đường quốc lộ 22, xã an phú trung, củ chi, hồ chí minh",
+        "L1": [],
+        "L2": [
+          "hồ chí minh"
+        ],
+        "L3": [
+          "củ chi"
+        ],
+        "L4": [
+          "xã an phú trung"
+        ],
+        "L5": [
+          "đường quốc lộ 22"
+        ],
+        "L6": [],
+        "L7": [
+          "dự án bella vista city"
+        ]
+      }
+    },
+    {
+      "result": {
+        "input": "dự án him lam chợ lớn hậu giang phường 11 quận 6 hồ chí minh",
+        "L1": [],
+        "L2": [
+          "hồ chí minh"
+        ],
+        "L3": [
+          "quận 6"
+        ],
+        "L4": [
+          "phường 11"
+        ],
+        "L5": [
+          "hậu giang"
+        ],
+        "L6": [],
+        "L7": [
+          "dự án him lam chợ lớn"
+        ]
+      }
+    },
+    {
+      "result": {
+        "input": "dự án làng sen việt nam xã đức hoà đông, đường tỉnh lộ 10 đức hòa long an",
+        "L1": [],
+        "L2": [
+          "long an"
+        ],
+        "L3": [
+          "đức hòa"
+        ],
+        "L4": [
+          "xã đức hoà đông"
+        ],
+        "L5": [
+          "đường tỉnh lộ 10"
+        ],
+        "L6": [],
+        "L7": [
+          "dự án làng sen việt nam"
+        ]
+      }
+    },
+    {
+      "result": {
+        "input": "16 ngõ 72 phường khương trung, hà nội",
+        "L1": [],
+        "L2": [
+          "hà nội"
+        ],
+        "L3": [],
+        "L4": [
+          "phường khương trung"
+        ],
+        "L5": [],
+        "L6": [
+          "16 ngõ 72"
+        ],
+        "L7": []
+      }
+    },
+    {
+      "result": {
+        "input": "08 đường sông thao phường 12, tân bình, hồ chí minh",
+        "L1": [],
+        "L2": [
+          "hồ chí minh"
+        ],
+        "L3": [
+          "tân bình"
+        ],
+        "L4": [
+          "phường 12"
+        ],
+        "L5": [
+          "đường sông thao"
+        ],
+        "L6": [
+          "08"
+        ],
+        "L7": []
+      }
+    },
+    {
+      "result": {
+        "input": "1436 Trịnh Quang Nghị Phường 7 Quận 8 Thành Phố Hồ Chí Minh",
+        "L1": [],
+        "L2": [
+          "Thành Phố Hồ Chí Minh"
+        ],
+        "L3": [
+          "Quận 8"
+        ],
+        "L4": [
+          "Phường 7"
+        ],
+        "L5": [
+          "Trịnh Quang Nghị"
+        ],
+        "L6": [
+          "1436"
+        ],
+        "L7": []
+      }
+    },
+    {
+      "result": {
+        "input": "Thành An Tower Đường Lê Văn Lương Nhân Chính Thanh Xuân Hà Nội",
+        "L1": [],
+        "L2": [
+          "Hà Nội"
+        ],
+        "L3": [
+          "Thanh Xuân"
+        ],
+        "L4": [
+          "Nhân Chính"
+        ],
+        "L5": [
+          "Đường Lê Văn Lương"
+        ],
+        "L6": [],
+        "L7": [
+          "Thành An Tower"
+        ]
+      }
+    },
+    {
+      "result": {
+        "input": "chợ hàn, 119 trần phú, phường hải châu 1, quận hải châu, đà nẵng",
+        "L1": [],
+        "L2": [
+          "đà nẵng"
+        ],
+        "L3": [
+          "quận hải châu"
+        ],
+        "L4": [
+          "phường hải châu 1"
+        ],
+        "L5": [
+          "trần phú"
+        ],
+        "L6": [
+          "119"
+        ],
+        "L7": [
+          "chợ hàn"
+        ]
+      }
+    },
+    {
+      "result": {
+        "input": "39/29 trầnnguyênhãn, Phườn",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [
+          "Phườn"
+        ],
+        "L5": [
+          "trầnnguyênhãn"
+        ],
+        "L6": [
+          "39/29"
+        ],
+        "L7": []
+      }
+    },
+    {
+      "result": {
+        "input": "457 ĐƯỜNG LÊ LỢI, PHƯỜNG BẾN NGH",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [
+          "PHƯỜNG BẾN NGH"
+        ],
+        "L5": [
+          "ĐƯỜNG LÊ LỢI"
+        ],
+        "L6": [
+          "457"
+        ],
+        "L7": []
+      }
+    },
+    {
+      "result": {
+        "input": "191/5",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [
+          "191/5"
+        ],
+        "L7": []
+      }
+    },
+    {
+      "result": {
+        "input": "197E Đường Đặng Thùy Trâm, Phường 1",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [
+          "Phường 1"
+        ],
+        "L5": [
+          "Đường Đặng Thùy Trâm"
+        ],
+        "L6": [
+          "197E"
+        ],
+        "L7": []
+      }
+    },
+    {
+      "result": {
+        "input": "258 Đường Lê Quang Định phư",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [
+          "phư"
+        ],
+        "L5": [
+          "Đường Lê Quang Định"
+        ],
+        "L6": [
+          "258"
+        ],
+        "L7": []
+      }
+    },
+    {
+      "result": {
+        "input": "257 nguyễn trãi phường nguyễn c",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [
+          "phường nguyễn c"
+        ],
+        "L5": [
+          "nguyễn trãi"
+        ],
+        "L6": [
+          "257"
+        ],
+        "L7": []
+      }
+    },
+    {
+      "result": {
+        "input": "290 An Dương Vương, Phường",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [
+          "Phường"
+        ],
+        "L5": [
+          "An Dương Vương"
+        ],
+        "L6": [
+          "290"
+        ],
+        "L7": []
+      }
+    },
+    {
+      "result": {
+        "input": "trường đại học kinh tế quốc dân 2",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [
+          "2"
+        ],
+        "L7": [
+          "trường đại học kinh tế quốc dân"
+        ]
+      }
+    },
+    {
+      "result": {
+        "input": "chợ hàn, 119",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [
+          "119"
+        ],
+        "L7": [
+          "chợ hàn"
+        ]
+      }
+    },
+    {
+      "result": {
+        "input": "88 Nguyễn Hữu Huân, Quán cà phê Góc Nhỏ",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [
+          "Nguyễn Hữu Huân"
+        ],
+        "L6": [
+          "88"
+        ],
+        "L7": [
+          "Quán cà phê Góc Nhỏ"
+        ]
+      }
+    }
+  ],
+  "sources": [
+    {
+      "subset": "full",
+      "file": "golden_full.json",
+      "index": 6
+    },
+    {
+      "subset": "full",
+      "file": "golden_full.json",
+      "index": 22
+    },
+    {
+      "subset": "full",
+      "file": "golden_full.json",
+      "index": 26
+    },
+    {
+      "subset": "full",
+      "file": "golden_full.json",
+      "index": 28
+    },
+    {
+      "subset": "full",
+      "file": "golden_full.json",
+      "index": 35
+    },
+    {
+      "subset": "full",
+      "file": "golden_full.json",
+      "index": 57
+    },
+    {
+      "subset": "full",
+      "file": "golden_full.json",
+      "index": 62
+    },
+    {
+      "subset": "full",
+      "file": "golden_full.json",
+      "index": 70
+    },
+    {
+      "subset": "full",
+      "file": "golden_full.json",
+      "index": 108
+    },
+    {
+      "subset": "full",
+      "file": "golden_full.json",
+      "index": 139
+    },
+    {
+      "subset": "uncomplete",
+      "file": "golden_uncomplete.json",
+      "index": 27
+    },
+    {
+      "subset": "uncomplete",
+      "file": "golden_uncomplete.json",
+      "index": 30
+    },
+    {
+      "subset": "uncomplete",
+      "file": "golden_uncomplete.json",
+      "index": 32
+    },
+    {
+      "subset": "uncomplete",
+      "file": "golden_uncomplete.json",
+      "index": 95
+    },
+    {
+      "subset": "uncomplete",
+      "file": "golden_uncomplete.json",
+      "index": 203
+    },
+    {
+      "subset": "uncomplete",
+      "file": "golden_uncomplete.json",
+      "index": 223
+    },
+    {
+      "subset": "uncomplete",
+      "file": "golden_uncomplete.json",
+      "index": 238
+    },
+    {
+      "subset": "uncomplete",
+      "file": "golden_uncomplete.json",
+      "index": 517
+    },
+    {
+      "subset": "uncomplete",
+      "file": "golden_uncomplete.json",
+      "index": 558
+    },
+    {
+      "subset": "uncomplete",
+      "file": "golden_uncomplete.json",
+      "index": 574
+    }
+  ]
+}

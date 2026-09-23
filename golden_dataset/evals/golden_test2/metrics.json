@@ -1,0 +1,244 @@
+{
+  "dataset": {
+    "file": "golden_test2.json",
+    "seed": 43,
+    "n": 100,
+    "subsets": {
+      "full": 50,
+      "uncomplete": 50
+    }
+  },
+  "models": {
+    "deepseek": {
+      "model": "deepseek-flash",
+      "parse_ok": 100,
+      "retried": 0,
+      "results": {
+        "all": {
+          "n": 100,
+          "accuracy": 0.84,
+          "exact_match": 84,
+          "micro": {
+            "precision": 0.9674267100977199,
+            "recall": 0.939873417721519,
+            "f1": 0.9534510433386837,
+            "tp": 297,
+            "n_pred": 307,
+            "n_gold": 316
+          },
+          "per_level": {
+            "L1": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 1,
+              "n_pred": 1,
+              "n_gold": 1
+            },
+            "L2": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 44,
+              "n_pred": 44,
+              "n_gold": 44
+            },
+            "L3": {
+              "precision": 1.0,
+              "recall": 0.98,
+              "f1": 0.98989898989899,
+              "tp": 49,
+              "n_pred": 49,
+              "n_gold": 50
+            },
+            "L4": {
+              "precision": 0.98,
+              "recall": 0.98,
+              "f1": 0.98,
+              "tp": 49,
+              "n_pred": 50,
+              "n_gold": 50
+            },
+            "L5": {
+              "precision": 0.9701492537313433,
+              "recall": 0.9848484848484849,
+              "f1": 0.9774436090225564,
+              "tp": 65,
+              "n_pred": 67,
+              "n_gold": 66
+            },
+            "L6": {
+              "precision": 0.9791666666666666,
+              "recall": 0.8867924528301887,
+              "f1": 0.9306930693069307,
+              "tp": 47,
+              "n_pred": 48,
+              "n_gold": 53
+            },
+            "L7": {
+              "precision": 0.875,
+              "recall": 0.8076923076923077,
+              "f1": 0.8400000000000001,
+              "tp": 42,
+              "n_pred": 48,
+              "n_gold": 52
+            }
+          },
+          "latency_ms": {
+            "total": {
+              "mean": 9143.3,
+              "p50": 8470.0,
+              "p95": 18890.0,
+              "max": 26910.0
+            }
+          }
+        },
+        "full": {
+          "n": 50,
+          "accuracy": 0.96,
+          "exact_match": 48,
+          "micro": {
+            "precision": 0.9913793103448276,
+            "recall": 0.9829059829059829,
+            "f1": 0.9871244635193134,
+            "tp": 230,
+            "n_pred": 232,
+            "n_gold": 234
+          },
+          "per_level": {
+            "L1": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 1,
+              "n_pred": 1,
+              "n_gold": 1
+            },
+            "L2": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 44,
+              "n_pred": 44,
+              "n_gold": 44
+            },
+            "L3": {
+              "precision": 1.0,
+              "recall": 0.98,
+              "f1": 0.98989898989899,
+              "tp": 49,
+              "n_pred": 49,
+              "n_gold": 50
+            },
+            "L4": {
+              "precision": 0.975,
+              "recall": 0.975,
+              "f1": 0.975,
+              "tp": 39,
+              "n_pred": 40,
+              "n_gold": 40
+            },
+            "L5": {
+              "precision": 1.0,
+              "recall": 0.9772727272727273,
+              "f1": 0.9885057471264368,
+              "tp": 43,
+              "n_pred": 43,
+              "n_gold": 44
+            },
+            "L6": {
+              "precision": 0.9666666666666667,
+              "recall": 0.9666666666666667,
+              "f1": 0.9666666666666667,
+              "tp": 29,
+              "n_pred": 30,
+              "n_gold": 30
+            },
+            "L7": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 25,
+              "n_pred": 25,
+              "n_gold": 25
+            }
+          },
+          "latency_ms": {
+            "total": {
+              "mean": 9702.8,
+              "p50": 9260.0,
+              "p95": 15050.0,
+              "max": 21750.0
+            }
+          }
+        },
+        "uncomplete": {
+          "n": 50,
+          "accuracy": 0.72,
+          "exact_match": 36,
+          "micro": {
+            "precision": 0.8933333333333333,
+            "recall": 0.8170731707317073,
+            "f1": 0.8535031847133757,
+            "tp": 67,
+            "n_pred": 75,
+            "n_gold": 82
+          },
+          "per_level": {
+            "L4": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "tp": 10,
+              "n_pred": 10,
+              "n_gold": 10
+            },
+            "L5": {
+              "precision": 0.9166666666666666,
+              "recall": 1.0,
+              "f1": 0.9565217391304348,
+              "tp": 22,
+              "n_pred": 24,
+              "n_gold": 22
+            },
+            "L6": {
+              "precision": 1.0,
+              "recall": 0.782608695652174,
+              "f1": 0.878048780487805,
+              "tp": 18,
+              "n_pred": 18,
+              "n_gold": 23
+            },
+            "L7": {
+              "precision": 0.7391304347826086,
+              "recall": 0.6296296296296297,
+              "f1": 0.68,
+              "tp": 17,
+              "n_pred": 23,
+              "n_gold": 27
+            }
+          },
+          "latency_ms": {
+            "total": {
+              "mean": 8583.8,
+              "p50": 6680.0,
+              "p95": 20190.0,
+              "max": 26910.0
+            }
+          }
+        }
+      },
+      "cost": {
+        "total_usd": 0.14941312799999995,
+        "source": "tính từ token × giá deepseek-flash (thấp điểm {'miss': 0.15, 'hit': 0.003, 'out': 0.6}, cao điểm ×2)",
+        "billed_calls": 100,
+        "peak_calls": 0,
+        "prompt_cache_hit_tokens": 1858176,
+        "prompt_cache_miss_tokens": 22564,
+        "completion_tokens": 234090,
+        "reasoning_tokens": 214184,
+        "per_sample_usd": 0.0014941312799999994
+      }
+    }
+  }
+}

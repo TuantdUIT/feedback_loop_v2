@@ -1,7 +1,7 @@
 """Chay qwen qua OpenRouter tren mot file text (moi dong mot dia chi).
 Ghi tung dong vao .jsonl, chay lai duoc tu cho dang do.
 
-Dung: python scripts/run_qwen_on_file.py <input.txt> <output.jsonl> [workers]
+Dung: python scripts/external_api/qwen/run_qwen_on_file.py <input.txt> <output.jsonl> [workers]
 
 Bon bien phap chong ket vong lap suy luan (do tren 100 mau test_v2):
   1. reasoning.max_tokens = 10000  — mau thanh cong reasoning max 7.733,
