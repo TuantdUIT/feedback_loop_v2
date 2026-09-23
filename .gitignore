@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .venv/
+.venv-layer1/
 venv/
 
 # Bí mật
@@ -16,3 +17,7 @@ feedback/store/human_queue/*
 
 # Prompt đã build — sinh lại được từ module nguồn
 prompt/v2/compiled/
+
+# Model và cache Hugging Face cho bước chuẩn bị Lớp 1
+models/
+.hf-cache/

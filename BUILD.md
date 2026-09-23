@@ -17,7 +17,7 @@ Dự án hiện có một ML pipeline NER địa chỉ tiếng Việt, gán nhã
 | Tầng | Công cụ | Vai trò | Tối ưu cho |
 |---|---|---|---|
 | Lớp 0 | Python thuần, không LLM | Bắt lỗi hình thức (offset, BIO, enum) | Chi phí 0 |
-| Lớp 1 | SLM | **Detector** — phát hiện nghi ngờ + parse lại | **Recall cao** |
+| Lớp 1 | Model NER chuyên dụng (PhoBERT, local) | **Detector** — parse độc lập rồi so bất đồng | **Recall cao** |
 | Lớp 2 | DeepSeek | **Comparator** — chấm điểm parse cũ vs mới | Precision |
 | Lớp 3 | OpenAI | **Arbiter** — chốt / viết lại / đẩy cho người | Đúng tuyệt đối |
 
@@ -31,13 +31,29 @@ Những điểm sau đã được thống nhất. Nếu thấy có lý do kỹ t
 
 1. **Bộ nhãn BIO là hệ L, không phải tên loại thực thể.** Chỉ dùng `O`, `B-L1`…`B-L7`, `I-L1`…`I-L7`. Không có `B-STREET`, không có bảng map 2 chiều, không có module convert nhãn. Tên loại thực thể (COUNTRY, PROVINCE_OR_CITY, DISTRICT, WARD, STREET, HOUSE_NUMBER, POI) chỉ là bước suy luận trung gian mô tả ở `prompt/v2/02_label_definitions.txt` §2.0 — không bao giờ xuất hiện trong dữ liệu.
 
-2. **Một nguồn sự thật duy nhất về lý thuyết BIO.** Cả 3 lớp LLM đều nạp `prompt/v2/compiled/system_prompt_v2_with_partial_input.txt`. Không sao chép, không viết lại, không tóm tắt phần lý thuyết đó vào `feedback/prompts/`. File trong `feedback/prompts/` chỉ chứa phần *nhiệm vụ riêng của từng lớp* và được nối vào sau prompt lõi lúc runtime.
+2. **Một nguồn sự thật duy nhất về lý thuyết BIO.** Lớp 2 và Lớp 3 đều nạp `prompt/v2/compiled/system_prompt_v2_with_partial_input.txt`. Không sao chép, không viết lại, không tóm tắt phần lý thuyết đó vào `feedback/prompts/`. File trong `feedback/prompts/` chỉ chứa phần *nhiệm vụ riêng của từng lớp* và được nối vào sau prompt lõi lúc runtime.
+
+   Lớp 1 KHÔNG dùng prompt — nó là model NER chạy local, xem quyết định 7.
 
 3. **Không sửa file trong `compiled/`.** Muốn đổi lý thuyết BIO thì sửa module nguồn `prompt/v2/0X_*.txt` rồi chạy lại `python build.py --with-partial-input`.
 
 4. **Lớp 0 chạy trước và chạy lại sau Lớp 3.** Lớp 3 là LLM, vẫn có thể trả offset sai; output của nó phải qua validator lần nữa.
 
 5. **Mọi ngưỡng nằm trong `config/thresholds.yaml`**, không hardcode trong code. Ngưỡng sẽ được calibrate bằng dữ liệu, sẽ thay đổi nhiều lần.
+
+7. **Lớp 1 là model NER chuyên dụng chạy local, không phải SLM qua API.** Quyết định đổi ngày 2026-09-23 sau khi đo `kiendt/phobert-ner-address` (xem `BUILD_LAYER1_MODEL.md` và `models/REPORT.md`). Hệ quả: Lớp 1 không nạp prompt, không cần constrained decoding, không cần mẹo self-consistency k lần — độ tự tin lấy thẳng từ xác suất softmax. Lớp 1 **không còn phụ thuộc Bước 6** (`llm_client.py`); file đó giờ chỉ là tiền đề của Bước 8–9.
+
+8. **Output của Lớp 1 phải qua bước chuẩn hoá schema trước khi so sánh.** Model NER dùng lược đồ nhãn KHÁC với L1–L7: nó tách tiền tố thành nhãn `*_TYPE` riêng, trong khi `03_boundary_and_bio.txt` §3.1 quy định tiền tố THUỘC thực thể.
+
+   ```
+   "đường phùng hưng"
+   Model chính : đường=B-L5     | phùng=I-L5   | hưng=I-L5
+   PhoBERT     : đường=STREET_TYPE | phùng=B_STREET | hưng=I_STREET
+   ```
+
+   **Quy tắc gộp bắt buộc:** token `X_TYPE` đứng ngay trước `B_X` cùng loại thì `X_TYPE` trở thành điểm bắt đầu span, `B_X` hạ xuống `I_X`. `X_TYPE` đứng trơ trọi (không có `B_X` theo sau) vẫn là một span — khớp với §3.5 về tiền tố cuối chuỗi bị cắt dở.
+
+   Đo trên 24 bản ghi `output_model.json`: không gộp thì khớp 34/69 span (49,3%), có gộp thì 53/69 (76,8%) — quy tắc này cứu 19 span. **Bỏ qua nó sẽ khiến mọi địa chỉ có tiền tố bị báo bất đồng giả.**
 
 6. **`compiled/` KHÔNG được commit; thay vào đó mọi output phải đóng dấu `prompt_sha`.** `build.py` là phép nối deterministic (đã kiểm chứng: build 2 lần cho cùng sha256), nên lịch sử git của 9 module nguồn đã đủ để tái tạo chính xác prompt tại bất kỳ commit nào — commit thêm file compiled chỉ tạo ra nguồn sự thật thứ hai phải giữ đồng bộ. Khả năng truy vết đến từ `_meta.prompt_sha` trong file kết quả, xem §5.8.
 
@@ -81,11 +97,6 @@ prompt/v2/compiled/
 Tạo `.env.example` ở project root (file này **được** commit, làm tài liệu):
 
 ```dotenv
-# Lớp 1 — SLM (local hoặc endpoint tự host)
-SLM_BASE_URL=http://localhost:8000/v1
-SLM_API_KEY=
-SLM_MODEL=
-
 # Lớp 2 — DeepSeek
 DEEPSEEK_BASE_URL=
 DEEPSEEK_API_KEY=
@@ -136,7 +147,6 @@ feedback_loop_v2/
     │   └── thresholds.yaml               mọi ngưỡng gate
     │
     ├── prompts/
-    │   ├── l1_detector.txt               nhiệm vụ riêng của Lớp 1
     │   ├── l2_judge.txt                  rubric chấm A/B của Lớp 2
     │   └── l3_arbiter.txt                nhiệm vụ chốt của Lớp 3
     │
@@ -153,7 +163,7 @@ feedback_loop_v2/
     ├── layers/
     │   ├── __init__.py
     │   ├── layer0_validator.py
-    │   ├── layer1_slm.py
+    │   ├── layer1_ner.py
     │   ├── layer2_judge.py
     │   └── layer3_arbiter.py
     │
@@ -220,7 +230,7 @@ Docstring cụ thể cho từng file:
 | `core/llm_client.py` | Lớp bọc chung để gọi 3 nhà cung cấp LLM | Retry, ép output đúng JSON schema, ghi lại token + chi phí mỗi lần gọi |
 | `core/cascade.py` | Điều phối luồng qua Lớp 0→3 và chứa toàn bộ hàm gate | Mọi ngưỡng đọc từ `config/thresholds.yaml`, không hardcode |
 | `layers/layer0_validator.py` | Kiểm tra hình thức bằng Python thuần, không gọi LLM | Phân biệt vi phạm `hard` (chắc chắn sai) và `soft` (đáng ngờ); chạy cả trước Lớp 1 lẫn sau Lớp 3 |
-| `layers/layer1_slm.py` | SLM phát hiện parse sai và đề xuất parse mới | Ưu tiên recall; parse mới chỉ là *giả thuyết cạnh tranh*, không phải đáp án |
+| `layers/layer1_ner.py` | Model NER chuyên dụng parse độc lập rồi so bất đồng | Ưu tiên recall; phải áp quy tắc gộp `*_TYPE` ở §2 quyết định 8 TRƯỚC khi so sánh; parse mới chỉ là *giả thuyết cạnh tranh*, không phải đáp án |
 | `layers/layer2_judge.py` | Chấm điểm so sánh parse cũ vs parse mới | Phải chạy 2 lần đảo thứ tự A/B để phát hiện position bias; ẩn nguồn gốc của mỗi parse khỏi model |
 | `layers/layer3_arbiter.py` | Ra quyết định cuối cùng cho case còn tranh cãi | 4 kết quả: giữ cũ / nhận mới / tự viết lại / đẩy cho người; output phải qua Lớp 0 lần nữa |
 | `eval/make_gold_sample.py` | Lấy mẫu phân tầng từ output ML để người label tay | Phân tầng theo `group` và `is_full` để gold set phản ánh đúng phân bố thật |
@@ -335,8 +345,10 @@ numpy
 # Test
 pytest
 
-# Tuỳ chọn — chỉ cần khi self-host SLM cho Lớp 1 với constrained decoding:
-# vllm
+# Lớp 1 — model NER local (cài trong venv riêng, xem BUILD_LAYER1_MODEL.md)
+# torch
+# optimum[onnxruntime]
+# onnxruntime
 ```
 
 Không pin version ở bước scaffold. Pin sau khi môi trường chạy được.
@@ -418,8 +430,8 @@ Làm **đúng thứ tự** này. Mỗi bước phải có test xanh trước khi
 | 3 | `diff_metrics.py` | `feedback/core/` | **Module quan trọng nhất.** Gate của Lớp 1→2 và 2→3 đều dựa vào nó; sai ở đây thì mọi ngưỡng phía trên vô nghĩa. Test kỹ nhất: `feedback/tests/test_diff_metrics.py` |
 | 4 | `layer0_validator.py` + `run_layer0_only.py` | `feedback/layers/`, `feedback/scripts/` | Chạy được ngay trên `output_model.json`, **0 đồng API**. Kết quả có thể cho thấy phần lớn lỗi nằm ở post-processing của ML pipeline — sửa chỗ đó rẻ hơn xây 3 lớp LLM rất nhiều |
 | 5 | Gold set | `feedback/eval/gold/` + `make_gold_sample.py` | Label tay 300–500 mẫu. Tốn 1–2 ngày công và **không bỏ qua được**: không có gold set thì mọi ngưỡng ở bước 7–9 chỉ là phỏng đoán |
-| 6 | `llm_client.py` | `feedback/core/` | Hạ tầng chung cho cả 3 lớp LLM |
-| 7 | `layer1_slm.py` + `l1_detector.txt` | `feedback/layers/`, `feedback/prompts/` | Đo trên gold set: **detection recall ≥ 0.90** là chỉ tiêu số một. Precision thấp chỉ tốn tiền, recall thấp là mất lỗi vĩnh viễn |
+| 6 | `llm_client.py` | `feedback/core/` | Hạ tầng chung cho Lớp 2 và Lớp 3. Lớp 1 chạy local nên KHÔNG phụ thuộc bước này |
+| 7 | `layer1_ner.py` | `feedback/layers/` | Model đã chuẩn bị ở `BUILD_LAYER1_MODEL.md`. Phải giải quyết 3 hạn chế đã đo trong `models/REPORT.md` trước: tokenizer không có offset, `id2label` chỉ là `LABEL_n` (bảng nhãn là giả định), và thiếu hẳn L1/L7 trong khi ~15% dữ liệu có POI. Đo trên gold set: **detection recall ≥ 0.90** là chỉ tiêu số một |
 | 8 | `layer2_judge.py` + `l2_judge.txt` | `feedback/layers/`, `feedback/prompts/` | **Validate độc lập trước khi nối vào cascade**: agreement với người (Cohen κ) phải ≥ 0.6, nếu không thì judge không dùng được |
 | 9 | `layer3_arbiter.py` + `l3_arbiter.txt` | `feedback/layers/`, `feedback/prompts/` | Chỉ làm khi Lớp 2 thật sự để lại > 15% case không kết luận được. Nếu ít hơn, Lớp 3 không đáng chi phí |
 | 10 | `cascade.py` + `run_loop.py` | `feedback/core/`, `feedback/scripts/` | Ghép các lớp, đọc ngưỡng từ config |
