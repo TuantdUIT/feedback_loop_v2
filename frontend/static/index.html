@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>So sánh parser địa chỉ</title>
+  <link rel="stylesheet" href="/static/style.css?v=white-1">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">⌖</span><span>ADDRESS LAB <small>/ 03 ENGINES</small></span></div>
+      <span class="header-note">Công cụ thử nghiệm nội bộ</span>
+    </header>
+
+    <nav class="tab-bar" role="tablist" aria-label="Chế độ xem">
+      <button type="button" class="tab-btn active" id="tab-btn-test" role="tab" aria-selected="true" aria-controls="tab-panel-test">Thử nghiệm model vs qwen</button>
+      <button type="button" class="tab-btn" id="tab-btn-prod" role="tab" aria-selected="false" aria-controls="tab-panel-prod">Mô phỏng Production</button>
+    </nav>
+
+    <main>
+      <div id="tab-panel-test" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-test">
+        <section class="intro" aria-label="Giới thiệu">
+          <h1 class="sr-only">So sánh parser địa chỉ</h1>
+          <div class="eyebrow"><span class="eyebrow-line"></span> PARSER COMPARISON / VIETNAMESE ADDRESS</div>
+          <p>Nhập địa chỉ tiếng Việt để xem PhoBERT PyTorch, ONNX và Qwen phân tách từng thành phần như thế nào.</p>
+        </section>
+
+        <section class="input-panel" aria-labelledby="input-title">
+          <div class="section-heading"><span class="section-index">01 / INPUT</span><h2 id="input-title">Địa chỉ cần phân tích</h2></div>
+          <form id="parse-form">
+            <label class="sr-only" for="address-input">Địa chỉ tiếng Việt</label>
+            <textarea id="address-input" rows="2" maxlength="2000" placeholder="Ví dụ: 501 đường nơ trang long, bình thạnh" required></textarea>
+            <div class="input-actions">
+              <span class="input-hint">Mỗi lần bấm sẽ gọi Qwen qua OpenRouter.</span>
+              <button id="parse-button" type="submit"><span class="button-icon" aria-hidden="true">↗</span> Parse cả 3 engine <span class="button-cost">~$0.005 Qwen</span></button>
+            </div>
+          </form>
+          <div class="runtime-bar">
+            <span class="runtime-label">TRẠNG THÁI MODEL</span>
+            <span id="load-pytorch" class="load-state">PyTorch · chưa nạp</span>
+            <span id="load-onnx" class="load-state">ONNX · chưa nạp</span>
+            <span id="load-qwen" class="load-state">Qwen · đang kiểm tra</span>
+            <span id="ram-status" class="ram-status">RAM · —</span>
+          </div>
+        </section>
+
+        <div id="stale-banner" class="stale-banner" hidden>Kết quả bên dưới thuộc địa chỉ trước. Bấm Parse để phân tích nội dung mới.</div>
+
+        <section class="results-section" aria-labelledby="results-title">
+          <div class="section-heading"><span class="section-index">02 / COMPARISON</span><h2 id="results-title">Chuỗi level</h2><span class="section-aside">Màu thể hiện kết quả trùng nhau, không đánh giá đúng sai.</span></div>
+          <div id="chain-list" class="chain-list" aria-live="polite"></div>
+        </section>
+
+        <section class="results-section detail-section" aria-labelledby="detail-title">
+          <div id="engine-grid" class="engine-grid"></div>
+        </section>
+
+        <section class="inspector-section" aria-labelledby="inspector-title">
+          <div class="section-heading"><span class="section-index">04 / INSPECTOR</span><h2 id="inspector-title">Soi quy tắc chuẩn hoá</h2></div>
+          <p class="inspector-intro">Đối chiếu nhãn thô PhoBERT với span sau adapter R1–R6.</p>
+          <div class="inspector-grid">
+            <details id="inspect-pytorch" class="inspector-card">
+              <summary><span>PyTorch FP32</span><span class="summary-action">Xem nhãn thô <span aria-hidden="true">↗</span></span></summary>
+              <div class="inspector-body" data-engine="pytorch_fp32"></div>
+            </details>
+            <details id="inspect-onnx" class="inspector-card">
+              <summary><span>ONNX FP32</span><span class="summary-action">Xem nhãn thô <span aria-hidden="true">↗</span></span></summary>
+              <div class="inspector-body" data-engine="onnx_fp32"></div>
+            </details>
+          </div>
+        </section>
+      </div>
+
+      <div id="tab-panel-prod" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-prod" hidden>
+        <section class="intro" aria-label="Mô phỏng Production">
+          <div class="eyebrow"><span class="eyebrow-line"></span> PRODUCTION SIMULATION</div>
+          <p>Luồng mô phỏng dữ liệu chạy qua Kafka giả lập, nạp vào feedback loop như hệ thống thật.</p>
+        </section>
+        <div class="dev-placeholder">Đang phát triển</div>
+      </div>
+    </main>
+
+    <footer>ADDRESS LAB <span>·</span> Kết quả dùng để đối chiếu thủ công, không có engine chuẩn.</footer>
+  </div>
+</body>
+</html>

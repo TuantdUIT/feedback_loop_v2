@@ -125,7 +125,7 @@ Mỗi engine trả về **cùng một cấu trúc**, để frontend không phả
 
 ### 5.2. Engine Qwen — bắt buộc dùng lại cấu hình đã có
 
-Sao chép đúng 4 biện pháp chống kẹt vòng lặp suy luận từ `scripts/run_qwen_on_file.py`:
+Sao chép đúng 4 biện pháp chống kẹt vòng lặp suy luận từ `scripts/external_api/qwen/run_qwen_on_file.py`:
 
 ```python
 max_tokens = 12000
