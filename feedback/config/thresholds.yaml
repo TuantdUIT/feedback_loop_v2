@@ -4,7 +4,7 @@
 #   - HIỆU CHUẨN (gate.min_severity, retrain.*): phải do feedback/eval/calibrate.py sinh ra từ gold.
 #     null = chưa hiệu chuẩn → giao diện gắn nhãn "chưa hiệu chuẩn", khuyến nghị retrain tắt.
 
-version: 0                      # tăng mỗi lần hiệu chuẩn ghi lại file này
+version: 1                      # tăng mỗi lần hiệu chuẩn ghi lại file này (1: điền retrain.* tham khảo 2026-09-24)
 
 budget:
   per_run_usd: 2.0              # người dùng chốt 2026-09-24
@@ -23,8 +23,9 @@ gate:
   min_severity: null            # HIỆU CHUẨN — severity tối thiểu để deepseek_better thành lỗi đã xác nhận
 
 retrain:                        # HIỆU CHUẨN — xem BUILD_PIPELINE.md §7.3
+  # max_false_alarm..max_error_rate: GIÁ TRỊ THAM KHẢO (người dùng chốt 2026-09-24), CHƯA suy ra từ gold.
   min_kappa: 0.6                # chuẩn tối thiểu của judge (BUILD.md bước 8)
-  max_false_alarm: null
-  max_flip_rate: null
-  min_cases: null
-  max_error_rate: null
+  max_false_alarm: 0.10         # tối đa: model đúng/hoà mà judge vẫn chọn DeepSeek (đo trên run hiệu chuẩn)
+  max_flip_rate: 0.15           # tối đa: judge đổi kết luận khi đảo thứ tự (đo trên run đang xem)
+  min_cases: 30                 # tối thiểu số lỗi đã xác nhận để xét retrain
+  max_error_rate: 0.03          # NGƯỠNG KÍCH HOẠT: cận dưới CI95 tỉ lệ lỗi đã xác nhận ≥ giá trị này → retrain
