@@ -19,7 +19,7 @@ feedback/store/human_queue/*
 prompt/v2/compiled/
 
 # Model và cache Hugging Face cho bước chuẩn bị Lớp 1
-models/
+
 .hf-cache/
 
 # Pipeline upload → DeepSeek → Qwen judge (BUILD_PIPELINE.md)

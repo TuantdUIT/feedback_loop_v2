@@ -1,0 +1,163 @@
+{
+  "seed": 42,
+  "n": 100000,
+  "test_ratio": 0.2,
+  "parser_repo": "F:\\NAM3\\NCKH_AI_Action\\Intern_GSM_Map\\address-parser-short",
+  "labels": [
+    "O",
+    "B-L1",
+    "I-L1",
+    "B-L2",
+    "I-L2",
+    "B-L3",
+    "I-L3",
+    "B-L4",
+    "I-L4",
+    "B-L5",
+    "I-L5",
+    "B-L6",
+    "I-L6",
+    "B-L7",
+    "I-L7"
+  ],
+  "excluded_golden_source_ids": [
+    577,
+    747,
+    1641,
+    1997,
+    3458,
+    4131,
+    4154,
+    6620,
+    7070,
+    8645,
+    9086,
+    9222,
+    10074,
+    10167,
+    14624,
+    17834,
+    17964
+  ],
+  "config": {
+    "FULL_RATIO": 0.2,
+    "POI_RATIO": 0.42,
+    "POI_AFTER_STREET": 0.12,
+    "COUNTRY_RATIO": 0.05,
+    "SEP_MODES": [
+      [
+        "comma",
+        0.62
+      ],
+      [
+        "none",
+        0.3
+      ],
+      [
+        "mixed",
+        0.08
+      ]
+    ],
+    "CASING": [
+      [
+        "keep",
+        0.29
+      ],
+      [
+        "lower",
+        0.63
+      ],
+      [
+        "upper",
+        0.02
+      ],
+      [
+        "title",
+        0.06
+      ]
+    ],
+    "AUG": {
+      "abbreviate": 0.1,
+      "strip_diacritics": 0.04,
+      "typo": 0.05
+    },
+    "CUT_KINDS": [
+      [
+        "span_end",
+        0.3
+      ],
+      [
+        "mid_token",
+        0.47
+      ],
+      [
+        "token_end",
+        0.23
+      ]
+    ],
+    "CUT_DECAY": 16.0
+  },
+  "stats": {
+    "train": {
+      "rows": 80000,
+      "full": 19708,
+      "prefix": 60292,
+      "source_ids": 14092,
+      "full_lowercase": 0.636,
+      "full_no_comma": 0.34,
+      "full_has_L7": 0.421,
+      "full_avg_len": 51.3,
+      "prefix_median_len": 16,
+      "prefix_truncated": 0.5,
+      "prefix_no_span": 0.0,
+      "span_levels": {
+        "L1": 860,
+        "L2": 20329,
+        "L3": 20016,
+        "L4": 27359,
+        "L5": 55048,
+        "L6": 46889,
+        "L7": 30406
+      },
+      "group": {
+        "SHORT_BOOST": 30732,
+        "STRUCTURED": 35507,
+        "CONTEXT_DEPENDENT": 13761
+      }
+    },
+    "test": {
+      "rows": 20000,
+      "full": 5298,
+      "prefix": 14702,
+      "source_ids": 3523,
+      "full_lowercase": 0.626,
+      "full_no_comma": 0.348,
+      "full_has_L7": 0.426,
+      "full_avg_len": 51.9,
+      "prefix_median_len": 18,
+      "prefix_truncated": 0.502,
+      "prefix_no_span": 0.0,
+      "span_levels": {
+        "L1": 236,
+        "L2": 5392,
+        "L3": 5492,
+        "L4": 7307,
+        "L5": 14707,
+        "L6": 12124,
+        "L7": 7405
+      },
+      "group": {
+        "STRUCTURED": 9625,
+        "CONTEXT_DEPENDENT": 2908,
+        "SHORT_BOOST": 7467
+      }
+    }
+  },
+  "golden_reference": {
+    "full_lowercase": 0.62,
+    "full_no_comma": 0.307,
+    "full_has_L7": 0.453,
+    "full_avg_len": 57.8,
+    "prefix_median_len": 16
+  }
+}
