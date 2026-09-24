@@ -119,7 +119,7 @@ def test_roundtrip(raw_records: list[dict]) -> None:
     record.new = ParseResult.from_dict(record.old.to_dict())
     record.new.source = "slm_repair"
     record.attach("l0", {"hard": [], "soft": []})
-    record.decision = Decision.ACCEPT_NEW
+    record.decision = Decision.DEEPSEEK_BETTER
     restored = CaseRecord.from_dict(record.to_dict())
     assert restored == record
     assert restored.old.spans[0].to_dict() == {

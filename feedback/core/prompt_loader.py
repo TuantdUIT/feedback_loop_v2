@@ -120,6 +120,23 @@ def load_prompt(variant: str = "v2_with_partial_input") -> tuple[str, str]:
     return result
 
 
+TASK_PROMPT_DIR = PROJECT_ROOT / "feedback" / "prompts"
+
+
+def load_task_prompt(name: str) -> tuple[str, str]:
+    """Nạp ``feedback/prompts/<name>.txt``, bỏ khối chú thích ``#`` ở đầu file; trả (nội dung, sha8).
+
+    Khối chú thích là các dòng ``#`` liền nhau từ dòng đầu tới dòng trống đầu tiên — tiêu đề Markdown
+    phía sau dòng trống đó được giữ nguyên.
+    """
+    lines = (TASK_PROMPT_DIR / f"{name}.txt").read_text(encoding="utf-8").splitlines()
+    index = 0
+    while index < len(lines) and lines[index].startswith("#"):
+        index += 1
+    content = "\n".join(lines[index:]).strip() + "\n"
+    return content, hashlib.sha256(content.encode("utf-8")).hexdigest()[:8]
+
+
 def build_run_meta(variant: str = "v2_with_partial_input") -> RunMeta:
     """Tạo metadata truy vết prompt, commit Git và thời điểm chạy."""
     _, prompt_sha = load_prompt(variant)

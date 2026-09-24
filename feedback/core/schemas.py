@@ -96,12 +96,16 @@ class RunMeta:
 
 
 class Decision(str, Enum):
-    """Các quyết định cuối cùng mà cascade có thể đưa ra."""
+    """Quyết định cuối cùng của pipeline cho một case (BUILD_PIPELINE.md §7.1)."""
 
-    KEEP_OLD = "keep_old"
-    ACCEPT_NEW = "accept_new"
-    REWRITE = "rewrite"
-    ESCALATE_HUMAN = "escalate_human"
+    AGREE = "agree"                          # hai bản giống hệt, không gọi judge
+    MODEL_BETTER = "model_better"            # cả hai lần chấm chọn model
+    TIE = "tie"                              # cả hai lần chấm ra hoà
+    DEEPSEEK_BETTER = "deepseek_better"      # cả hai lần chấm chọn DeepSeek
+    INCONCLUSIVE = "inconclusive"            # hai lần chấm không nhất quán -> người xem
+    DEEPSEEK_INVALID = "deepseek_invalid"    # output DeepSeek sai hình thức sau khi gọi lại
+    FAILED = "failed"                        # lỗi API quá số lần retry
+    BUDGET_EXCEEDED = "budget_exceeded"      # chạm trần chi phí của run
 
     def to_dict(self) -> str:
         """Trả giá trị chuỗi dùng trực tiếp trong JSON."""

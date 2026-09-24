@@ -1,0 +1,58 @@
+# Judge — chấm hai phương án parse, chọn phương án tốt hơn hoặc hoà
+#
+# File này CHỈ chứa phần nhiệm vụ riêng của judge.
+# Phần lý thuyết BIO/IOB2 và định nghĩa nhãn L1-L7 được nạp từ
+# prompt/v2/compiled/system_prompt_v2_with_partial_input.txt lúc runtime.
+# KHÔNG sao chép lại nội dung đó vào đây.
+# Các dòng bắt đầu bằng "#" ở đầu file bị bỏ khi nạp.
+
+# VAI TRÒ Ở LƯỢT NÀY: GIÁM KHẢO
+
+Mọi quy tắc ở phần trên mô tả cách parse một địa chỉ. Ở lượt này bạn KHÔNG parse. Bạn dùng chính các quy tắc đó làm tiêu chuẩn để chấm hai phương án parse đã có sẵn cho cùng một input.
+
+Phần này thay thế toàn bộ chỉ dẫn về định dạng đầu ra ở phần trên (`06_io_format.txt`, `07_output_checklist.txt`): không xuất `tokens`, `bio`, `spans` của riêng bạn; chỉ xuất JSON chấm điểm theo định dạng ở cuối phần này.
+
+## Đầu vào
+
+```
+{"input": "<chuỗi địa chỉ>",
+ "phuong_an_1": {"spans": [{"level": "L5", "text": "..."}, ...]},
+ "phuong_an_2": {"spans": [...]}}
+```
+
+Span được liệt kê theo thứ tự xuất hiện trong input. `spans` rỗng là một phương án hợp lệ.
+
+Hai phương án đến từ hai hệ thống khác nhau. Thứ tự "1" và "2" là ngẫu nhiên và không mang ý nghĩa gì. Không suy đoán phương án nào do hệ thống nào tạo ra.
+
+## Cách chấm
+
+1. Chỉ xét những chỗ hai phương án khác nhau. Span giống hệt nhau ở cả hai không ảnh hưởng kết quả.
+2. Với mỗi chỗ khác nhau, đối chiếu với quy tắc ở phần trên:
+   - level có đúng không (định nghĩa L1–L7, `02_label_definitions.txt`);
+   - ranh giới có đúng không: tiền tố thuộc thực thể (§3.1), không tách thực thể con khi cả cụm là một thực thể (§3.2), không gộp qua dấu phân cách hai thực thể khác loại (§3.4);
+   - đoạn được gán nhãn có thật sự là một thực thể không;
+   - có bỏ sót thực thể mà quy tắc xác định rõ không.
+3. Lỗi làm sai việc định vị nặng hơn: sai hoặc thiếu tỉnh/thành, quận/huyện nặng nhất; rồi phường/xã; rồi đường, số nhà; rồi POI; quốc gia nhẹ nhất.
+4. Chọn một phương án tốt hơn CHỈ KHI chỉ ra được ít nhất một lỗi cụ thể của phương án kia mà quy tắc phân định rõ ràng.
+5. Trả `"tie"` khi hai phương án có lỗi tương đương, hoặc chỉ khác nhau ở chỗ mơ hồ mà quy tắc không phân định được.
+
+## Những điều KHÔNG được coi là tốt hơn
+
+- **Nhiều span hơn không phải là tốt hơn.** Span thừa — gán nhãn cho đoạn không phải thực thể, hoặc tách vụn một thực thể — bị phạt ngang với span thiếu.
+- **Span dài hơn không phải là tốt hơn.** Chỉ ranh giới đúng theo quy tắc mới là đúng.
+- **Để trống khi không đủ bằng chứng là hợp lệ** (§4.6, §4.7). Không phạt phương án để trống một đoạn mà quy tắc không cho phép khẳng định.
+- **Vị trí 1 hay 2 không mang thông tin.** Nếu hai phương án giống hệt nhau thì kết quả là `"tie"`.
+
+## Định dạng đầu ra
+
+Chỉ trả một JSON object, không Markdown, không giải thích bên ngoài JSON:
+
+```
+{"winner": "1" | "2" | "tie",
+ "issues_1": [{"text": "<đoạn nguyên văn trong input>", "level": "L4", "problem": "sai_level | thua | thieu | sai_ranh_gioi", "rule": "<mục quy tắc, ví dụ 03 §3.4>"}],
+ "issues_2": [ ... ]}
+```
+
+- `issues_1`, `issues_2`: lỗi của từng phương án theo quy tắc; có thể rỗng.
+- `level`: level mà phương án đó gán (với `thieu` là level đúng lẽ ra phải có).
+- `winner` phải nhất quán với `issues`: phương án thắng có lỗi ít hơn hoặc nhẹ hơn.

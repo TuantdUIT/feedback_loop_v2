@@ -1,7 +1,38 @@
-# Cấu hình model từng lớp. Biến môi trường đọc từ .env, xem .env.example.
-# Mỗi lớp cần: provider, model_id, base_url, temperature, max_tokens,
-# và đơn giá input/output (USD / 1M token) để llm_client tính chi phí.
-#
-# layer1: ...
-# layer2: ...
-# layer3: ...
+# Cấu hình model của pipeline (BUILD_PIPELINE.md). Key API và tên model đọc từ .env, xem .env.example.
+# Đơn giá: USD / 1M token. Nguồn DeepSeek: api-docs.deepseek.com/quick_start/pricing (xem 2026-09-23).
+
+deepseek:
+  role: parser
+  base_url: https://api.deepseek.com
+  model_env: DEEPSEEK_MODEL
+  key_env: DEEPSEEK_API_KEY
+  base_url_env: DEEPSEEK_BASE_URL      # tuỳ chọn, ghi đè base_url (dùng cho test)
+  max_tokens: 12000
+  max_attempts: 3                      # retry khi rỗng / lỗi tạm thời trong một lần gọi
+  timeout_sec: 300
+  workers: 4
+  estimate_usd_per_call: 0.003         # dùng để giữ chỗ ngân sách trước khi gọi
+  price_per_1m:                        # giá thấp điểm; cao điểm nhân peak_multiplier
+    deepseek-flash: {miss: 0.15, hit: 0.003, out: 0.6}
+    deepseek-v4-pro: {miss: 0.66, hit: 0.022, out: 1.98}
+  peak_multiplier: 2
+  peak_hours_utc: [[1, 4], [6, 10]]    # thứ Hai–thứ Sáu
+
+qwen:
+  role: judge
+  base_url: https://openrouter.ai/api/v1
+  model_env: OPENROUTER_MODEL
+  key_env: OPENROUTER_API
+  base_url_env: OPENROUTER_BASE_URL
+  max_tokens: 12000
+  reasoning_budgets: [10000, 5000, 3000]   # thang giảm dần qua từng lần thử
+  # Khuyến nghị của trang model cho chế độ suy luận. Đo 2026-09-24 trên 26 probe × 2 thứ tự
+  # (golden_dataset/evals/judge_params/results.json): không khác temperature=0 một cách có ý nghĩa
+  # (known 3/16 vs 1/16, identical/verbose 5/5 cả hai, lật 3/26, 0 retry) → theo khuyến nghị nhà cung cấp.
+  temperature: 1.0
+  top_p: 0.95
+  top_k: 20
+  presence_penalty: 1.5
+  timeout_sec: 300
+  workers: 4
+  estimate_usd_per_call: 0.012

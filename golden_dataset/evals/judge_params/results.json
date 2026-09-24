@@ -1,0 +1,2649 @@
+{
+  "shas": {
+    "prompt_sha": "96e5998f",
+    "judge_sha": "443b79db"
+  },
+  "configs": {
+    "hien_tai": {},
+    "khuyen_nghi": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "presence_penalty": 1.5
+    }
+  },
+  "n_probes": 26,
+  "runs": {
+    "hien_tai": {
+      "summary": {
+        "by_kind": {
+          "known": {
+            "n": 16,
+            "correct": 1,
+            "flip": 3
+          },
+          "identical": {
+            "n": 5,
+            "correct": 5,
+            "flip": 0
+          },
+          "verbose": {
+            "n": 5,
+            "correct": 5,
+            "flip": 0
+          }
+        },
+        "flip_rate": 0.11538461538461539,
+        "identical_slot_picks": {
+          "1": 0,
+          "2": 0,
+          "tie": 10
+        },
+        "errors": 0,
+        "calls_with_retry": 0,
+        "reasoning_mean": 1664,
+        "latency_mean": 23.7,
+        "latency_p95": 38.0,
+        "cost_usd": 0.14638,
+        "wall_sec": 336
+      },
+      "rows": [
+        {
+          "kind": "known",
+          "text": "210/87 Số 5, Phường Nghĩa Đô, Tây Hồ, TP. Hà Nội, vn",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.00274445,
+              "elapsed_sec": 36.72,
+              "reasoning": 2716,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "Số 5",
+                    "level": "L5",
+                    "problem": "sai_level",
+                    "rule": "02 §L6"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.0065762,
+              "elapsed_sec": 75.34,
+              "reasoning": 3144,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "Số 5",
+                    "level": "L5",
+                    "problem": "sai_level",
+                    "rule": "02 §2.0 (L6)"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#10"
+        },
+        {
+          "kind": "known",
+          "text": "Phố Nguyễn Văn Tố, Phường Tân Thạnh Tân Phú, Hồ Chí Minh",
+          "expected": "good",
+          "winners": [
+            "good",
+            "good"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.0035229,
+              "elapsed_sec": 17.84,
+              "reasoning": 2006,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "Phường Tân Thạnh Tân Phú",
+                    "level": "L4",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "02 §2.0"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "2",
+              "cost_usd": 0.00684456,
+              "elapsed_sec": 14.76,
+              "reasoning": 1366,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "Phường Tân Thạnh Tân Phú",
+                    "level": "L4",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.4"
+                  }
+                ],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2#28"
+        },
+        {
+          "kind": "known",
+          "text": "114c",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.0042295,
+              "elapsed_sec": 19.67,
+              "reasoning": 2577,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "114c",
+                    "level": "L6",
+                    "problem": "thua",
+                    "rule": "04 §4.6"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00848928,
+              "elapsed_sec": 18.53,
+              "reasoning": 2243,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "114c",
+                    "level": "L6",
+                    "problem": "sai_level",
+                    "rule": "04 §4.7"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#55"
+        },
+        {
+          "kind": "known",
+          "text": "210",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.0018297,
+              "elapsed_sec": 32.72,
+              "reasoning": 1433,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "210",
+                    "level": "L6",
+                    "problem": "sai_level",
+                    "rule": "04 §4.7"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00185215,
+              "elapsed_sec": 26.39,
+              "reasoning": 1458,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "210",
+                    "level": "L6",
+                    "problem": "sai_level",
+                    "rule": "02 §L6 / 04 §4.7"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#57"
+        },
+        {
+          "kind": "known",
+          "text": "dự án him lam chợ l",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.0028318,
+              "elapsed_sec": 16.7,
+              "reasoning": 1877,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "dự án him lam chợ l",
+                    "level": "L7",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.3, §3.4"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00335395,
+              "elapsed_sec": 35.5,
+              "reasoning": 2161,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "dự án him lam chợ l",
+                    "level": "L7",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.3"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#61"
+        },
+        {
+          "kind": "known",
+          "text": "dự án",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.00412635,
+              "elapsed_sec": 22.14,
+              "reasoning": 1351,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "dự án",
+                    "level": "L7",
+                    "problem": "sai_level",
+                    "rule": "02 §2.0 / 04 §4.6"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00129635,
+              "elapsed_sec": 14.86,
+              "reasoning": 660,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "dự án",
+                    "level": "L7",
+                    "problem": "sai_level",
+                    "rule": "04 §4.6"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#63"
+        },
+        {
+          "kind": "known",
+          "text": "dự án hap",
+          "expected": "good",
+          "winners": [
+            "good",
+            "other"
+          ],
+          "consistent": false,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.0018228,
+              "elapsed_sec": 26.36,
+              "reasoning": 1412,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "dự án hap",
+                    "level": "L7",
+                    "problem": "thieu",
+                    "rule": "03 §3.5"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00200765,
+              "elapsed_sec": 32.19,
+              "reasoning": 1675,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "dự án hap",
+                    "level": "L7",
+                    "problem": "sai_level",
+                    "rule": "04 §4.6"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#64"
+        },
+        {
+          "kind": "known",
+          "text": "dự án the",
+          "expected": "good",
+          "winners": [
+            "good",
+            "other"
+          ],
+          "consistent": false,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.0021357,
+              "elapsed_sec": 23.75,
+              "reasoning": 1854,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "dự án the",
+                    "level": "L7",
+                    "problem": "thieu",
+                    "rule": "03 §3.1, §3.5"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.0037114,
+              "elapsed_sec": 33.09,
+              "reasoning": 2458,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "dự án the",
+                    "level": "L7",
+                    "problem": "sai_level",
+                    "rule": "04 §4.6"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#66"
+        },
+        {
+          "kind": "known",
+          "text": "dự án legend tower 109",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.0023233,
+              "elapsed_sec": 36.03,
+              "reasoning": 2116,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "109",
+                    "level": "L6",
+                    "problem": "sai_level",
+                    "rule": "02 §L6 / 03 §3.3"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.0021602,
+              "elapsed_sec": 31.78,
+              "reasoning": 1891,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "109",
+                    "level": "L6",
+                    "problem": "sai_level",
+                    "rule": "03 §3.2"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#71"
+        },
+        {
+          "kind": "known",
+          "text": "123",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.0018346,
+              "elapsed_sec": 20.91,
+              "reasoning": 1429,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "123",
+                    "level": "L6",
+                    "problem": "thieu",
+                    "rule": "04 §4.7"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.0026544,
+              "elapsed_sec": 5.59,
+              "reasoning": 965,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "123",
+                    "level": "L6",
+                    "problem": "sai_level",
+                    "rule": "04 §4.7"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#72"
+        },
+        {
+          "kind": "known",
+          "text": "1436",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.0017717,
+              "elapsed_sec": 26.73,
+              "reasoning": 1338,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "1436",
+                    "level": "L6",
+                    "problem": "sai_level",
+                    "rule": "02 §L6"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.0027519,
+              "elapsed_sec": 8.11,
+              "reasoning": 962,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "1436",
+                    "level": "L6",
+                    "problem": "sai_level",
+                    "rule": "04 §4.7"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#73"
+        },
+        {
+          "kind": "known",
+          "text": "lan phương mhbr tower 104",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.00275215,
+              "elapsed_sec": 26.52,
+              "reasoning": 2698,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "lan phương mhbr tower",
+                    "level": "L7",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.4"
+                  }
+                ],
+                "issues_2": [
+                  {
+                    "text": "lan phương",
+                    "level": "L5",
+                    "problem": "thieu",
+                    "rule": "04 §4.2"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00296075,
+              "elapsed_sec": 34.31,
+              "reasoning": 3015,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "lan phương",
+                    "level": "L5",
+                    "problem": "thieu",
+                    "rule": "04 §4.7"
+                  }
+                ],
+                "issues_2": [
+                  {
+                    "text": "lan phương mhbr tower",
+                    "level": "L7",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.3"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#86"
+        },
+        {
+          "kind": "known",
+          "text": "central pla",
+          "expected": "good",
+          "winners": [
+            "good",
+            "other"
+          ],
+          "consistent": false,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.0030013,
+              "elapsed_sec": 11.89,
+              "reasoning": 2238,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "central pla",
+                    "level": "L7",
+                    "problem": "thieu",
+                    "rule": "03 §3.5"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00258915,
+              "elapsed_sec": 34.05,
+              "reasoning": 2519,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "central pla",
+                    "level": "L7",
+                    "problem": "sai_level",
+                    "rule": "04 §4.7"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#89"
+        },
+        {
+          "kind": "known",
+          "text": "TaniBuilding Sơn Kỳ 1, Lê Trọng",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.00266495,
+              "elapsed_sec": 38.39,
+              "reasoning": 2601,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "TaniBuilding Sơn Kỳ 1",
+                    "level": "L7",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.3"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00237795,
+              "elapsed_sec": 33.38,
+              "reasoning": 2192,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "TaniBuilding Sơn Kỳ 1",
+                    "level": "L7",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.4"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#90"
+        },
+        {
+          "kind": "known",
+          "text": "TaniBuilding Sơn Kỳ 1, Lê Trọng Tấn",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.0041361,
+              "elapsed_sec": 17.58,
+              "reasoning": 2378,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "TaniBuilding Sơn Kỳ 1",
+                    "level": "L7",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.3"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00355535,
+              "elapsed_sec": 23.08,
+              "reasoning": 2213,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "TaniBuilding Sơn Kỳ 1",
+                    "level": "L7",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.3"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#91"
+        },
+        {
+          "kind": "known",
+          "text": "chợ",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.0044819265,
+              "elapsed_sec": 9.75,
+              "reasoning": 1305,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "chợ",
+                    "level": "L7",
+                    "problem": "thieu",
+                    "rule": "04 §4.6"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00143835,
+              "elapsed_sec": 25.39,
+              "reasoning": 875,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "chợ",
+                    "level": "L7",
+                    "problem": "sai_level",
+                    "rule": "04 §4.6"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#97"
+        },
+        {
+          "kind": "identical",
+          "text": "858 Đường Lê Lợi, Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh",
+          "expected": "tie",
+          "winners": [
+            "tie",
+            "tie"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "tie",
+              "cost_usd": 0.0019109,
+              "elapsed_sec": 4.83,
+              "reasoning": 253,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "tie",
+              "cost_usd": 0.00119625,
+              "elapsed_sec": 3.8,
+              "reasoning": 201,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "identical",
+          "text": "457 ĐƯỜNG LÊ LỢI, PHƯỜNG BẾN NGHÉ, QUẬN 1, THÀNH PHỐ HỒ CHÍ MINH",
+          "expected": "tie",
+          "winners": [
+            "tie",
+            "tie"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "tie",
+              "cost_usd": 0.00168175,
+              "elapsed_sec": 24.45,
+              "reasoning": 1230,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "tie",
+              "cost_usd": 0.0025085,
+              "elapsed_sec": 15.94,
+              "reasoning": 737,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "identical",
+          "text": "191/56 Đ. Trương minh Giảng, Phường Võ Thị Sáu, Quận 3, Thành phố Hồ Chí Minh",
+          "expected": "tie",
+          "winners": [
+            "tie",
+            "tie"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "tie",
+              "cost_usd": 0.0013423,
+              "elapsed_sec": 19.45,
+              "reasoning": 746,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "tie",
+              "cost_usd": 0.0013423,
+              "elapsed_sec": 10.2,
+              "reasoning": 746,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "identical",
+          "text": "115A Lối Rạch Miễu, Phường 7, Quận Phú Nhuận, Thành phố Hồ Chí Minh",
+          "expected": "tie",
+          "winners": [
+            "tie",
+            "tie"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "tie",
+              "cost_usd": 0.0019036,
+              "elapsed_sec": 5.56,
+              "reasoning": 963,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "tie",
+              "cost_usd": 0.0010993,
+              "elapsed_sec": 2.91,
+              "reasoning": 248,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "identical",
+          "text": "239 Nguyễn Văn Cừ, Phường 4, Quận 5, Thành phố Hồ Chí Minh",
+          "expected": "tie",
+          "winners": [
+            "tie",
+            "tie"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "tie",
+              "cost_usd": 0.00170765,
+              "elapsed_sec": 38.0,
+              "reasoning": 1269,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "tie",
+              "cost_usd": 0.0026045,
+              "elapsed_sec": 17.09,
+              "reasoning": 853,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "verbose",
+          "text": "267/30 Số 8, Phường Hiệp Bình Chánh, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "expected": "good",
+          "winners": [
+            "good",
+            "good"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.0028824,
+              "elapsed_sec": 10.2,
+              "reasoning": 1851,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "Phường",
+                    "level": "L4",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  },
+                  {
+                    "text": "Hiệp Bình Chánh",
+                    "level": "L4",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "2",
+              "cost_usd": 0.00544242075,
+              "elapsed_sec": 14.77,
+              "reasoning": 2090,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "Phường",
+                    "level": "L4",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  },
+                  {
+                    "text": "Hiệp Bình Chánh",
+                    "level": "L4",
+                    "problem": "thua",
+                    "rule": "03 §3.1"
+                  }
+                ],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "verbose",
+          "text": "12 Đường Sư Vạn Hạnh, Phường 12, Quận 10, Thành phố Hồ Chí Minh",
+          "expected": "good",
+          "winners": [
+            "good",
+            "good"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.0024871,
+              "elapsed_sec": 12.11,
+              "reasoning": 1216,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "Thành",
+                    "level": "L2",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  },
+                  {
+                    "text": "phố Hồ Chí Minh",
+                    "level": "L2",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "2",
+              "cost_usd": 0.00233225,
+              "elapsed_sec": 35.39,
+              "reasoning": 2104,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "Thành",
+                    "level": "L2",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  },
+                  {
+                    "text": "phố Hồ Chí Minh",
+                    "level": "L2",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  }
+                ],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "verbose",
+          "text": "114c đường thi sách, xã hòa bình, huyện thanh oai, thành phố hà nội",
+          "expected": "good",
+          "winners": [
+            "good",
+            "good"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.00253065,
+              "elapsed_sec": 44.0,
+              "reasoning": 1202,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "thành",
+                    "level": "L2",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  },
+                  {
+                    "text": "phố hà nội",
+                    "level": "L2",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "2",
+              "cost_usd": 0.0021851,
+              "elapsed_sec": 27.52,
+              "reasoning": 1894,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "thành",
+                    "level": "L2",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  },
+                  {
+                    "text": "phố hà nội",
+                    "level": "L2",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  }
+                ],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "verbose",
+          "text": "971 Đường Giang Văn Minh, Phường Kim Mã, Quận Ba Đình, Thành phố Hà Nội",
+          "expected": "good",
+          "winners": [
+            "good",
+            "good"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.0034816,
+              "elapsed_sec": 30.44,
+              "reasoning": 1609,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "Đường Giang Văn Minh",
+                    "level": "L5",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "2",
+              "cost_usd": 0.00218705,
+              "elapsed_sec": 29.41,
+              "reasoning": 1916,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "Đường",
+                    "level": "L5",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  }
+                ],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "verbose",
+          "text": "293/7 Trần Nguyên Hãn, Phường An Bình, Thành phố Biên Hòa, Tỉnh Đồng Nai",
+          "expected": "good",
+          "winners": [
+            "good",
+            "good"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.00246455,
+              "elapsed_sec": 33.75,
+              "reasoning": 2294,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "Thành",
+                    "level": "L3",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  },
+                  {
+                    "text": "phố Biên Hòa",
+                    "level": "L3",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.3"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "2",
+              "cost_usd": 0.00226155,
+              "elapsed_sec": 22.88,
+              "reasoning": 1984,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "Thành",
+                    "level": "L3",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  },
+                  {
+                    "text": "phố Biên Hòa",
+                    "level": "L3",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  }
+                ],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        }
+      ]
+    },
+    "khuyen_nghi": {
+      "summary": {
+        "by_kind": {
+          "known": {
+            "n": 16,
+            "correct": 3,
+            "flip": 3
+          },
+          "identical": {
+            "n": 5,
+            "correct": 5,
+            "flip": 0
+          },
+          "verbose": {
+            "n": 5,
+            "correct": 5,
+            "flip": 0
+          }
+        },
+        "flip_rate": 0.11538461538461539,
+        "identical_slot_picks": {
+          "1": 0,
+          "2": 0,
+          "tie": 10
+        },
+        "errors": 0,
+        "calls_with_retry": 0,
+        "reasoning_mean": 1456,
+        "latency_mean": 23.2,
+        "latency_p95": 44.16,
+        "cost_usd": 0.13577,
+        "wall_sec": 316
+      },
+      "rows": [
+        {
+          "kind": "known",
+          "text": "210/87 Số 5, Phường Nghĩa Đô, Tây Hồ, TP. Hà Nội, vn",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.00232935,
+              "elapsed_sec": 44.16,
+              "reasoning": 2119,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "Số 5",
+                    "level": "L5",
+                    "problem": "sai_level",
+                    "rule": "02_label_definitions.txt §2.6"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.0043788,
+              "elapsed_sec": 29.02,
+              "reasoning": 2356,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "Số 5",
+                    "level": "L5",
+                    "problem": "sai_level",
+                    "rule": "02 §2.0 L6, 03 §3.1"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#10"
+        },
+        {
+          "kind": "known",
+          "text": "Phố Nguyễn Văn Tố, Phường Tân Thạnh Tân Phú, Hồ Chí Minh",
+          "expected": "good",
+          "winners": [
+            "good",
+            "good"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.00328,
+              "elapsed_sec": 14.55,
+              "reasoning": 1591,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "Phường Tân Thạnh Tân Phú",
+                    "level": "L4",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.4"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "2",
+              "cost_usd": 0.0019164,
+              "elapsed_sec": 20.67,
+              "reasoning": 1531,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "Tân Thạnh Tân Phú",
+                    "level": "L4",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "02 §2.0"
+                  }
+                ],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2#28"
+        },
+        {
+          "kind": "known",
+          "text": "114c",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.00289625,
+              "elapsed_sec": 23.77,
+              "reasoning": 1711,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "114c",
+                    "level": "L6",
+                    "problem": "sai_level",
+                    "rule": "§4.7"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.0035423,
+              "elapsed_sec": 45.33,
+              "reasoning": 1876,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "114c",
+                    "level": "L6",
+                    "problem": "sai_level",
+                    "rule": "§4.6, §4.7"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#55"
+        },
+        {
+          "kind": "known",
+          "text": "210",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.0028892,
+              "elapsed_sec": 10.97,
+              "reasoning": 1247,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "210",
+                    "level": "L6",
+                    "problem": "sai_level",
+                    "rule": "04 §4.7"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00218535,
+              "elapsed_sec": 35.19,
+              "reasoning": 1931,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "210",
+                    "level": "L6",
+                    "problem": "thieu",
+                    "rule": "04 §4.7"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#57"
+        },
+        {
+          "kind": "known",
+          "text": "dự án him lam chợ l",
+          "expected": "good",
+          "winners": [
+            "other",
+            "good"
+          ],
+          "consistent": false,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.0045482,
+              "elapsed_sec": 26.38,
+              "reasoning": 3432,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "dự án him lam chợ l",
+                    "level": "L7",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.3, 03 §3.5"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "2",
+              "cost_usd": 0.00306895,
+              "elapsed_sec": 20.47,
+              "reasoning": 1887,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "dự án him lam",
+                    "level": "L7",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.3"
+                  }
+                ],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2#61"
+        },
+        {
+          "kind": "known",
+          "text": "dự án",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.0017324,
+              "elapsed_sec": 25.7,
+              "reasoning": 1283,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "dự án",
+                    "level": "L7",
+                    "problem": "thua",
+                    "rule": "04 §4.7"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00170025,
+              "elapsed_sec": 20.75,
+              "reasoning": 1212,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "dự án",
+                    "level": "L7",
+                    "problem": "thua",
+                    "rule": "04 §4.6"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#63"
+        },
+        {
+          "kind": "known",
+          "text": "dự án hap",
+          "expected": "good",
+          "winners": [
+            "good",
+            "other"
+          ],
+          "consistent": false,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.002982,
+              "elapsed_sec": 55.22,
+              "reasoning": 3079,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "dự án hap",
+                    "level": "L7",
+                    "problem": "thieu",
+                    "rule": "03 §3.5"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00232545,
+              "elapsed_sec": 55.0,
+              "reasoning": 2141,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "dự án hap",
+                    "level": "L7",
+                    "problem": "thua",
+                    "rule": "04 §4.6"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#64"
+        },
+        {
+          "kind": "known",
+          "text": "dự án the",
+          "expected": "good",
+          "winners": [
+            "good",
+            "good"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.0020846,
+              "elapsed_sec": 26.62,
+              "reasoning": 1785,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "dự án the",
+                    "level": "L7",
+                    "problem": "thieu",
+                    "rule": "03 §3.5"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "2",
+              "cost_usd": 0.0025144,
+              "elapsed_sec": 17.27,
+              "reasoning": 1462,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "dự án the",
+                    "level": "L7",
+                    "problem": "thieu",
+                    "rule": "03 §3.5"
+                  }
+                ],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2#66"
+        },
+        {
+          "kind": "known",
+          "text": "dự án legend tower 109",
+          "expected": "good",
+          "winners": [
+            "good",
+            "good"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.000924,
+              "elapsed_sec": 10.44,
+              "reasoning": 89,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "dự án legend tower 109",
+                    "level": "L7",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.4"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "2",
+              "cost_usd": 0.00380005,
+              "elapsed_sec": 28.2,
+              "reasoning": 2107,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "dự án legend tower 109",
+                    "level": "L7",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.3"
+                  }
+                ],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2#71"
+        },
+        {
+          "kind": "known",
+          "text": "123",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.0016855,
+              "elapsed_sec": 23.3,
+              "reasoning": 1190,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "123",
+                    "level": "L6",
+                    "problem": "sai_level",
+                    "rule": "04 §4.7"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00169045,
+              "elapsed_sec": 20.75,
+              "reasoning": 1199,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "123",
+                    "level": "L6",
+                    "problem": "sai_level",
+                    "rule": "§4.7"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#72"
+        },
+        {
+          "kind": "known",
+          "text": "1436",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.0044024805,
+              "elapsed_sec": 9.92,
+              "reasoning": 1230,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "1436",
+                    "level": "L6",
+                    "problem": "sai_level",
+                    "rule": "02 §4.7"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00144835,
+              "elapsed_sec": 30.05,
+              "reasoning": 887,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "1436",
+                    "level": "L6",
+                    "problem": "sai_level",
+                    "rule": "04 §4.7"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#73"
+        },
+        {
+          "kind": "known",
+          "text": "lan phương mhbr tower 104",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.00270035,
+              "elapsed_sec": 43.94,
+              "reasoning": 2581,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "lan phương mhbr tower",
+                    "level": "L7",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.4"
+                  }
+                ],
+                "issues_2": [
+                  {
+                    "text": "lan phương",
+                    "level": "L5",
+                    "problem": "thieu",
+                    "rule": "04 §4.2"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.0037891,
+              "elapsed_sec": 9.38,
+              "reasoning": 2250,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "lan phương mhbr tower",
+                    "level": "L7",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.4"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#86"
+        },
+        {
+          "kind": "known",
+          "text": "central pla",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.0026415,
+              "elapsed_sec": 9.95,
+              "reasoning": 1059,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "central pla",
+                    "level": "L7",
+                    "problem": "sai_level",
+                    "rule": "04 §4.6"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00524057625,
+              "elapsed_sec": 15.67,
+              "reasoning": 1986,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "central pla",
+                    "level": "L7",
+                    "problem": "thieu",
+                    "rule": "04 §4.6"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#89"
+        },
+        {
+          "kind": "known",
+          "text": "TaniBuilding Sơn Kỳ 1, Lê Trọng",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.00220015,
+              "elapsed_sec": 35.84,
+              "reasoning": 1904,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "TaniBuilding Sơn Kỳ 1",
+                    "level": "L7",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.2; 03 §3.3"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00215255,
+              "elapsed_sec": 34.45,
+              "reasoning": 1881,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "TaniBuilding Sơn Kỳ 1",
+                    "level": "L7",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.3"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#90"
+        },
+        {
+          "kind": "known",
+          "text": "TaniBuilding Sơn Kỳ 1, Lê Trọng Tấn",
+          "expected": "good",
+          "winners": [
+            "good",
+            "other"
+          ],
+          "consistent": false,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.0033873,
+              "elapsed_sec": 9.76,
+              "reasoning": 1617,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "Sơn Kỳ 1",
+                    "level": "L5",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.3"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00303935,
+              "elapsed_sec": 31.09,
+              "reasoning": 1876,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "TaniBuilding Sơn Kỳ 1",
+                    "level": "L7",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.4"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#91"
+        },
+        {
+          "kind": "known",
+          "text": "chợ",
+          "expected": "good",
+          "winners": [
+            "other",
+            "other"
+          ],
+          "consistent": true,
+          "correct": false,
+          "calls": [
+            {
+              "raw": "2",
+              "cost_usd": 0.0016903,
+              "elapsed_sec": 20.95,
+              "reasoning": 1215,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "chợ",
+                    "level": "L7",
+                    "problem": "sai_level",
+                    "rule": "02_label_definitions.txt (§2.0), 04_ambiguity_and_fallback.txt (§4.6)"
+                  }
+                ],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "1",
+              "cost_usd": 0.00137465,
+              "elapsed_sec": 15.94,
+              "reasoning": 773,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "chợ",
+                    "level": "L7",
+                    "problem": "sai_level",
+                    "rule": "04 §4.6"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "golden_test2#97"
+        },
+        {
+          "kind": "identical",
+          "text": "858 Đường Lê Lợi, Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh",
+          "expected": "tie",
+          "winners": [
+            "tie",
+            "tie"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "tie",
+              "cost_usd": 0.00134625,
+              "elapsed_sec": 7.09,
+              "reasoning": 351,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "tie",
+              "cost_usd": 0.00119265,
+              "elapsed_sec": 4.52,
+              "reasoning": 310,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "identical",
+          "text": "457 ĐƯỜNG LÊ LỢI, PHƯỜNG BẾN NGHÉ, QUẬN 1, THÀNH PHỐ HỒ CHÍ MINH",
+          "expected": "tie",
+          "winners": [
+            "tie",
+            "tie"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "tie",
+              "cost_usd": 0.00119875,
+              "elapsed_sec": 16.53,
+              "reasoning": 544,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "tie",
+              "cost_usd": 0.00149765,
+              "elapsed_sec": 23.8,
+              "reasoning": 967,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "identical",
+          "text": "191/56 Đ. Trương minh Giảng, Phường Võ Thị Sáu, Quận 3, Thành phố Hồ Chí Minh",
+          "expected": "tie",
+          "winners": [
+            "tie",
+            "tie"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "tie",
+              "cost_usd": 0.00246255,
+              "elapsed_sec": 9.58,
+              "reasoning": 784,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "tie",
+              "cost_usd": 0.0015236,
+              "elapsed_sec": 23.03,
+              "reasoning": 1009,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "identical",
+          "text": "115A Lối Rạch Miễu, Phường 7, Quận Phú Nhuận, Thành phố Hồ Chí Minh",
+          "expected": "tie",
+          "winners": [
+            "tie",
+            "tie"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "tie",
+              "cost_usd": 0.0012188,
+              "elapsed_sec": 22.28,
+              "reasoning": 565,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "tie",
+              "cost_usd": 0.0035475555,
+              "elapsed_sec": 4.97,
+              "reasoning": 475,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "identical",
+          "text": "239 Nguyễn Văn Cừ, Phường 4, Quận 5, Thành phố Hồ Chí Minh",
+          "expected": "tie",
+          "winners": [
+            "tie",
+            "tie"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "tie",
+              "cost_usd": 0.003129339,
+              "elapsed_sec": 3.28,
+              "reasoning": 109,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            },
+            {
+              "raw": "tie",
+              "cost_usd": 0.00155365,
+              "elapsed_sec": 29.94,
+              "reasoning": 1049,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "verbose",
+          "text": "267/30 Số 8, Phường Hiệp Bình Chánh, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "expected": "good",
+          "winners": [
+            "good",
+            "good"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.0036044,
+              "elapsed_sec": 12.84,
+              "reasoning": 1860,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "Phường Hiệp Bình Chánh",
+                    "level": "L4",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "2",
+              "cost_usd": 0.0041857,
+              "elapsed_sec": 29.42,
+              "reasoning": 2379,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "Phường Hiệp Bình Chánh",
+                    "level": "L4",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  }
+                ],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "verbose",
+          "text": "12 Đường Sư Vạn Hạnh, Phường 12, Quận 10, Thành phố Hồ Chí Minh",
+          "expected": "good",
+          "winners": [
+            "good",
+            "good"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.0027521,
+              "elapsed_sec": 26.03,
+              "reasoning": 1559,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "Thành phố Hồ Chí Minh",
+                    "level": "L2",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "2",
+              "cost_usd": 0.00334635,
+              "elapsed_sec": 21.84,
+              "reasoning": 1510,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "Thành",
+                    "level": "L2",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  },
+                  {
+                    "text": "phố Hồ Chí Minh",
+                    "level": "L2",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  }
+                ],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "verbose",
+          "text": "114c đường thi sách, xã hòa bình, huyện thanh oai, thành phố hà nội",
+          "expected": "good",
+          "winners": [
+            "good",
+            "good"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.00411505,
+              "elapsed_sec": 41.25,
+              "reasoning": 1484,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "thành",
+                    "level": "L2",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "02 §2 / 03 §3.1"
+                  },
+                  {
+                    "text": "phố hà nội",
+                    "level": "L2",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "02 §2 / 03 §3.1"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "2",
+              "cost_usd": 0.0021018,
+              "elapsed_sec": 32.45,
+              "reasoning": 1754,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "thành",
+                    "level": "L2",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  },
+                  {
+                    "text": "phố hà nội",
+                    "level": "L2",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  }
+                ],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "verbose",
+          "text": "971 Đường Giang Văn Minh, Phường Kim Mã, Quận Ba Đình, Thành phố Hà Nội",
+          "expected": "good",
+          "winners": [
+            "good",
+            "good"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.00227225,
+              "elapsed_sec": 9.72,
+              "reasoning": 485,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "Đường",
+                    "level": "L5",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  },
+                  {
+                    "text": "Giang Văn Minh",
+                    "level": "L5",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "2",
+              "cost_usd": 0.00152485,
+              "elapsed_sec": 23.86,
+              "reasoning": 982,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "Đường",
+                    "level": "L5",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  }
+                ],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        },
+        {
+          "kind": "verbose",
+          "text": "293/7 Trần Nguyên Hãn, Phường An Bình, Thành phố Biên Hòa, Tỉnh Đồng Nai",
+          "expected": "good",
+          "winners": [
+            "good",
+            "good"
+          ],
+          "consistent": true,
+          "correct": true,
+          "calls": [
+            {
+              "raw": "1",
+              "cost_usd": 0.0046006095,
+              "elapsed_sec": 10.31,
+              "reasoning": 1353,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [],
+                "issues_2": [
+                  {
+                    "text": "Thành",
+                    "level": "L3",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  },
+                  {
+                    "text": "phố Biên Hòa",
+                    "level": "L3",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  }
+                ]
+              }
+            },
+            {
+              "raw": "2",
+              "cost_usd": 0.00205155,
+              "elapsed_sec": 31.86,
+              "reasoning": 1717,
+              "attempts": 1,
+              "issues": {
+                "issues_1": [
+                  {
+                    "text": "Thành phô Biên Hòa",
+                    "level": "L3",
+                    "problem": "sai_ranh_gioi",
+                    "rule": "03 §3.1"
+                  }
+                ],
+                "issues_2": []
+              }
+            }
+          ],
+          "source": "golden_test2"
+        }
+      ]
+    }
+  }
+}
