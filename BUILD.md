@@ -1,5 +1,11 @@
 # BUILD.md — Dựng khung thư mục cho hệ thống feedback loop 3 lớp
 
+> **Đã thay thế một phần (2026-09-24).** Kiến trúc cascade Lớp 1 PhoBERT → Lớp 2 DeepSeek → Lớp 3 OpenAI
+> ở §1, và thứ tự triển khai ở §7, được thay bằng pipeline upload → DeepSeek parse → Qwen judge →
+> metrics trong [BUILD_PIPELINE.md](BUILD_PIPELINE.md). `feedback/layers/` đổi thành `feedback/stages/`;
+> `cascade.py` và stub Lớp 1–3 đã xoá. **Vẫn hiệu lực:** quyết định 1, 2, 3, 5, 6 ở §2, khối `_meta`
+> ở §5.8, và hai chỉ số phanh ở §8. Phần còn lại giữ nguyên để truy vết lịch sử quyết định.
+
 Tài liệu này dành cho agent thực thi. Đọc hết trước khi tạo file đầu tiên.
 
 Nhiệm vụ: tạo **khung thư mục rỗng** cho subsystem `feedback/`. Đây là bước scaffold — **không implement logic nghiệp vụ**. Phần implement bắt đầu từ §7.

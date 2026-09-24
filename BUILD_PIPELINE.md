@@ -1,7 +1,7 @@
 # BUILD_PIPELINE.md — Pipeline đánh giá output parser: upload → DeepSeek → Qwen judge → metrics
 
-> **Trạng thái: bản thiết kế chờ duyệt (2026-09-24).** Chưa có dòng code nào theo tài liệu này.
-> Khi được duyệt, §1–2 và §7 của `BUILD.md` sẽ được sửa để trỏ sang đây (xem §11).
+> **Trạng thái: đã triển khai bước 1–8 (2026-09-24).** Chỗ triển khai khác thiết kế ban đầu và kết quả
+> chạy thật ghi ở §13. `BUILD.md` §1 và §7 đã trỏ sang tài liệu này.
 
 ---
 
@@ -294,7 +294,8 @@ Gán nhãn **không được** dựa trên bản DeepSeek làm sẵn — gold s�
 
 ## 9. Giao diện
 
-Thêm trang **`/pipeline`** vào `frontend/server.py`. Trang so sánh parser hiện có ở `/` giữ nguyên.
+Pipeline nằm ở tab **"Mô phỏng Production"** của trang hiện có (tab này trước đó để trống), thay cho
+một trang `/pipeline` riêng. Tab so sánh parser giữ nguyên.
 Server và worker chạy bằng `.venv-layer1` (đã có FastAPI 0.141.1; `.venv` chưa có). Pipeline không cần
 torch, nên sau khi bỏ PhoBERT có thể chuyển sang `.venv` bằng cách cài `fastapi uvicorn`.
 
@@ -372,3 +373,59 @@ Các stub bị xoá chưa có code (chỉ docstring), nên không mất logic n�
 - **Ai gán nhãn** cho random audit và run `calibration`. Cần trước bước 7.
 - **Ảnh định nghĩa thiên kiến** người dùng nhắc tới chưa được gửi; §6.2 dùng định nghĩa phổ biến.
 - **Q1–Q3** (`scripts/external_api/nhuocdiem.md`): chốt sau; ảnh hưởng cả DeepSeek lẫn judge vì cùng prompt v2.
+
+---
+
+## 13. Đã triển khai (2026-09-24) — khác thiết kế và kết quả chạy thật
+
+### 13.1. Khác với thiết kế ở trên
+
+| Chỗ | Thiết kế | Triển khai | Lý do |
+|---|---|---|---|
+| Giao diện | Trang `/pipeline` riêng | Tab "Mô phỏng Production" có sẵn | Tab đã được dựng chờ tính năng này |
+| Lớp 0 | Offset/BIO sai → gọi lại DeepSeek | Chỉ lỗi **span** là hard; lỗi tokens/BIO là soft | Pipeline chỉ dùng span; tokens/BIO sinh lại từ span (`core/bio.tokens_and_bio`), gọi lại vì BIO sai là tốn tiền vô ích |
+| Offset lệch | hard | Tự sửa khi `text` xuất hiện đúng một chỗ còn trống, ghi soft `offset_repaired` | Đo trên 120 output DeepSeek sẵn có: 380/380 offset đúng — sửa chỉ là lưới an toàn |
+| Tham số Qwen | `temperature`, `presence_penalty` | Thêm `top_p`, `top_k` | Trang model khuyến nghị cả bộ; xem §13.3 |
+| Ngân sách | Kiểm `cost + ước tính` trước mỗi lần gọi | Giữ chỗ (`reserve`) trước khi gửi, quyết toán (`settle`) khi có response | Các worker chạy song song không cùng vượt trần; tiền đã tiêu được ghi ngay kể cả khi message lỗi sau đó |
+| Judge lỗi giữa chừng | — | Lần chấm thứ hai lỗi tạm thời → broker chạy lại cả message, lần chấm thứ nhất bị gọi lại | Đơn giản; chi phí lặp vẫn nằm trong sổ ngân sách |
+| Probe thiên kiến | Chạy trong run `calibration` | Script riêng `feedback/scripts/measure_judge_params.py` | Probe cần gold + output DeepSeek có sẵn; không gắn vào luồng upload |
+| Cấu trúc `eval/` | `judge_metrics.py` riêng | Gộp vào `report.py`; thêm `feedback/pipeline/{store,runner}.py` | Metrics judge và metrics run dùng chung dữ liệu và hàm khoảng tin cậy |
+| Dấu vân tay judge | — | sha của prompt lõi + `judge.txt` + model + tham số lấy mẫu | Kết quả hiệu chuẩn chỉ áp cho đúng cấu hình đó (§7.4) |
+
+Chưa làm: giao diện gán nhãn tay (hiện tải file JSON hàng chờ về rồi gán nhãn ngoài), hiệu chỉnh theo recall
+của judge trong ước lượng tỉ lệ lỗi (cần nhãn random audit).
+
+### 13.2. Chạy thật trên `template.txt` (46 case, đáp án tay)
+
+`run-20260924-065716-1ab3`: 45 `agree`, 1 `deepseek_better`; **$0,0468** (DeepSeek $0,0408, Qwen $0,0060);
+khuyến nghị: *chưa hiệu chuẩn*. Case duy nhất qua judge: `Nguyễn Thái Bình, Quận 1` — tên này vừa là một
+phường của Quận 1 vừa là một con đường. Đáp án tay gán L4, DeepSeek gán L5, Qwen chọn DeepSeek nhất quán
+ở cả hai thứ tự với lý do "sai level". Theo rubric, ca mơ hồ như vậy lẽ ra là hoà: một ví dụ judge
+quá tự tin mà chỉ hiệu chuẩn mới đo được tần suất.
+
+### 13.3. Đo tham số Qwen (`golden_dataset/evals/judge_params/results.json`, $0,28)
+
+26 probe × 2 thứ tự × 2 cấu hình, dựng từ `golden_test2` (§7.5):
+
+| | `temperature=0` | khuyến nghị (`1.0`, `top_p` 0.95, `top_k` 20, `presence_penalty` 1.5) |
+|---|---:|---:|
+| identical → hoà | 5/5 (10/10 lần gọi) | 5/5 (10/10) |
+| verbose → bản đúng thắng | 5/5 | 5/5 |
+| known → gold thắng | 1/16 | 3/16 |
+| lật | 3/26 | 3/26 |
+| lần gọi phải retry | 0 | 0 |
+| độ trễ TB / p95 | 23,7 / 38,0 s | 23,2 / 44,2 s |
+
+Không khác biệt có ý nghĩa → chốt theo khuyến nghị của nhà cung cấp (`models.yaml`).
+
+**Phát hiện quan trọng hơn việc chọn tham số:** trên 16 probe known (DeepSeek sai so với gold), judge chọn
+DeepSeek ở phần lớn case, ở cả hai cấu hình:
+- 9 case là chỗ prompt và gold mâu thuẫn (số đứng một mình, tiền tố POI đứng một mình — xem
+  `scripts/external_api/nhuocdiem.md`): judge **làm đúng prompt**, nên không tính là lỗi của judge.
+- Các case ranh giới POI rõ ràng (`TaniBuilding Sơn Kỳ 1`, `lan phương mhbr tower`, `dự án him lam chợ l`):
+  judge **đồng ý với cách tách sai của DeepSeek**. Judge và DeepSeek đọc cùng prompt v2 nên có thể chia sẻ
+  cùng một cách hiểu sai. Trong pipeline, khi model đúng còn DeepSeek sai theo kiểu đó, judge vẫn chọn
+  DeepSeek → **báo động giả**, và tỉ lệ `deepseek_better` bị **thổi phồng**. Ngược lại, khi model và DeepSeek
+  cùng sai một kiểu thì case đi nhánh `agree` và không ai bắt được. Chỉ hiệu chuẩn trên gold thật (và random
+  audit cả nhánh `agree`) mới đo được hai mức độ này; đây cũng là lý do khuyến nghị retrain phải khoá cho tới
+  khi có hiệu chuẩn.
