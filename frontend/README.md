@@ -1,6 +1,6 @@
 # Giao diện so sánh parser địa chỉ
 
-Trang nội bộ để thử một địa chỉ tiếng Việt với PhoBERT PyTorch FP32, PhoBERT ONNX FP32 và Qwen qua OpenRouter. Một lần bấm **Parse cả 3 engine** sẽ gọi cả ba endpoint song song; kết quả nào xong sẽ hiện ngay.
+Trang nội bộ gồm hai tab: thử một địa chỉ tiếng Việt với PhoBERT PyTorch FP32, PhoBERT ONNX FP32 và Qwen qua OpenRouter; và pipeline đánh giá output parser (xem cuối file). Một lần bấm **Parse cả 3 engine** sẽ gọi cả ba endpoint song song; kết quả nào xong sẽ hiện ngay.
 
 ## Chạy local
 
@@ -29,3 +29,16 @@ Phiên bản đã kiểm tra: **fastapi 0.141.1**, **uvicorn 0.53.0**.
 ## Endpoint
 
 `GET /api/status` cho biết model nào đã nạp, RAM và tình trạng cấu hình Qwen. Ba endpoint parse nhận JSON `{"text":"..."}`: `POST /api/parse/pytorch`, `POST /api/parse/onnx`, `POST /api/parse/qwen`.
+
+## Tab "Mô phỏng Production" — pipeline đánh giá
+
+Worker của pipeline ([BUILD_PIPELINE.md](../BUILD_PIPELINE.md)) chạy cùng tiến trình server, khởi động khi server bật. Đặt `PIPELINE_DISABLED=1` để chỉ bật trang so sánh.
+
+- **Upload:** chọn file capture (định dạng `kafka_simulation/template.txt`) → xem số case, message bị loại, chi phí ước tính và trần $2 → bấm **Chạy pipeline**. Tick **Lượt hiệu chuẩn** và chọn thêm file gold (định dạng `golden_dataset`) để đo judge.
+- **Run:** sơ đồ số case ở từng giai đoạn (tự làm mới mỗi 2 giây khi đang chạy), chi phí so với trần, khuyến nghị retrain, metrics đồng thuận / sức khoẻ judge / chất lượng model / chi phí.
+- **Case:** lọc theo quyết định hoặc audit; bấm một dòng để xem hai bản parse tô màu theo level, khác biệt, cả hai lần chấm của judge kèm lỗi judge nêu, Lớp 0 và CaseRecord đầy đủ.
+- **Tải hàng chờ gán nhãn:** file JSON định dạng golden (chỉ có text, result để trống) gồm case random audit và case judge lật — gán nhãn xong dùng làm gold cho lượt hiệu chuẩn.
+
+Không chạy `feedback.scripts.run_pipeline` cùng lúc với server trên cùng DB: hai tiến trình sẽ cùng giành message.
+
+API: `POST /api/runs/preview`, `POST /api/runs`, `GET /api/runs`, `GET /api/runs/{id}`, `GET /api/runs/{id}/cases`, `GET /api/runs/{id}/cases/{case_id}`, `GET /api/runs/{id}/label-queue`, `GET /api/pipeline/config`.

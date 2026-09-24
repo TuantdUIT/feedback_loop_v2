@@ -6,7 +6,9 @@
   <meta name="theme-color" content="#ffffff">
   <title>So sánh parser địa chỉ</title>
   <link rel="stylesheet" href="/static/style.css?v=white-1">
+  <link rel="stylesheet" href="/static/pipeline.css?v=1">
   <script src="/static/app.js" defer></script>
+  <script src="/static/pipeline.js?v=1" defer></script>
 </head>
 <body>
   <div class="page-shell">
@@ -77,9 +79,50 @@
       <div id="tab-panel-prod" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-prod" hidden>
         <section class="intro" aria-label="Mô phỏng Production">
           <div class="eyebrow"><span class="eyebrow-line"></span> PRODUCTION SIMULATION</div>
-          <p>Luồng mô phỏng dữ liệu chạy qua Kafka giả lập, nạp vào feedback loop như hệ thống thật.</p>
+          <p>Upload output của parser đang triển khai. Từng case chạy qua message queue: DeepSeek parse lại, Qwen chấm bản nào tốt hơn, rồi tổng hợp metrics để quyết định có cần retrain.</p>
         </section>
-        <div class="dev-placeholder">Đang phát triển</div>
+
+        <section class="input-panel pl-upload" aria-labelledby="pl-upload-title">
+          <div class="section-heading"><span class="section-index">01 / UPLOAD</span><h2 id="pl-upload-title">File output parser</h2><span class="section-aside">Định dạng như <code>kafka_simulation/template.txt</code></span></div>
+          <div class="pl-upload-grid">
+            <label class="pl-file">
+              <span class="pl-file-label">File capture (.txt)</span>
+              <input id="pl-file" type="file" accept=".txt,text/plain">
+            </label>
+            <label class="pl-check"><input id="pl-calibration" type="checkbox"> Lượt hiệu chuẩn (cần file gold)</label>
+            <label class="pl-file" id="pl-gold-wrap" hidden>
+              <span class="pl-file-label">File gold (.json, định dạng golden_dataset)</span>
+              <input id="pl-gold" type="file" accept=".json,application/json">
+            </label>
+          </div>
+          <div id="pl-preview" class="pl-preview" hidden></div>
+          <div class="input-actions">
+            <span id="pl-upload-hint" class="input-hint">Chọn file để xem số case và chi phí ước tính trước khi chạy.</span>
+            <button id="pl-run-button" type="button" disabled><span class="button-icon" aria-hidden="true">↗</span> Chạy pipeline <span id="pl-run-cost" class="button-cost">—</span></button>
+          </div>
+        </section>
+
+        <section class="results-section" aria-labelledby="pl-runs-title">
+          <div class="section-heading"><span class="section-index">02 / RUNS</span><h2 id="pl-runs-title">Các lần upload</h2><span id="pl-config" class="section-aside"></span></div>
+          <div id="pl-runs" class="pl-table-wrap"></div>
+        </section>
+
+        <section id="pl-run" class="results-section pl-run" aria-labelledby="pl-run-title" hidden>
+          <div class="section-heading"><span class="section-index">03 / RUN</span><h2 id="pl-run-title">—</h2><span id="pl-run-status" class="pl-badge"></span><span id="pl-run-meta" class="section-aside"></span></div>
+          <div id="pl-flow" class="pl-flow"></div>
+          <div id="pl-budget" class="pl-budget"></div>
+          <div id="pl-recommendation" class="pl-recommendation"></div>
+          <div id="pl-metrics" class="pl-metrics"></div>
+
+          <div class="section-heading pl-cases-heading"><span class="section-index">04 / CASES</span><h2>Từng case</h2><a id="pl-label-queue" class="section-aside pl-link" href="#" download>Tải hàng chờ gán nhãn (.json)</a></div>
+          <div id="pl-filters" class="pl-filters"></div>
+          <div id="pl-cases" class="pl-table-wrap"></div>
+        </section>
+
+        <aside id="pl-case" class="pl-case" hidden aria-labelledby="pl-case-title">
+          <div class="pl-case-head"><h3 id="pl-case-title">—</h3><button id="pl-case-close" type="button" class="pl-close" aria-label="Đóng">×</button></div>
+          <div id="pl-case-body" class="pl-case-body"></div>
+        </aside>
       </div>
     </main>
 
