@@ -1,40 +1,44 @@
-# Message queue mô phỏng: nạp output NER vào CaseRecord
+# Message queue: nạp output NER vào pipeline đánh giá
 
-Pipeline này mô phỏng một **message queue FIFO trong cùng tiến trình Python** để luân chuyển dữ liệu từ output của hệ thống NER sang feedback loop. Nó đọc capture curl, ghép `texts[i]` với `results[i]`, đẩy từng địa chỉ vào hàng đợi, rồi consumer lấy ra và chuyển thành `feedback.core.schemas.CaseRecord`. Không gọi endpoint staging và chưa gọi cascade của `feedback/`.
+Component message queue của pipeline trong [BUILD_PIPELINE.md](../BUILD_PIPELINE.md). Đọc capture curl
+(`texts[]` + `results[]`), kiểm tra từng message, dựng `feedback.core.schemas.CaseRecord`, và luân
+chuyển case giữa các giai đoạn qua các topic. Không gọi endpoint staging.
 
 ```
-template.txt ─► capture_parser ─► producer ─► MessageQueue ─► consumer ─► bridge ─► out/cases.json
-                                  (publish)     (FIFO)       (consume)
+capture ─► capture_parser ─► message.validate ─► bridge ─► CaseRecord ─► broker [ingested] ─► …worker…
 ```
 
-## Chạy
+## Hai hàng đợi
 
-Từ thư mục gốc dự án:
+| | `broker.py` — dùng trong pipeline | `message_queue.py` — mô phỏng tối giản |
+|---|---|---|
+| Lưu trữ | SQLite trên đĩa (`feedback/store/pipeline.db`) | Bộ nhớ, mất khi tắt tiến trình |
+| Topic | Nhiều topic theo giai đoạn | Một hàng FIFO |
+| Ack / retry | Ack nguyên tử cùng ghi dữ liệu; retry có backoff; dead-letter sau 3 lần | Không |
+| Crash | `recover()` trả message đang xử lý về hàng (at-least-once) | Chạy lại từ đầu |
+
+Message của broker chỉ mang `run_id` + `case_id`; dữ liệu case nằm ở bảng `cases`
+(`feedback/pipeline/store.py`). `run_simulation.py` + `MessageQueue` giữ lại cho test và chạy nhanh:
 
 ```powershell
-.venv/Scripts/python.exe -m kafka_simulation.run_simulation
-.venv/Scripts/python.exe -m pytest kafka_simulation/tests -v
+.venv-layer1/Scripts/python.exe -m kafka_simulation.run_simulation
+.venv-layer1/Scripts/python.exe -m pytest kafka_simulation/tests -v
 ```
 
-Mặc định lệnh đọc `kafka_simulation/template.txt` và ghi `kafka_simulation/out/cases.json`. Muốn dữ liệu mới thì thay `template.txt` hoặc truyền một hay nhiều capture khác:
+## Định dạng capture
 
-```powershell
-.venv/Scripts/python.exe -m kafka_simulation.run_simulation kafka_simulation/template.txt kafka_simulation/template_2026-10-01.txt --output kafka_simulation/out/multi_capture.json
-```
+Như `template.txt`: một lệnh `curl … --data '{"texts": [...]}'` rồi response `{"results": [{"result": {"input": …, "L1": […], …, "L7": […]}}]}`.
+**Không có `confidence`** (bỏ từ 2026-09-24); capture cũ còn trường này vẫn đọc được, trường bị bỏ qua.
 
-`out/` được bỏ qua bởi `.gitignore` trong thư mục này. JSON xuất ra là danh sách `CaseRecord.to_dict()`, **giữ đúng thứ tự** trong capture; `case_id` (`stem#NNNNN`) giữ chỉ số gốc để truy vết. `meta.api_confidence` giữ nguyên float của API, `meta.truncated_unknown=True` cho biết API không cung cấp tín hiệu cắt cụt. Span không tìm được bị bỏ và ghi ở `meta.unlocated`.
+`template.txt` hiện là **dữ liệu mô phỏng** 46 case với `results` là đáp án đúng. Capture thật trước đó
+(52 case, còn chữ dính như `Bến NghéQuận 1` và marker `<0303>`) được giữ ở
+`tests/fixtures/capture_52.txt` để test thuật toán định vị span trên dữ liệu bẩn.
 
-## Các thành phần
+## Thành phần
 
-- `capture_parser.py`: đọc request `texts[]` và response `results[]`; báo lỗi nếu hai mảng lệch độ dài.
+- `capture_parser.py`: bóc `texts[]` và `results[]`; báo lỗi nếu hai mảng lệch độ dài.
 - `message.py`: schema và `validate()` cho một message.
-- `producer.py`: gắn nguồn và thời gian, kiểm tra message, bỏ message hỏng, `publish()` vào hàng đợi.
-- `message_queue.py`: `MessageQueue` — `publish()` vào cuối, `consume()` lấy từ đầu, trả `None` khi rỗng; đếm `published` / `consumed`.
-- `consumer.py`: `consume()` tới khi hàng đợi rỗng, chuyển qua `bridge`, ghi JSON một lần.
-- `bridge.py`: NFC text, định vị entity dài trước, khớp nguyên văn rồi nới khoảng trắng, cắt token ở biên span và dấu câu, sinh BIO và `CaseRecord`.
-
-## Giới hạn mô phỏng
-
-Đây là hàng đợi trong bộ nhớ, **không phải broker thật**: không có partition, offset, consumer group, commit/ack, retry hay DLQ. Hàng đợi chỉ tồn tại trong phiên chạy; nếu consumer lỗi giữa chừng thì chạy lại toàn bộ. Cascade hiện là stub; pipeline dừng ở file JSON của `CaseRecord`.
-
-Capture gốc hiện còn chữ `<0303>` và `<0323>` trong text của `template#00022`, thay cho dấu Unicode rời. Pipeline giữ nguyên dữ liệu này, nên replay thực tế cho **52 CaseRecord, 69 span định vị, 1 unlocated**. Fixture `tests/fixtures/template_52.json` chỉ sửa hai marker Unicode trong bản fixture để kiểm tra thuật toán trên 52 mẫu: **70/70 span**. `template.txt` không bị sửa. Chi tiết ở [REPORT.md](REPORT.md).
+- `bridge.py`: NFC text, định vị entity dài trước, khớp nguyên văn rồi nới khoảng trắng; tokens/BIO sinh bằng
+  `feedback.core.bio.tokens_and_bio`. Span không định vị được ghi ở `meta.unlocated`; `meta.truncated_unknown=True`.
+- `broker.py`: broker SQLite ở trên.
+- `producer.py` / `consumer.py` / `message_queue.py` / `run_simulation.py`: luồng mô phỏng tối giản.

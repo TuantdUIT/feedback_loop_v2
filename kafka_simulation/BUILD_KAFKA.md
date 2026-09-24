@@ -1,5 +1,10 @@
 # BUILD_KAFKA.md — Luồng Kafka mô phỏng nạp output pipeline vào feedback loop
 
+> **Ghi chú 2026-09-24:** trường `confidence` đã bị bỏ khỏi định dạng đầu vào theo quyết định của người
+> dùng; `meta.api_confidence` không còn. Hàng đợi dùng trong pipeline là `broker.py` (SQLite) — xem
+> [README.md](README.md) và [BUILD_PIPELINE.md](../BUILD_PIPELINE.md). Nội dung dưới đây là tài liệu build
+> ban đầu, giữ nguyên để truy vết; các số đo `confidence` ở §3.3 thuộc capture cũ.
+
 Tài liệu này dành cho agent thực thi. Đọc hết trước khi tạo file đầu tiên.
 
 Nhiệm vụ: dựng `kafka_simulation/` — một đường ống mô phỏng Kafka đọc output thật của

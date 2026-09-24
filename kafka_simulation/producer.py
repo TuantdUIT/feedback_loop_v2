@@ -29,7 +29,6 @@ def run_producer(
                 "msg_id": make_case_id(source.name, index),
                 "text": payload["text"],
                 "result": payload["result"],
-                "confidence": payload["confidence"],
                 "source": payload["source"],
                 "produced_at": datetime.now().astimezone().isoformat(timespec="seconds"),
             }

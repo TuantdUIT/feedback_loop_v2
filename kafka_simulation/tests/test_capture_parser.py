@@ -13,10 +13,12 @@ from kafka_simulation.producer import DEFAULT_TEMPLATE, run_producer
 
 
 FIXTURE = Path(__file__).parent / "fixtures/template_52.json"
+# Capture thật trước khi template.txt được thay bằng dữ liệu mô phỏng: còn chữ dính và marker <0303>.
+CAPTURE_52 = Path(__file__).parent / "fixtures/capture_52.txt"
 
 
 def test_capture_has_52_pairs_and_70_entities() -> None:
-    payloads = parse_capture(DEFAULT_TEMPLATE)
+    payloads = parse_capture(CAPTURE_52)
     assert len(payloads) == 52
     assert sum(len(entities) for item in payloads for entities in item["result"].values()) == 70
     assert [item["source"]["batch_index"] for item in payloads] == list(range(52))
@@ -25,7 +27,7 @@ def test_capture_has_52_pairs_and_70_entities() -> None:
 
 
 def test_capture_preserves_literal_escape_in_source() -> None:
-    raw = parse_capture(DEFAULT_TEMPLATE)
+    raw = parse_capture(CAPTURE_52)
     fixture = json.loads(FIXTURE.read_text(encoding="utf-8"))
     assert "<0303>" in raw[22]["text"]
     assert "<0323>" in raw[22]["text"]
@@ -33,10 +35,27 @@ def test_capture_preserves_literal_escape_in_source() -> None:
     assert fixture[22]["text"] != raw[22]["text"]
 
 
+def test_simulated_template_has_46_pairs_without_confidence() -> None:
+    payloads = parse_capture(DEFAULT_TEMPLATE)
+    assert len(payloads) == 46
+    assert all(set(item) == {"text", "result", "source"} for item in payloads)
+    assert all(item["result"]["input"] == item["text"] for item in payloads)
+
+
+def test_legacy_confidence_field_is_ignored() -> None:
+    capture = (
+        "curl --location 'http://example.test/ner/predict-batch' --data '{\"texts\":[\"a\"]}'\n"
+        '{"results":[{"result":{"L1":[]},"confidence":0.9}]}\n'
+    )
+    with patch.object(Path, "read_text", return_value=capture):
+        payloads = parse_capture("legacy.txt")
+    assert "confidence" not in payloads[0]
+
+
 def test_mismatched_lengths_raise() -> None:
     capture = (
         "curl --location 'http://example.test/ner/predict-batch' --data '{\"texts\":[\"a\",\"b\"]}'\n"
-        '{"results":[{"result":{"L1":[]},"confidence":0.9}]}\n'
+        '{"results":[{"result":{"L1":[]}}]}\n'
     )
     with patch.object(Path, "read_text", return_value=capture):
         with pytest.raises(ValueError, match="texts .* khác results"):
@@ -54,9 +73,9 @@ def test_validate_rejects_bad_message_without_losing_batch() -> None:
 
 def test_producer_skips_invalid_message_and_keeps_valid_one() -> None:
     result = {f"L{i}": [] for i in range(1, 8)}
-    good = {"text": "abc", "result": result, "confidence": 0.9,
+    good = {"text": "abc", "result": result,
             "source": {"capture": "sample.txt", "endpoint": "/ner/predict-batch", "batch_index": 0}}
-    bad = {"text": "def", "result": {**result, "L2": "invalid"}, "confidence": 0.8,
+    bad = {"text": "def", "result": {**result, "L2": "invalid"},
            "source": {"capture": "sample.txt", "endpoint": "/ner/predict-batch", "batch_index": 1}}
     queue = MessageQueue()
     with patch("kafka_simulation.producer.parse_capture", return_value=[good, bad]):

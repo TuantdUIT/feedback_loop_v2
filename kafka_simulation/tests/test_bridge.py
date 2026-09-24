@@ -78,7 +78,6 @@ def test_empty_spans_truncated_and_roundtrip(records: list[CaseRecord]) -> None:
 def test_unlocated_span_is_dropped_without_changing_other_data() -> None:
     message = {
         "msg_id": "synthetic#00000", "text": "Nam Kỳ Khởi Nghĩa",
-        "confidence": 0.9,
         "result": {f"L{i}": [] for i in range(1, 8)},
     }
     message["result"]["L5"] = ["Không tồn tại", "Nam"]

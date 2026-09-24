@@ -1,62 +1,17 @@
-curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
+➜  ac-ner-probe curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
 --header 'x-user-id: your-user-id' \
 --header 'x-search-id: your-search-id' \
 --header 'Content-Type: application/json' \
 --data '{
-    "texts": [
-        "Thành phố Hồ Chí Minh",
-        "Phường Tân Định Quận 1",
-        "Bến Nghé, Quận 1",
-        "Hồ Chí Minh",
-        "74 Nơ Trang Long, Phường 12",
-        "Nam Kỳ Khởi Nghĩa",
-        "Nguyễn Thị Minh Khai",
-        "Đồng Nhân, Quận Hai Bà Trưng",
-        "Quận 1, Thành phố Hồ Chí Minh",
-        "Nam Kỳ Khởi Nghĩa, Bến Nghé, Quận 1",
-        "Quận 1, Hồ Chí Minh",
-        "234 Phạm Ngũ Lão, Quận 1",
-        "Thành phố Hà Nội",
-        "Nguyễn Tất Thành",
-        "Tân Phú, Hồ Chí Minh",
-        "94B Phan Văn Trị, Bình Thạnh",
-        "Đường Ba Tháng Hai, Quận 10",
-        "Nguyễn Du, Quận 1, Hồ Chí Minh",
-        "Đường Nguyễn Đình Chiểu",
-        "Quận 1",
-        "Tôn Thất Đàm, Hồ Chí Minh",
-        "Điện Biên Phủ, Bình Thạnh",
-        "Phường Nguyễn Cư Trinh, Quận 1",
-        "Ngô Văn Năm, Bến Nghé",
-        "Bà Huyện Thanh Quan, Hồ Chí Minh",
-        "Bà Triệu",
-        "Bến Nghé, Quận 1, Hồ Chí Minh",
-        "Nguyễn Văn Cừ",
-        "Nguyễn Bỉnh Khiêm",
-        "Katinat Saigon - Phó Đức Chính",
-        "Phó Đức Chính",
-        "Phường 16, Gò Vấp, Hồ Chí Minh",
-        "Nguyễn Du, Thành phố Hà Nội",
-        "Phường Bến Nghé, Hồ Chí Minh",
-        "Phường 25, Thành phố Hồ Chí Minh",
-        "Phạm Ngũ Lão, Quận 1",
-        "40 Hai Bà Trưng",
-        "Đa Kao, Hồ Chí Minh",
-        "Phường 16 Thành phố Hồ Chí Minh",
-        "Bến Nghé, Hồ Chí Minh",
-        "Phó Đức Chính, Nguyễn Thái Bình, Quận 1",
-        "Ngô Văn Năm, Phường Bến Nghé",
-        "Nam Kỳ Khởi Nghĩa, Quận 1",
-        "Nguyễn Thái Bình, Quận 1",
-        "Huỳnh Thúc Kháng, Bến Nghé",
-        "Huyện Ứng Hòa, Thành phố Hà Nội"
-    ]
+    "texts": [ "Thành phố Hồ Chí Minh", "Phường Tân Định Quận 1", "Bến NghéQuận 1", "Hồ Chí Minh", "74, Phường 12Nơ Trang Long", "Nam Kỳ Khởi Nghĩa", "Nguyễn Thị Minh Khai", "Quận Hai Bà Trưng Đồng Nhân", "Thành phố Hồ Chí Minh, Quận 1", "Thành phố Hồ Chí MinhQuận 1", "Nam Kỳ Khởi NghĩaBến NghéQuận 1", "Hồ Chí Minh, Quận 1", "234 Quận 1 Phạm Ngũ Lão", "Thành phố Hà Nội", "Nguyễn Tất Thành", "Hồ Chí Minh Tân Phú", "Bình ThạnhPhan Văn Trị94B", "Quận 10, Đường Ba Tháng Hai", "Nguyễn DuHồ Chí Minh Quận 1", "Quận 1Bến Nghé", "Đường Nguyễn Đình Chiểu", "Quận 1", "Nguyê<0303>n Huê<0323> Hồ Chí Minh Quận 1", "Tôn Thất ĐàmHồ Chí Minh", "Bình Thạnh Điện Biên Phủ", "Quận 1Phường Nguyễn Cư Trinh", "Ngô Văn NămBến Nghé", "Bà Huyện Thanh QuanHồ Chí Minh", "Bà Triệu", "Bến Nghé Quận 1Hồ Chí Minh", "Nguyễn Văn Cừ", "Nguyễn Bỉnh Khiêm", "Katinat Saigon - Phó Đức Chính", "Phó Đức Chính", "Hồ Chí Minh Gò Vấp, Phường 16", "Quận 1Thành phố Hồ Chí Minh", "Thành phố Hà NộiNguyễn Du", "Hồ Chí MinhPhường Bến Nghé", "Thành phố Hồ Chí Minh Phường 25", "Phạm Ngũ Lão, Quận 1", "Hai Bà Trưng40", "Đa Kao, Hồ Chí Minh", "Phường 16 Thành phố Hồ Chí Minh", "Hồ Chí Minh Bến Nghé", "Nguyễn Thái BìnhQuận 1Đức Chính", "Ngô Văn Năm, Phường Bến Nghé", "Quận 1, Nam Kỳ Khởi Nghĩa", "Hồ Chí MinhQuận 1", "Quận 1 Nguyễn Thái Bình", "Bến NghéHuỳnh Thúc Kháng", "Hồ Chí Minh Quận 1", "Thành phố Hà NộiHuyện Ứng Hòa" ]
 }' | jq
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  8219  100  6492  100  1727  11256   2994 --:--:-- --:--:-- --:--:-- 14269
 {
   "results": [
     {
       "result": {
-        "input": "Thành phố Hồ Chí Minh",
         "L1": [],
         "L2": [
           "Thành phố Hồ Chí Minh"
@@ -70,7 +25,6 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Phường Tân Định Quận 1",
         "L1": [],
         "L2": [],
         "L3": [
@@ -86,46 +40,39 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Bến Nghé, Quận 1",
         "L1": [],
         "L2": [],
-        "L3": [
-          "Quận 1"
-        ],
-        "L4": [
-          "Bến Nghé"
-        ],
-        "L5": [],
-        "L6": [],
-        "L7": []
-      }
-    },
-    {
-      "result": {
-        "input": "Hồ Chí Minh",
-        "L1": [],
-        "L2": [
-          "Hồ Chí Minh"
-        ],
         "L3": [],
         "L4": [],
         "L5": [],
         "L6": [],
-        "L7": []
+        "L7": [
+          "Bến NghéQuận"
+        ]
       }
     },
     {
       "result": {
-        "input": "74 Nơ Trang Long, Phường 12",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Hồ Chí Minh"
+        ]
+      }
+    },
+    {
+      "result": {
         "L1": [],
         "L2": [],
         "L3": [],
         "L4": [
           "Phường 12"
         ],
-        "L5": [
-          "Nơ Trang Long"
-        ],
+        "L5": [],
         "L6": [
           "74"
         ],
@@ -134,43 +81,10 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Nam Kỳ Khởi Nghĩa",
         "L1": [],
         "L2": [],
         "L3": [],
         "L4": [],
-        "L5": [
-          "Nam Kỳ Khởi Nghĩa"
-        ],
-        "L6": [],
-        "L7": []
-      }
-    },
-    {
-      "result": {
-        "input": "Nguyễn Thị Minh Khai",
-        "L1": [],
-        "L2": [],
-        "L3": [],
-        "L4": [],
-        "L5": [
-          "Nguyễn Thị Minh Khai"
-        ],
-        "L6": [],
-        "L7": []
-      }
-    },
-    {
-      "result": {
-        "input": "Đồng Nhân, Quận Hai Bà Trưng",
-        "L1": [],
-        "L2": [],
-        "L3": [
-          "Quận Hai Bà Trưng"
-        ],
-        "L4": [
-          "Đồng Nhân"
-        ],
         "L5": [],
         "L6": [],
         "L7": []
@@ -178,7 +92,30 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Quận 1, Thành phố Hồ Chí Minh",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      }
+    },
+    {
+      "result": {
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "Quận Hai Bà Trưng"
+        ],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      }
+    },
+    {
+      "result": {
         "L1": [],
         "L2": [
           "Thành phố Hồ Chí Minh"
@@ -194,32 +131,11 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Nam Kỳ Khởi Nghĩa, Bến Nghé, Quận 1",
-        "L1": [],
-        "L2": [],
-        "L3": [
-          "Quận 1"
-        ],
-        "L4": [
-          "Bến Nghé"
-        ],
-        "L5": [
-          "Nam Kỳ Khởi Nghĩa"
-        ],
-        "L6": [],
-        "L7": []
-      }
-    },
-    {
-      "result": {
-        "input": "Quận 1, Hồ Chí Minh",
         "L1": [],
         "L2": [
-          "Hồ Chí Minh"
+          "Thành phố Hồ Chí MinhQuận"
         ],
-        "L3": [
-          "Quận 1"
-        ],
+        "L3": [],
         "L4": [],
         "L5": [],
         "L6": [],
@@ -228,7 +144,37 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "234 Phạm Ngũ Lão, Quận 1",
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "1"
+        ],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Nam",
+          "Khởi NghĩaBến NghéQuận"
+        ]
+      }
+    },
+    {
+      "result": {
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "Quận 1"
+        ],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Hồ Chí Minh"
+        ]
+      }
+    },
+    {
+      "result": {
         "L1": [],
         "L2": [],
         "L3": [
@@ -246,7 +192,6 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Thành phố Hà Nội",
         "L1": [],
         "L2": [
           "Thành phố Hà Nội"
@@ -260,45 +205,40 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Nguyễn Tất Thành",
         "L1": [],
         "L2": [],
         "L3": [],
         "L4": [],
-        "L5": [
-          "Nguyễn Tất Thành"
-        ],
+        "L5": [],
         "L6": [],
-        "L7": []
+        "L7": [
+          "Thành"
+        ]
       }
     },
     {
       "result": {
-        "input": "Tân Phú, Hồ Chí Minh",
         "L1": [],
-        "L2": [
-          "Hồ Chí Minh"
-        ],
-        "L3": [
-          "Tân Phú"
-        ],
+        "L2": [],
+        "L3": [],
         "L4": [],
         "L5": [],
         "L6": [],
-        "L7": []
+        "L7": [
+          "Hồ Chí Minh Tân Phú"
+        ]
       }
     },
     {
       "result": {
-        "input": "94B Phan Văn Trị, Bình Thạnh",
         "L1": [],
         "L2": [],
         "L3": [
-          "Bình Thạnh"
+          "Bình ThạnhPhan"
         ],
         "L4": [],
         "L5": [
-          "Phan Văn Trị"
+          "Văn Trị"
         ],
         "L6": [
           "94B"
@@ -308,7 +248,6 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Đường Ba Tháng Hai, Quận 10",
         "L1": [],
         "L2": [],
         "L3": [
@@ -324,39 +263,6 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Nguyễn Du, Quận 1, Hồ Chí Minh",
-        "L1": [],
-        "L2": [
-          "Hồ Chí Minh"
-        ],
-        "L3": [
-          "Quận 1"
-        ],
-        "L4": [],
-        "L5": [
-          "Nguyễn Du"
-        ],
-        "L6": [],
-        "L7": []
-      }
-    },
-    {
-      "result": {
-        "input": "Đường Nguyễn Đình Chiểu",
-        "L1": [],
-        "L2": [],
-        "L3": [],
-        "L4": [],
-        "L5": [
-          "Đường Nguyễn Đình Chiểu"
-        ],
-        "L6": [],
-        "L7": []
-      }
-    },
-    {
-      "result": {
-        "input": "Quận 1",
         "L1": [],
         "L2": [],
         "L3": [
@@ -370,31 +276,26 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Tôn Thất Đàm, Hồ Chí Minh",
-        "L1": [],
-        "L2": [
-          "Hồ Chí Minh"
-        ],
-        "L3": [],
-        "L4": [],
-        "L5": [
-          "Tôn Thất Đàm"
-        ],
-        "L6": [],
-        "L7": []
-      }
-    },
-    {
-      "result": {
-        "input": "Điện Biên Phủ, Bình Thạnh",
         "L1": [],
         "L2": [],
         "L3": [
-          "Bình Thạnh"
+          "Quận 1",
+          "Bến Nghé"
         ],
         "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      }
+    },
+    {
+      "result": {
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
         "L5": [
-          "Điện Biên Phủ"
+          "Đường Nguyễn Đình Chiểu"
         ],
         "L6": [],
         "L7": []
@@ -402,7 +303,58 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Phường Nguyễn Cư Trinh, Quận 1",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      }
+    },
+    {
+      "result": {
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "Quận 1"
+        ],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Nguyễn Huệ Hồ Chí"
+        ]
+      }
+    },
+    {
+      "result": {
+        "L1": [],
+        "L2": [
+          "Chí Minh"
+        ],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Tôn Thất ĐàmHồ"
+        ]
+      }
+    },
+    {
+      "result": {
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      }
+    },
+    {
+      "result": {
         "L1": [],
         "L2": [],
         "L3": [
@@ -418,63 +370,25 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Ngô Văn Năm, Bến Nghé",
-        "L1": [],
-        "L2": [],
-        "L3": [],
-        "L4": [
-          "Bến Nghé"
-        ],
-        "L5": [
-          "Ngô Văn Năm"
-        ],
-        "L6": [],
-        "L7": []
-      }
-    },
-    {
-      "result": {
-        "input": "Bà Huyện Thanh Quan, Hồ Chí Minh",
-        "L1": [],
-        "L2": [
-          "Hồ Chí Minh"
-        ],
-        "L3": [],
-        "L4": [],
-        "L5": [
-          "Bà Huyện Thanh Quan"
-        ],
-        "L6": [],
-        "L7": []
-      }
-    },
-    {
-      "result": {
-        "input": "Bà Triệu",
         "L1": [],
         "L2": [],
         "L3": [],
         "L4": [],
-        "L5": [
-          "Bà Triệu"
-        ],
+        "L5": [],
         "L6": [],
-        "L7": []
+        "L7": [
+          "Nghé"
+        ]
       }
     },
     {
       "result": {
-        "input": "Bến Nghé, Quận 1, Hồ Chí Minh",
         "L1": [],
         "L2": [
-          "Hồ Chí Minh"
+          "QuanHồ Chí Minh"
         ],
-        "L3": [
-          "Quận 1"
-        ],
-        "L4": [
-          "Bến Nghé"
-        ],
+        "L3": [],
+        "L4": [],
         "L5": [],
         "L6": [],
         "L7": []
@@ -482,13 +396,38 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Nguyễn Văn Cừ",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      }
+    },
+    {
+      "result": {
+        "L1": [],
+        "L2": [
+          "Hồ Chí Minh"
+        ],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Bến Nghé"
+        ]
+      }
+    },
+    {
+      "result": {
         "L1": [],
         "L2": [],
         "L3": [],
         "L4": [],
         "L5": [
-          "Nguyễn Văn Cừ"
+          "Nguyễn Văn"
         ],
         "L6": [],
         "L7": []
@@ -496,7 +435,6 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Nguyễn Bỉnh Khiêm",
         "L1": [],
         "L2": [],
         "L3": [],
@@ -510,79 +448,55 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Katinat Saigon - Phó Đức Chính",
         "L1": [],
         "L2": [],
         "L3": [],
         "L4": [],
-        "L5": [
-          "Phó Đức Chính"
-        ],
+        "L5": [],
         "L6": [],
         "L7": [
-          "Katinat Saigon"
+          "Katinat Saigon - Phó Đức Chính"
         ]
       }
     },
     {
       "result": {
-        "input": "Phó Đức Chính",
         "L1": [],
         "L2": [],
         "L3": [],
         "L4": [],
-        "L5": [
-          "Phó Đức Chính"
-        ],
+        "L5": [],
         "L6": [],
-        "L7": []
+        "L7": [
+          "Phó Đức Chính"
+        ]
       }
     },
     {
       "result": {
-        "input": "Phường 16, Gò Vấp, Hồ Chí Minh",
         "L1": [],
-        "L2": [
-          "Hồ Chí Minh"
-        ],
-        "L3": [
-          "Gò Vấp"
-        ],
+        "L2": [],
+        "L3": [],
         "L4": [
           "Phường 16"
         ],
         "L5": [],
         "L6": [],
-        "L7": []
+        "L7": [
+          "Hồ Chí Minh Gò Vấp"
+        ]
       }
     },
     {
       "result": {
-        "input": "Nguyễn Du, Thành phố Hà Nội",
         "L1": [],
         "L2": [
-          "Thành phố Hà Nội"
+          "Thành phố Hồ Chí Minh"
         ],
-        "L3": [],
+        "L3": [
+          "Quận 1"
+        ],
         "L4": [],
-        "L5": [
-          "Nguyễn Du"
-        ],
-        "L6": [],
-        "L7": []
-      }
-    },
-    {
-      "result": {
-        "input": "Phường Bến Nghé, Hồ Chí Minh",
-        "L1": [],
-        "L2": [
-          "Hồ Chí Minh"
-        ],
-        "L3": [],
-        "L4": [
-          "Phường Bến Nghé"
-        ],
         "L5": [],
         "L6": [],
         "L7": []
@@ -590,7 +504,32 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Phường 25, Thành phố Hồ Chí Minh",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      }
+    },
+    {
+      "result": {
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [
+          "Bến Nghé"
+        ],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Hồ"
+        ]
+      }
+    },
+    {
+      "result": {
         "L1": [],
         "L2": [
           "Thành phố Hồ Chí Minh"
@@ -606,7 +545,6 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Phạm Ngũ Lão, Quận 1",
         "L1": [],
         "L2": [],
         "L3": [
@@ -622,31 +560,10 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "40 Hai Bà Trưng",
         "L1": [],
         "L2": [],
         "L3": [],
         "L4": [],
-        "L5": [
-          "Hai Bà Trưng"
-        ],
-        "L6": [
-          "40"
-        ],
-        "L7": []
-      }
-    },
-    {
-      "result": {
-        "input": "Đa Kao, Hồ Chí Minh",
-        "L1": [],
-        "L2": [
-          "Hồ Chí Minh"
-        ],
-        "L3": [],
-        "L4": [
-          "Đa Kao"
-        ],
         "L5": [],
         "L6": [],
         "L7": []
@@ -654,7 +571,19 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Phường 16 Thành phố Hồ Chí Minh",
+        "L1": [],
+        "L2": [
+          "Hồ Chí Minh"
+        ],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": []
+      }
+    },
+    {
+      "result": {
         "L1": [],
         "L2": [
           "Thành phố Hồ Chí Minh"
@@ -670,33 +599,27 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Bến Nghé, Hồ Chí Minh",
         "L1": [],
-        "L2": [
-          "Hồ Chí Minh"
-        ],
+        "L2": [],
         "L3": [],
-        "L4": [
-          "Bến Nghé"
-        ],
+        "L4": [],
         "L5": [],
         "L6": [],
-        "L7": []
+        "L7": [
+          "Hồ Chí Minh Bến Nghé"
+        ]
       }
     },
     {
       "result": {
-        "input": "Phó Đức Chính, Nguyễn Thái Bình, Quận 1",
         "L1": [],
         "L2": [],
         "L3": [
-          "Quận 1"
+          "1 Đức Chính"
         ],
-        "L4": [
-          "Nguyễn Thái Bình"
-        ],
+        "L4": [],
         "L5": [
-          "Phó Đức Chính"
+          "Nguyễn Thái BìnhQuận"
         ],
         "L6": [],
         "L7": []
@@ -704,7 +627,6 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Ngô Văn Năm, Phường Bến Nghé",
         "L1": [],
         "L2": [],
         "L3": [],
@@ -720,31 +642,14 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Nam Kỳ Khởi Nghĩa, Quận 1",
-        "L1": [],
+        "L1": [
+          "Nam Kỳ"
+        ],
         "L2": [],
         "L3": [
           "Quận 1"
         ],
         "L4": [],
-        "L5": [
-          "Nam Kỳ Khởi Nghĩa"
-        ],
-        "L6": [],
-        "L7": []
-      }
-    },
-    {
-      "result": {
-        "input": "Nguyễn Thái Bình, Quận 1",
-        "L1": [],
-        "L2": [],
-        "L3": [
-          "Quận 1"
-        ],
-        "L4": [
-          "Nguyễn Thái Bình"
-        ],
         "L5": [],
         "L6": [],
         "L7": []
@@ -752,30 +657,63 @@ curl --location 'http://search-ltr.staging-osm.gsm-api.net/ner/predict-batch' \
     },
     {
       "result": {
-        "input": "Huỳnh Thúc Kháng, Bến Nghé",
         "L1": [],
         "L2": [],
         "L3": [],
-        "L4": [
-          "Bến Nghé"
-        ],
-        "L5": [
-          "Huỳnh Thúc Kháng"
-        ],
+        "L4": [],
+        "L5": [],
         "L6": [],
-        "L7": []
+        "L7": [
+          "Hồ Chí MinhQuận"
+        ]
       }
     },
     {
       "result": {
-        "input": "Huyện Ứng Hòa, Thành phố Hà Nội",
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Quận 1"
+        ]
+      }
+    },
+    {
+      "result": {
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Bến NghéHuỳnh Thúc Kháng"
+        ]
+      }
+    },
+    {
+      "result": {
+        "L1": [],
+        "L2": [],
+        "L3": [],
+        "L4": [],
+        "L5": [],
+        "L6": [],
+        "L7": [
+          "Hồ Chí Minh"
+        ]
+      }
+    },
+    {
+      "result": {
         "L1": [],
         "L2": [
-          "Thành phố Hà Nội"
+          "Thành phố Hà NộiHuyện"
         ],
-        "L3": [
-          "Huyện Ứng Hòa"
-        ],
+        "L3": [],
         "L4": [],
         "L5": [],
         "L6": [],

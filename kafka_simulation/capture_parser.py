@@ -48,7 +48,6 @@ def parse_capture(path: str | Path) -> list[dict]:
         payloads.append({
             "text": text,
             "result": item.get("result"),
-            "confidence": item.get("confidence"),
             "source": {"capture": source.name, "endpoint": endpoint, "batch_index": index},
         })
     return payloads

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import math
 import re
 from datetime import datetime
 from typing import Any
@@ -28,9 +27,6 @@ def validate(msg: Any) -> list[str]:
             entries = result.get(level)
             if not isinstance(entries, list) or any(not isinstance(item, str) for item in entries):
                 errors.append(f"result.{level} phải là list chuỗi")
-    confidence = msg.get("confidence")
-    if isinstance(confidence, bool) or not isinstance(confidence, (int, float)) or not math.isfinite(confidence) or not 0 <= confidence <= 1:
-        errors.append("confidence phải là số hữu hạn từ 0 đến 1")
     source = msg.get("source")
     if not isinstance(source, dict):
         errors.append("source phải là object")

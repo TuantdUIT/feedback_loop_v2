@@ -12,7 +12,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9971166133880616,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -34,7 +33,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9985444188117981,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -54,7 +52,6 @@
         "Bến NghéQuận"
       ]
     },
-    "confidence": 0.9833996891975403,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -74,7 +71,6 @@
         "Hồ Chí Minh"
       ]
     },
-    "confidence": 0.9612401326497396,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -96,7 +92,6 @@
       ],
       "L7": []
     },
-    "confidence": 0.889177163441976,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -114,7 +109,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.5619291166464487,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -132,7 +126,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.6596490144729614,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -152,7 +145,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.8179775923490524,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -174,7 +166,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9997103384562901,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -194,7 +185,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9328697820504507,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -217,7 +207,6 @@
         "Khởi NghĩaBến NghéQuận"
       ]
     },
-    "confidence": 0.935291838645935,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -239,7 +228,6 @@
         "Hồ Chí Minh"
       ]
     },
-    "confidence": 0.9662609219551086,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -263,7 +251,6 @@
       ],
       "L7": []
     },
-    "confidence": 0.9971487720807394,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -283,7 +270,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9917144626379013,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -303,7 +289,6 @@
         "Thành"
       ]
     },
-    "confidence": 0.6771079152822495,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -323,7 +308,6 @@
         "Hồ Chí Minh Tân Phú"
       ]
     },
-    "confidence": 0.8358832597732544,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -347,7 +331,6 @@
       ],
       "L7": []
     },
-    "confidence": 0.9955262422561646,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -369,7 +352,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9991743167241415,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -389,7 +371,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.7988166858752569,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -410,7 +391,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9832422584295273,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -430,7 +410,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9995725005865097,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -448,7 +427,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.8588646948337555,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -470,7 +448,6 @@
         "Nguyễn Huệ Hồ Chí"
       ]
     },
-    "confidence": 0.8458478876522609,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -492,7 +469,6 @@
         "Tôn Thất ĐàmHồ"
       ]
     },
-    "confidence": 0.9993920445442199,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -510,7 +486,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.7872143626213074,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -532,7 +507,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9950876931349436,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -552,7 +526,6 @@
         "Nghé"
       ]
     },
-    "confidence": 0.8265360295772552,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -572,7 +545,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9241509437561035,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -590,7 +562,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -612,7 +583,6 @@
         "Bến Nghé"
       ]
     },
-    "confidence": 0.9750285829816546,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -632,7 +602,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9222398400306702,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -652,7 +621,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9908963640530905,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -672,7 +640,6 @@
         "Katinat Saigon - Phó Đức Chính"
       ]
     },
-    "confidence": 0.8944733937581381,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -692,7 +659,6 @@
         "Phó Đức Chính"
       ]
     },
-    "confidence": 0.9987365007400513,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -714,7 +680,6 @@
         "Hồ Chí Minh Gò Vấp"
       ]
     },
-    "confidence": 0.9980161019733974,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -736,7 +701,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9968452709061759,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -754,7 +718,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.928304386138916,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -776,7 +739,6 @@
         "Hồ"
       ]
     },
-    "confidence": 0.9453025579452514,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -798,7 +760,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9961051855768476,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -820,7 +781,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9973799228668213,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -838,7 +798,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.588857630888621,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -858,7 +817,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9526212334632873,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -880,7 +838,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9997114794594901,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -900,7 +857,6 @@
         "Hồ Chí Minh Bến Nghé"
       ]
     },
-    "confidence": 0.8764147520065307,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -922,7 +878,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9415660003821055,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -944,7 +899,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9984241227308909,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -966,7 +920,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.8366020023822784,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -986,7 +939,6 @@
         "Hồ Chí MinhQuận"
       ]
     },
-    "confidence": 0.9872710555791855,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -1006,7 +958,6 @@
         "Quận 1"
       ]
     },
-    "confidence": 0.8444636344909668,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -1026,7 +977,6 @@
         "Bến NghéHuỳnh Thúc Kháng"
       ]
     },
-    "confidence": 0.9949936270713806,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -1046,7 +996,6 @@
         "Hồ Chí Minh"
       ]
     },
-    "confidence": 0.9753062009811402,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
@@ -1066,7 +1015,6 @@
       "L6": [],
       "L7": []
     },
-    "confidence": 0.9558142820994059,
     "source": {
       "capture": "template.txt",
       "endpoint": "/ner/predict-batch",
